@@ -1,0 +1,16 @@
+[Unit]
+Description=Kitchen platform FastAPI
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/kitchen-platform
+EnvironmentFile=/opt/kitchen-platform/.env
+ExecStart=/opt/kitchen-platform/.venv/bin/uvicorn backend.app.main:app --host 127.0.0.1 --port 8000 --workers 1
+Restart=always
+RestartSec=5
+User=www-data
+Group=www-data
+
+[Install]
+WantedBy=multi-user.target

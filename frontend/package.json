@@ -1,0 +1,19 @@
+{
+  "name": "interier-kitchens-frontend",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "predev": "node scripts/sync-assets.mjs",
+    "dev": "vite --host 0.0.0.0",
+    "prebuild": "node scripts/sync-assets.mjs",
+    "build": "vite build",
+    "preview": "vite preview --host 0.0.0.0"
+  },
+  "dependencies": {
+    "vite": "^7.2.7"
+  },
+  "devDependencies": {
+    "playwright": "^1.61.1"
+  }
+}

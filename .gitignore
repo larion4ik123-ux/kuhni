@@ -1,0 +1,86 @@
+# ===== Python =====
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+.eggs/
+dist/
+build/
+.venv/
+venv/
+env/
+ENV/
+.python-version
+
+# ===== Тесты / покрытие =====
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.mypy_cache/
+.ruff_cache/
+
+# ===== База данных / данные =====
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+*.sqlite
+*.sqlite3
+backend/data/
+backend/instance/
+*.bak
+backups/
+
+# ===== Медиа / ассеты (обработанные и загруженные пользователем) =====
+# Оригиналы клиента хранятся в git, обработанные варианты и загрузки — нет
+assets/processed/
+backend/media/
+backend/uploads/
+!assets/raw/.gitkeep
+!assets/owner/.gitkeep
+!assets/kitchens/.gitkeep
+!assets/logo/.gitkeep
+!assets/reviews/.gitkeep
+!assets/facades/.gitkeep
+!assets/colors/.gitkeep
+!assets/handles/.gitkeep
+!assets/countertops/.gitkeep
+
+# ===== Frontend =====
+frontend/node_modules/
+frontend/dist/
+frontend/public/media/
+frontend/.vite/
+*.log
+photo/contact-sheet.jpg
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ===== Окружение / секреты =====
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+secrets/
+
+# ===== IDE / ОС =====
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# ===== OMC / Claude =====
+.omc/
+.claude/
+
+# ===== Логи =====
+logs/
+*.log

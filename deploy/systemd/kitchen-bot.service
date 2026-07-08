@@ -1,0 +1,16 @@
+[Unit]
+Description=Kitchen platform Telegram bot
+After=network.target kitchen-api.service
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/kitchen-platform
+EnvironmentFile=/opt/kitchen-platform/.env
+ExecStart=/opt/kitchen-platform/.venv/bin/python -m bot.main
+Restart=always
+RestartSec=5
+User=www-data
+Group=www-data
+
+[Install]
+WantedBy=multi-user.target
