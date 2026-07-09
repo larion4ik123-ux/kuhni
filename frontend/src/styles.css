@@ -165,43 +165,25 @@ button {
   stroke-linejoin: round;
 }
 
+.button .max-logo-icon,
+.header-cta .max-logo-icon {
+  width: 24px;
+  height: 24px;
+  flex: 0 0 auto;
+  border-radius: 7px;
+  object-fit: cover;
+  box-shadow: 0 5px 12px rgba(34, 84, 220, 0.18);
+}
+
+.header-cta .max-logo-icon {
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+}
+
 .button svg:first-child {
   fill: none;
   stroke: currentColor;
-}
-
-.button .max-mark,
-.header-cta .max-mark {
-  width: 24px;
-  height: 24px;
-  fill: none;
-  stroke: none;
-}
-
-.max-shell {
-  fill: currentColor;
-}
-
-.max-letter {
-  fill: var(--max-cutout, #fff);
-}
-
-.button-primary,
-.button-secondary {
-  --max-cutout: var(--accent);
-}
-
-.button-primary:hover,
-.button-secondary:hover {
-  --max-cutout: var(--accent-dark);
-}
-
-.button-ghost {
-  --max-cutout: #fff;
-}
-
-.header-cta {
-  --max-cutout: var(--graphite);
 }
 
 .mobile-panel {
@@ -301,8 +283,7 @@ h3 {
   gap: 8px;
 }
 
-.hero-primary-action small,
-.bot-card small {
+.hero-primary-action small {
   color: var(--muted);
   font-size: 13px;
   font-weight: 800;
@@ -428,10 +409,7 @@ h3 {
 }
 
 .generator-layout {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(300px, 0.42fr);
-  gap: 16px;
-  align-items: stretch;
+  display: block;
 }
 
 .generator-steps {
@@ -471,35 +449,8 @@ h3 {
   line-height: 1.45;
 }
 
-.bot-card {
-  display: grid;
-  align-content: start;
-  gap: 18px;
-  min-height: 100%;
-  padding: 24px;
-  border-radius: var(--radius);
-  background: var(--graphite);
-  color: #fff;
-  box-shadow: var(--shadow);
-}
-
-.bot-card strong {
-  font-size: 26px;
-  line-height: 1.05;
-}
-
-.bot-card p {
-  color: rgba(255, 255, 255, 0.78);
-  line-height: 1.5;
-}
-
-.bot-card small {
-  color: rgba(255, 255, 255, 0.68);
-}
-
-.bot-card .button {
-  width: 100%;
-  box-shadow: none;
+.generator-cta {
+  margin-top: 22px;
 }
 
 .works {
@@ -1076,10 +1027,6 @@ h3 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .generator-layout {
-    grid-template-columns: 1fr;
-  }
-
   .option-groups,
   .works-extra,
   .process-list {
@@ -1216,14 +1163,6 @@ h3 {
   .carousel-button {
     width: 40px;
     height: 40px;
-  }
-
-  .bot-card {
-    padding: 20px;
-  }
-
-  .bot-card strong {
-    font-size: 23px;
   }
 
   .generator-steps li {

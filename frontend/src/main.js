@@ -42,10 +42,10 @@ const site = {
     "Изготовление и монтаж",
   ],
   generatorSteps: [
-    ["1", "Выбираете форму", "Прямая, угловая, П-образная или островная кухня под вашу планировку."],
-    ["2", "Загружаете фото", "Бот привязывает идею к вашему реальному помещению, а не к абстрактной картинке."],
-    ["3", "Получаете визуальный вариант", "Система готовит направление будущей кухни: цвет, фасады, рабочие зоны и настроение."],
-    ["4", "Заявка уходит Артёму", "Я вижу подбор, фото и пожелания уже в собранном виде и понимаю, что нужно уточнить."],
+    ["1", "Выбираете форму", "Прямая, угловая, П-образная или островная."],
+    ["2", "Загружаете фото", "Показываете помещение, где будет стоять кухня."],
+    ["3", "Получаете визуальный вариант", "Видите направление по цвету, фасадам и рабочим зонам."],
+    ["4", "Заявка уходит Артёму", "Я смотрю подбор и возвращаюсь со следующим шагом."],
   ],
   gallery: [
     {
@@ -232,7 +232,7 @@ const site = {
 
 const icon = {
   max:
-    '<svg class="max-mark" viewBox="0 0 28 28" aria-hidden="true"><path class="max-shell" d="M14 2.8c6.2 0 11 4.3 11 9.9s-4.8 9.8-11 9.8c-1.1 0-2.2-.1-3.2-.4L6 25.2c-.6.4-1.3-.2-1.1-.9l1.3-4.6C4.2 18 3 15.5 3 12.7 3 7.1 7.8 2.8 14 2.8Z"/><path class="max-letter" d="M7.9 17.8V9.2h2.3l2.1 3.3 2.1-3.3h2.2v8.6h-2.2v-4.9l-1.6 2.5h-1l-1.7-2.5v4.9H7.9Zm10 0 2.2-4.4-2-4.2h2.3l.9 2.1 1-2.1h2.2l-2 4.1 2.2 4.5h-2.4l-1.1-2.3-1.1 2.3h-2.2Z"/></svg>',
+    `<img class="max-logo-icon" src="${asset("media/brand/max_icon.png")}" alt="" aria-hidden="true" decoding="async">`,
   arrow:
     '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h12.2m-4.7-5 5 5-5 5"/></svg>',
   chevronLeft:
@@ -349,9 +349,8 @@ function renderHero() {
 function renderGenerator() {
   return `
     <section class="section generator" id="generator">
-      <div class="section-heading">
+      <div class="section-heading compact">
         <h2>Соберите кухню мечты в MAX-боте</h2>
-        <p>Бот помогает собрать форму, стиль, цвет и фото помещения, чтобы визуализировать идею прямо в вашем интерьере.</p>
       </div>
       <div class="generator-layout">
         <ol class="generator-steps">
@@ -367,12 +366,9 @@ function renderGenerator() {
             )
             .join("")}
         </ol>
-        <div class="bot-card">
-          <strong>Вместо долгих объяснений</strong>
-          <p>Вы проходите короткий маршрут, прикладываете фото помещения, а администратор и я получаем уже собранную задачу: что нравится, какая форма нужна и какие материалы рассматривать.</p>
-          ${cta("Перейти в MAX", "website_generator")}
-          <small>Заявка уйдёт администратору с фото, формой кухни и пожеланиями.</small>
-        </div>
+      </div>
+      <div class="section-cta slim generator-cta">
+        ${cta("Перейти в MAX", "website_generator")}
       </div>
     </section>
   `;
@@ -400,9 +396,8 @@ function renderGallery() {
   const more = site.gallery.slice(6);
   return `
     <section class="section works" id="works">
-      <div class="section-heading">
+      <div class="section-heading compact">
         <h2>Реальные кухни</h2>
-        <p>Несколько работ идут мягкой витриной. Можно листать стрелками, открыть фото крупно или раскрыть остальные кухни ниже.</p>
       </div>
       <div class="works-showcase">
         <div class="carousel-toolbar" aria-label="Листать реальные кухни">
@@ -416,10 +411,6 @@ function renderGallery() {
         ${icon.chevronDown}
       </button>
       <div class="works-extra" data-works-extra hidden>${renderGalleryCards(more, "extra-card")}</div>
-      <div class="section-cta works-cta">
-        <h3>Хотите увидеть вариант под своё помещение?</h3>
-        ${cta("Перейти в MAX", "website_gallery", "secondary")}
-      </div>
     </section>
   `;
 }
@@ -435,9 +426,8 @@ function renderOptions() {
   ];
   return `
     <section class="section options" id="options">
-      <div class="section-heading">
+      <div class="section-heading compact">
         <h2>Что подберём</h2>
-        <p>Не просто список “галочек”: бот собирает основу, а я потом смотрю, что реально подходит по размерам, технике и бюджету.</p>
       </div>
       <div class="option-groups">
         ${groups

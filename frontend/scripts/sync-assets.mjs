@@ -6,6 +6,7 @@ const here = dirname(fileURLToPath(import.meta.url));
 const frontendRoot = resolve(here, "..");
 const repoRoot = resolve(frontendRoot, "..");
 const processedRoot = resolve(repoRoot, "assets", "processed");
+const rawBrandRoot = resolve(repoRoot, "assets", "raw", "brand");
 const manifestPath = resolve(repoRoot, "assets", "assets-manifest.json");
 const outputRoot = resolve(frontendRoot, "public", "media");
 
@@ -29,6 +30,15 @@ for (const directory of directories) {
   const source = resolve(processedRoot, directory);
   if (existsSync(source)) {
     cpSync(source, resolve(outputRoot, directory), { recursive: true });
+  }
+}
+
+const brandOutputRoot = resolve(outputRoot, "brand");
+mkdirSync(brandOutputRoot, { recursive: true });
+for (const fileName of ["max_icon.png", "max_wordmark.png"]) {
+  const source = resolve(rawBrandRoot, fileName);
+  if (existsSync(source)) {
+    cpSync(source, resolve(brandOutputRoot, fileName));
   }
 }
 
