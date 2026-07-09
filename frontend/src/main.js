@@ -17,6 +17,7 @@ const site = {
     role: "лично веду проекты кухонь",
   },
   contacts: {
+    maxBotUrl: "",
     phone: "+7 (XXX) XXX-XX-XX",
     address: "—",
     region: "—",
@@ -26,7 +27,7 @@ const site = {
     title: "Я Артём. Соберу кухню под ваш дом.",
     text:
       "Лично разбираю планировку, материалы и бюджет, а команда изготавливает и монтирует кухню под размеры вашего помещения.",
-    note: "Посмотрите реальные работы, материалы и порядок работы. Заявки временно принимаются только после согласования контактов.",
+    note: "Начните с фото помещения - бот соберёт пожелания и передаст заявку администратору без длинной переписки.",
     image: {
       webp: "media/kitchens_real/owner_at_kitchen_hero.webp",
       jpg: "media/kitchens_real/owner_at_kitchen_hero.jpg",
@@ -38,6 +39,12 @@ const site = {
     "Реальные работы на фото",
     "Подбор под бюджет",
     "Изготовление и монтаж",
+  ],
+  generatorSteps: [
+    ["1", "Выбираете форму", "Прямая, угловая, П-образная или островная."],
+    ["2", "Загружаете фото", "Показываете помещение, где будет стоять кухня."],
+    ["3", "Получаете визуальный вариант", "Видите направление по цвету, фасадам и рабочим зонам."],
+    ["4", "Заявка уходит Артёму", "Я смотрю подбор и возвращаюсь со следующим шагом."],
   ],
   gallery: [
     {
@@ -186,8 +193,8 @@ const site = {
     },
   ],
   process: [
-    ["Подбор", "Обсуждаем форму, стиль, материалы и пожелания по кухне."],
-    ["Визуальный ориентир", "Собираем направление будущей кухни по фото, размерам и интерьеру."],
+    ["Подбор", "Вы отвечаете на короткие вопросы в MAX-боте."],
+    ["Визуализация", "Бот собирает вводные и готовит изображение будущей кухни по фото помещения."],
     ["Разбор заявки", "Я смотрю планировку, материалы, технику и нюансы помещения."],
     ["Замер", "Уточняем размеры, выводы, розетки, газ, воду и технику."],
     ["Изготовление", "Изготавливаем кухню под согласованный проект."],
@@ -200,8 +207,8 @@ const site = {
       "Да. Фото помещения помогает понять планировку, привязки, свет и общий стиль. Точный проект всё равно уточняется после замера.",
     ],
     [
-      "С чего начинается работа?",
-      "С обсуждения планировки, размеров, техники, материалов и бюджета. После этого понятно, какой следующий шаг нужен.",
+      "Что делает бот MAX?",
+      "Бот собирает форму кухни, стиль, цвет, материалы и фото помещения, чтобы Артём сразу видел цельную заявку.",
     ],
     [
       "Будет ли визуализация по моему фото?",
@@ -223,6 +230,8 @@ const site = {
 };
 
 const icon = {
+  max:
+    `<img class="max-logo-icon" src="${asset("media/brand/max_icon.png")}" alt="" aria-hidden="true" decoding="async">`,
   arrow:
     '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h12.2m-4.7-5 5 5-5 5"/></svg>',
   chevronLeft:
@@ -253,10 +262,12 @@ function picture({ webp, jpg, alt, className = "", loading = "lazy" }) {
   `;
 }
 
-function cta(label, variant = "primary") {
+function cta(label, source, variant = "primary") {
   return `
-    <button class="button button-${variant} is-disabled" type="button" disabled aria-disabled="true">
+    <button class="button button-${variant} pseudo-cta" type="button" aria-disabled="true" data-cta="${source}">
+      ${icon.max}
       <span>${label}</span>
+      ${icon.arrow}
     </button>
   `;
 }
@@ -265,6 +276,7 @@ function nav() {
   const items = [
     ["#works", "Работы"],
     ["#about", "Обо мне"],
+    ["#generator", "MAX-бот"],
     ["#options", "Материалы"],
     ["#process", "Как работаем"],
     ["#contacts", "Контакты"],
@@ -279,12 +291,12 @@ function renderHeader() {
         ${picture({ ...site.brand.logo, className: "brand-logo", loading: "eager" })}
       </a>
       <nav class="desktop-nav" aria-label="Основная навигация">${nav()}</nav>
-      <button class="header-cta is-disabled" type="button" disabled aria-disabled="true"><span>Подобрать кухню</span></button>
+      <button class="header-cta pseudo-cta" type="button" aria-disabled="true" data-cta="website_main">${icon.max}<span>Перейти в MAX</span></button>
       <button class="menu-button" type="button" aria-label="Открыть меню" data-menu-toggle>${icon.menu}</button>
       <div class="mobile-panel" data-mobile-panel>
         <button class="menu-close" type="button" aria-label="Закрыть меню" data-menu-close>${icon.close}</button>
         <nav aria-label="Мобильная навигация">${nav()}</nav>
-        ${cta("Подобрать кухню")}
+        ${cta("Перейти в MAX", "website_main")}
       </div>
     </header>
   `;
@@ -300,7 +312,8 @@ function renderHero() {
         <p class="lead">${site.hero.text}</p>
         <div class="hero-actions">
           <div class="hero-primary-action">
-            ${cta("Подобрать кухню")}
+            ${cta("Перейти в MAX", "website_main")}
+            <small>Быстрый подбор и визуализация по фото</small>
           </div>
           <a class="button button-ghost" href="#works"><span>Смотреть кухни</span>${icon.arrow}</a>
         </div>
@@ -311,6 +324,34 @@ function renderHero() {
       </div>
       <div class="hero-media">
         ${picture({ ...site.hero.image, className: "hero-picture", loading: "eager" })}
+      </div>
+    </section>
+  `;
+}
+
+function renderGenerator() {
+  return `
+    <section class="section generator" id="generator">
+      <div class="section-heading compact">
+        <h2>Соберите кухню мечты в MAX-боте</h2>
+      </div>
+      <div class="generator-layout">
+        <ol class="generator-steps">
+          ${site.generatorSteps
+            .map(
+              ([number, title, text]) => `
+                <li>
+                  <span>${number}</span>
+                  <strong>${title}</strong>
+                  <p>${text}</p>
+                </li>
+              `,
+            )
+            .join("")}
+        </ol>
+      </div>
+      <div class="section-cta slim generator-cta">
+        ${cta("Перейти в MAX", "website_generator")}
       </div>
     </section>
   `;
@@ -409,7 +450,7 @@ function renderMaterials() {
           .join("")}
       </div>
       <div class="section-cta slim">
-        ${cta("Подобрать материалы", "secondary")}
+        ${cta("Подобрать материалы в MAX", "website_generator", "secondary")}
       </div>
     </section>
   `;
@@ -498,11 +539,12 @@ function renderContacts() {
     <section class="section contacts" id="contacts">
       <div>
         <h2>Контакты</h2>
-        <p>Контакты будут добавлены после согласования демонстрационной версии сайта.</p>
-        ${cta("Оставить заявку")}
+        <p>Перейдите в бот, отправьте фото помещения и пожелания. Артём увидит подбор и вернётся с понятным следующим шагом.</p>
+        ${cta("Перейти в MAX", "website_main")}
       </div>
       <dl class="contact-list">
         <div><dt>Телефон</dt><dd>${site.contacts.phone}</dd></div>
+        <div><dt>Бот</dt><dd>${site.contacts.maxBotUrl ? site.contacts.maxBotUrl : "MAX-бот для подбора кухни"}</dd></div>
         <div><dt>Адрес</dt><dd>${site.contacts.address}</dd></div>
         <div><dt>Регион работы</dt><dd>${site.contacts.region}</dd></div>
         <div><dt>Часы связи</dt><dd>${site.contacts.hours}</dd></div>
@@ -527,6 +569,7 @@ function renderApp() {
       ${renderHero()}
       ${renderGallery()}
       ${renderAbout()}
+      ${renderGenerator()}
       ${renderOptions()}
       ${renderMaterials()}
       ${renderProcess()}

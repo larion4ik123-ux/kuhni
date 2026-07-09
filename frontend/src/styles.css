@@ -167,6 +167,22 @@ button {
   stroke-linejoin: round;
 }
 
+.button .max-logo-icon,
+.header-cta .max-logo-icon {
+  width: 24px;
+  height: 24px;
+  flex: 0 0 auto;
+  border-radius: 7px;
+  object-fit: cover;
+  box-shadow: 0 5px 12px rgba(34, 84, 220, 0.18);
+}
+
+.header-cta .max-logo-icon {
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+}
+
 .button svg:first-child {
   fill: none;
   stroke: currentColor;
@@ -300,13 +316,9 @@ h3 {
   transform: translateY(-1px);
 }
 
-.button.is-disabled,
-.header-cta.is-disabled {
+.button.pseudo-cta,
+.header-cta.pseudo-cta {
   cursor: default;
-}
-
-.button.is-disabled:hover {
-  transform: none;
 }
 
 .button span {
@@ -320,8 +332,8 @@ h3 {
   box-shadow: 0 16px 38px rgba(186, 51, 39, 0.24);
 }
 
-.button-primary:not(.is-disabled):hover,
-.button-secondary:not(.is-disabled):hover {
+.button-primary:hover,
+.button-secondary:hover {
   background: var(--accent-dark);
 }
 
