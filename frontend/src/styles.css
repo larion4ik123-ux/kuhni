@@ -127,12 +127,14 @@ button {
   gap: 10px;
   min-height: 44px;
   padding: 0 18px;
+  border: 0;
   border-radius: 999px;
   background: var(--graphite);
   color: #fff;
   font-size: 14px;
   font-weight: 700;
   white-space: nowrap;
+  cursor: default;
 }
 
 .menu-button,
@@ -163,22 +165,6 @@ button {
   stroke-width: 2;
   stroke-linecap: round;
   stroke-linejoin: round;
-}
-
-.button .max-logo-icon,
-.header-cta .max-logo-icon {
-  width: 24px;
-  height: 24px;
-  flex: 0 0 auto;
-  border-radius: 7px;
-  object-fit: cover;
-  box-shadow: 0 5px 12px rgba(34, 84, 220, 0.18);
-}
-
-.header-cta .max-logo-icon {
-  width: 22px;
-  height: 22px;
-  border-radius: 6px;
 }
 
 .button svg:first-child {
@@ -314,6 +300,15 @@ h3 {
   transform: translateY(-1px);
 }
 
+.button.is-disabled,
+.header-cta.is-disabled {
+  cursor: default;
+}
+
+.button.is-disabled:hover {
+  transform: none;
+}
+
 .button span {
   min-width: 0;
 }
@@ -325,8 +320,8 @@ h3 {
   box-shadow: 0 16px 38px rgba(186, 51, 39, 0.24);
 }
 
-.button-primary:hover,
-.button-secondary:hover {
+.button-primary:not(.is-disabled):hover,
+.button-secondary:not(.is-disabled):hover {
   background: var(--accent-dark);
 }
 

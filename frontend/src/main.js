@@ -17,8 +17,6 @@ const site = {
     role: "лично веду проекты кухонь",
   },
   contacts: {
-    maxBotUrl: "",
-    telegramBotUrl: "https://t.me/your_kitchen_bot",
     phone: "+7 (XXX) XXX-XX-XX",
     address: "—",
     region: "—",
@@ -28,7 +26,7 @@ const site = {
     title: "Я Артём. Соберу кухню под ваш дом.",
     text:
       "Лично разбираю планировку, материалы и бюджет, а команда изготавливает и монтирует кухню под размеры вашего помещения.",
-    note: "Начните с фото помещения - бот соберёт пожелания и передаст заявку администратору без длинной переписки.",
+    note: "Посмотрите реальные работы, материалы и порядок работы. Заявки временно принимаются только после согласования контактов.",
     image: {
       webp: "media/kitchens_real/owner_at_kitchen_hero.webp",
       jpg: "media/kitchens_real/owner_at_kitchen_hero.jpg",
@@ -40,12 +38,6 @@ const site = {
     "Реальные работы на фото",
     "Подбор под бюджет",
     "Изготовление и монтаж",
-  ],
-  generatorSteps: [
-    ["1", "Выбираете форму", "Прямая, угловая, П-образная или островная."],
-    ["2", "Загружаете фото", "Показываете помещение, где будет стоять кухня."],
-    ["3", "Получаете визуальный вариант", "Видите направление по цвету, фасадам и рабочим зонам."],
-    ["4", "Заявка уходит Артёму", "Я смотрю подбор и возвращаюсь со следующим шагом."],
   ],
   gallery: [
     {
@@ -194,8 +186,8 @@ const site = {
     },
   ],
   process: [
-    ["Подбор", "Вы отвечаете на короткие вопросы в MAX-боте."],
-    ["Визуализация", "Бот собирает вводные и готовит изображение будущей кухни по фото помещения."],
+    ["Подбор", "Обсуждаем форму, стиль, материалы и пожелания по кухне."],
+    ["Визуальный ориентир", "Собираем направление будущей кухни по фото, размерам и интерьеру."],
     ["Разбор заявки", "Я смотрю планировку, материалы, технику и нюансы помещения."],
     ["Замер", "Уточняем размеры, выводы, розетки, газ, воду и технику."],
     ["Изготовление", "Изготавливаем кухню под согласованный проект."],
@@ -208,8 +200,8 @@ const site = {
       "Да. Фото помещения помогает понять планировку, привязки, свет и общий стиль. Точный проект всё равно уточняется после замера.",
     ],
     [
-      "Что делает бот MAX?",
-      "Бот собирает форму кухни, стиль, цвет, материалы и фото помещения, чтобы Артём сразу видел цельную заявку.",
+      "С чего начинается работа?",
+      "С обсуждения планировки, размеров, техники, материалов и бюджета. После этого понятно, какой следующий шаг нужен.",
     ],
     [
       "Будет ли визуализация по моему фото?",
@@ -231,8 +223,6 @@ const site = {
 };
 
 const icon = {
-  max:
-    `<img class="max-logo-icon" src="${asset("media/brand/max_icon.png")}" alt="" aria-hidden="true" decoding="async">`,
   arrow:
     '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h12.2m-4.7-5 5 5-5 5"/></svg>',
   chevronLeft:
@@ -263,29 +253,11 @@ function picture({ webp, jpg, alt, className = "", loading = "lazy" }) {
   `;
 }
 
-function botUrl(source) {
-  const raw =
-    import.meta.env.VITE_MAX_BOT_URL ||
-    site.contacts.maxBotUrl ||
-    import.meta.env.VITE_TELEGRAM_BOT_URL ||
-    site.contacts.telegramBotUrl;
-  try {
-    const url = new URL(raw);
-    url.searchParams.set("start", source);
-    return url.toString();
-  } catch {
-    const glue = raw.includes("?") ? "&" : "?";
-    return `${raw}${glue}start=${encodeURIComponent(source)}`;
-  }
-}
-
-function cta(label, source, variant = "primary") {
+function cta(label, variant = "primary") {
   return `
-    <a class="button button-${variant}" href="${botUrl(source)}" target="_blank" rel="noreferrer" data-cta="${source}">
-      ${icon.max}
+    <button class="button button-${variant} is-disabled" type="button" disabled aria-disabled="true">
       <span>${label}</span>
-      ${icon.arrow}
-    </a>
+    </button>
   `;
 }
 
@@ -293,7 +265,6 @@ function nav() {
   const items = [
     ["#works", "Работы"],
     ["#about", "Обо мне"],
-    ["#generator", "MAX-бот"],
     ["#options", "Материалы"],
     ["#process", "Как работаем"],
     ["#contacts", "Контакты"],
@@ -308,12 +279,12 @@ function renderHeader() {
         ${picture({ ...site.brand.logo, className: "brand-logo", loading: "eager" })}
       </a>
       <nav class="desktop-nav" aria-label="Основная навигация">${nav()}</nav>
-      <a class="header-cta" href="${botUrl("website_main")}" target="_blank" rel="noreferrer">${icon.max}<span>Перейти в MAX</span></a>
+      <button class="header-cta is-disabled" type="button" disabled aria-disabled="true"><span>Подобрать кухню</span></button>
       <button class="menu-button" type="button" aria-label="Открыть меню" data-menu-toggle>${icon.menu}</button>
       <div class="mobile-panel" data-mobile-panel>
         <button class="menu-close" type="button" aria-label="Закрыть меню" data-menu-close>${icon.close}</button>
         <nav aria-label="Мобильная навигация">${nav()}</nav>
-        ${cta("Перейти в MAX", "website_main")}
+        ${cta("Подобрать кухню")}
       </div>
     </header>
   `;
@@ -329,8 +300,7 @@ function renderHero() {
         <p class="lead">${site.hero.text}</p>
         <div class="hero-actions">
           <div class="hero-primary-action">
-            ${cta("Перейти в MAX", "website_main")}
-            <small>Быстрый подбор и визуализация по фото</small>
+            ${cta("Подобрать кухню")}
           </div>
           <a class="button button-ghost" href="#works"><span>Смотреть кухни</span>${icon.arrow}</a>
         </div>
@@ -341,34 +311,6 @@ function renderHero() {
       </div>
       <div class="hero-media">
         ${picture({ ...site.hero.image, className: "hero-picture", loading: "eager" })}
-      </div>
-    </section>
-  `;
-}
-
-function renderGenerator() {
-  return `
-    <section class="section generator" id="generator">
-      <div class="section-heading compact">
-        <h2>Соберите кухню мечты в MAX-боте</h2>
-      </div>
-      <div class="generator-layout">
-        <ol class="generator-steps">
-          ${site.generatorSteps
-            .map(
-              ([number, title, text]) => `
-                <li>
-                  <span>${number}</span>
-                  <strong>${title}</strong>
-                  <p>${text}</p>
-                </li>
-              `,
-            )
-            .join("")}
-        </ol>
-      </div>
-      <div class="section-cta slim generator-cta">
-        ${cta("Перейти в MAX", "website_generator")}
       </div>
     </section>
   `;
@@ -467,7 +409,7 @@ function renderMaterials() {
           .join("")}
       </div>
       <div class="section-cta slim">
-        ${cta("Подобрать материалы в MAX", "website_generator", "secondary")}
+        ${cta("Подобрать материалы", "secondary")}
       </div>
     </section>
   `;
@@ -556,12 +498,11 @@ function renderContacts() {
     <section class="section contacts" id="contacts">
       <div>
         <h2>Контакты</h2>
-        <p>Перейдите в бот, отправьте фото помещения и пожелания. Артём увидит подбор и вернётся с понятным следующим шагом.</p>
-        ${cta("Перейти в MAX", "website_main")}
+        <p>Контакты будут добавлены после согласования демонстрационной версии сайта.</p>
+        ${cta("Оставить заявку")}
       </div>
       <dl class="contact-list">
         <div><dt>Телефон</dt><dd>${site.contacts.phone}</dd></div>
-        <div><dt>Бот</dt><dd>${site.contacts.maxBotUrl ? site.contacts.maxBotUrl : "MAX-бот для подбора кухни"}</dd></div>
         <div><dt>Адрес</dt><dd>${site.contacts.address}</dd></div>
         <div><dt>Регион работы</dt><dd>${site.contacts.region}</dd></div>
         <div><dt>Часы связи</dt><dd>${site.contacts.hours}</dd></div>
@@ -586,7 +527,6 @@ function renderApp() {
       ${renderHero()}
       ${renderGallery()}
       ${renderAbout()}
-      ${renderGenerator()}
       ${renderOptions()}
       ${renderMaterials()}
       ${renderProcess()}
@@ -614,18 +554,10 @@ async function hydrateRemoteContent() {
     });
     if (!response.ok) return;
     const remote = await response.json();
-    if (remote.telegram_bot_url) {
-      site.contacts.telegramBotUrl = remote.telegram_bot_url;
-    }
-    if (remote.max_bot_url) {
-      site.contacts.maxBotUrl = remote.max_bot_url;
-    }
     if (remote.contacts) {
       site.contacts = {
         ...site.contacts,
         phone: remote.contacts.phone || site.contacts.phone,
-        telegramBotUrl: remote.contacts.telegram_url || site.contacts.telegramBotUrl,
-        maxBotUrl: remote.contacts.max_url || site.contacts.maxBotUrl,
         address: remote.contacts.address || site.contacts.address,
         region: remote.contacts.region || site.contacts.region,
         hours: remote.contacts.hours || site.contacts.hours,
