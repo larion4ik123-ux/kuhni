@@ -50,16 +50,10 @@
 ## Поток заявки
 
 ```
-Сайт (CTA MAX/fallback) ──deep link start=website_generator──▶ TelegramAdapter
+Сайт (CTA MAX/fallback) ──deep link start=website_generator──▶ TelegramAdapter / MaxAdapter
    │
    ▼
-Воронка (FSM, вопросы из БД) ──ответы──▶ funnel_answers
-   │ (фото, но БЕЗ контакта)
-   ▼
-Запрос контакта (request_contact=True) ──телефон──▶ user_contacts + lead
-   │
-   ▼
-NotifyService.notify_new_lead() ──▶ manager chat ids
+Воронка (FSM, вопросы из БД) ──ответы + фото──▶ funnel_answers
    │
    ▼
 services.GenerationService.create_job() ──▶ jobs (status=pending)
@@ -67,14 +61,18 @@ services.GenerationService.create_job() ──▶ jobs (status=pending)
 generation_worker.poll() ──▶ ImageGenerationProvider.generate()
    │   (polza.ai /v1/media img2img с фото помещения)
    ▼
-generated_images + jobs(done) ──▶ результат для менеджера/админки
+generated_images + jobs(done) ──▶ предварительная визуализация пользователю
    │
    ▼
-Дальше ведёт менеджер: связывается с клиентом, уточняет замер и следующий шаг
+Пользователь нажимает «Передать заявку Артёму» ──▶ contact + lead + NotifyService
+   │
+   ▼
+Артём связывается с клиентом, уточняет замер и следующий шаг
 ```
 
-**Критичный инвариант:** до получения контакта генерация НЕ ставится в очередь.
-Сервис `GenerationService` проверяет наличие `user_contacts` перед созданием job.
+**Целевой инвариант:** контакт не должен быть условием генерации. Визуализация
+даёт пользователю понятную идею, а контакт запрашивается отдельно для передачи
+заявки Артёму. Бот не рассчитывает и не обещает точную стоимость.
 
 ## Разделение для этапа 2
 
