@@ -1,0 +1,2356 @@
+{
+  "files": [
+    {
+      "id": "logo_interier",
+      "source_path": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/raw/brand/logo_interier.jpg",
+      "category": "brand",
+      "orientation": "landscape",
+      "variants": {
+        "thumbnail": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/brand/logo_interier_thumbnail.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/brand/logo_interier_thumbnail.jpg",
+          "width": 400,
+          "height": 290
+        },
+        "card": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/brand/logo_interier_card.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/brand/logo_interier_card.jpg",
+          "width": 800,
+          "height": 580
+        },
+        "hero": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/brand/logo_interier_hero.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/brand/logo_interier_hero.jpg",
+          "width": 1280,
+          "height": 929
+        },
+        "fullscreen": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/brand/logo_interier_fullscreen.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/brand/logo_interier_fullscreen.jpg",
+          "width": 1280,
+          "height": 929
+        }
+      },
+      "suggested_usage": "logo",
+      "quality": "client_photo",
+      "suitable_for_hero": true,
+      "suitable_for_gallery": false,
+      "suitable_for_ai_reference": false,
+      "caption": "Логотип мебельного салона Интерьер",
+      "layout": "",
+      "style": "",
+      "primary_color": "",
+      "alt_text": "Логотип Мебельный салон Интерьер",
+      "focus_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "display_order": 1,
+      "is_real_work": false
+    },
+    {
+      "id": "logo_interier_cropped",
+      "source_path": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/raw/brand/logo_interier_cropped.png",
+      "category": "brand",
+      "orientation": "landscape",
+      "variants": {
+        "thumbnail": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/brand/logo_interier_cropped_thumbnail.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/brand/logo_interier_cropped_thumbnail.jpg",
+          "width": 400,
+          "height": 145
+        },
+        "card": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/brand/logo_interier_cropped_card.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/brand/logo_interier_cropped_card.jpg",
+          "width": 800,
+          "height": 291
+        },
+        "hero": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/brand/logo_interier_cropped_hero.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/brand/logo_interier_cropped_hero.jpg",
+          "width": 896,
+          "height": 327
+        },
+        "fullscreen": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/brand/logo_interier_cropped_fullscreen.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/brand/logo_interier_cropped_fullscreen.jpg",
+          "width": 896,
+          "height": 327
+        }
+      },
+      "suggested_usage": "logo_header",
+      "quality": "client_photo",
+      "suitable_for_hero": true,
+      "suitable_for_gallery": false,
+      "suitable_for_ai_reference": false,
+      "caption": "Логотип мебельного салона Интерьер",
+      "layout": "",
+      "style": "",
+      "primary_color": "",
+      "alt_text": "Логотип Мебельный салон Интерьер",
+      "focus_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "display_order": 2,
+      "is_real_work": false
+    },
+    {
+      "id": "max_icon",
+      "source_path": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/raw/brand/max_icon.png",
+      "category": "brand",
+      "orientation": "square",
+      "variants": {
+        "thumbnail": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/brand/max_icon_thumbnail.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/brand/max_icon_thumbnail.jpg",
+          "width": 225,
+          "height": 225
+        },
+        "card": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/brand/max_icon_card.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/brand/max_icon_card.jpg",
+          "width": 225,
+          "height": 225
+        },
+        "hero": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/brand/max_icon_hero.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/brand/max_icon_hero.jpg",
+          "width": 225,
+          "height": 225
+        },
+        "fullscreen": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/brand/max_icon_fullscreen.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/brand/max_icon_fullscreen.jpg",
+          "width": 225,
+          "height": 225
+        }
+      },
+      "suggested_usage": "logo",
+      "quality": "client_photo",
+      "suitable_for_hero": true,
+      "suitable_for_gallery": false,
+      "suitable_for_ai_reference": false,
+      "caption": "",
+      "layout": "",
+      "style": "",
+      "primary_color": "",
+      "alt_text": "",
+      "focus_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "display_order": 3,
+      "is_real_work": false
+    },
+    {
+      "id": "max_wordmark",
+      "source_path": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/raw/brand/max_wordmark.png",
+      "category": "brand",
+      "orientation": "landscape",
+      "variants": {
+        "thumbnail": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/brand/max_wordmark_thumbnail.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/brand/max_wordmark_thumbnail.jpg",
+          "width": 399,
+          "height": 128
+        },
+        "card": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/brand/max_wordmark_card.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/brand/max_wordmark_card.jpg",
+          "width": 738,
+          "height": 237
+        },
+        "hero": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/brand/max_wordmark_hero.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/brand/max_wordmark_hero.jpg",
+          "width": 738,
+          "height": 237
+        },
+        "fullscreen": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/brand/max_wordmark_fullscreen.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/brand/max_wordmark_fullscreen.jpg",
+          "width": 738,
+          "height": 237
+        }
+      },
+      "suggested_usage": "logo",
+      "quality": "client_photo",
+      "suitable_for_hero": true,
+      "suitable_for_gallery": false,
+      "suitable_for_ai_reference": false,
+      "caption": "",
+      "layout": "",
+      "style": "",
+      "primary_color": "",
+      "alt_text": "",
+      "focus_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "display_order": 4,
+      "is_real_work": false
+    },
+    {
+      "id": "color_beige",
+      "source_path": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/raw/colors/color_beige.jpg",
+      "category": "colors",
+      "orientation": "landscape",
+      "variants": {
+        "thumbnail": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/colors/color_beige_thumbnail.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/colors/color_beige_thumbnail.jpg",
+          "width": 400,
+          "height": 300
+        },
+        "card": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/colors/color_beige_card.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/colors/color_beige_card.jpg",
+          "width": 800,
+          "height": 600
+        },
+        "hero": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/colors/color_beige_hero.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/colors/color_beige_hero.jpg",
+          "width": 800,
+          "height": 600
+        },
+        "fullscreen": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/colors/color_beige_fullscreen.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/colors/color_beige_fullscreen.jpg",
+          "width": 800,
+          "height": 600
+        }
+      },
+      "suggested_usage": "reference",
+      "quality": "placeholder",
+      "suitable_for_hero": false,
+      "suitable_for_gallery": false,
+      "suitable_for_ai_reference": true,
+      "caption": "",
+      "layout": "",
+      "style": "",
+      "primary_color": "",
+      "alt_text": "",
+      "focus_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "display_order": 5,
+      "is_real_work": false
+    },
+    {
+      "id": "color_gray",
+      "source_path": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/raw/colors/color_gray.jpg",
+      "category": "colors",
+      "orientation": "landscape",
+      "variants": {
+        "thumbnail": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/colors/color_gray_thumbnail.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/colors/color_gray_thumbnail.jpg",
+          "width": 400,
+          "height": 300
+        },
+        "card": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/colors/color_gray_card.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/colors/color_gray_card.jpg",
+          "width": 800,
+          "height": 600
+        },
+        "hero": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/colors/color_gray_hero.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/colors/color_gray_hero.jpg",
+          "width": 800,
+          "height": 600
+        },
+        "fullscreen": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/colors/color_gray_fullscreen.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/colors/color_gray_fullscreen.jpg",
+          "width": 800,
+          "height": 600
+        }
+      },
+      "suggested_usage": "reference",
+      "quality": "placeholder",
+      "suitable_for_hero": false,
+      "suitable_for_gallery": false,
+      "suitable_for_ai_reference": true,
+      "caption": "",
+      "layout": "",
+      "style": "",
+      "primary_color": "",
+      "alt_text": "",
+      "focus_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "display_order": 6,
+      "is_real_work": false
+    },
+    {
+      "id": "color_green",
+      "source_path": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/raw/colors/color_green.jpg",
+      "category": "colors",
+      "orientation": "landscape",
+      "variants": {
+        "thumbnail": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/colors/color_green_thumbnail.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/colors/color_green_thumbnail.jpg",
+          "width": 400,
+          "height": 300
+        },
+        "card": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/colors/color_green_card.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/colors/color_green_card.jpg",
+          "width": 800,
+          "height": 600
+        },
+        "hero": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/colors/color_green_hero.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/colors/color_green_hero.jpg",
+          "width": 800,
+          "height": 600
+        },
+        "fullscreen": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/colors/color_green_fullscreen.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/colors/color_green_fullscreen.jpg",
+          "width": 800,
+          "height": 600
+        }
+      },
+      "suggested_usage": "reference",
+      "quality": "placeholder",
+      "suitable_for_hero": false,
+      "suitable_for_gallery": false,
+      "suitable_for_ai_reference": true,
+      "caption": "",
+      "layout": "",
+      "style": "",
+      "primary_color": "",
+      "alt_text": "",
+      "focus_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "display_order": 7,
+      "is_real_work": false
+    },
+    {
+      "id": "color_white",
+      "source_path": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/raw/colors/color_white.jpg",
+      "category": "colors",
+      "orientation": "landscape",
+      "variants": {
+        "thumbnail": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/colors/color_white_thumbnail.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/colors/color_white_thumbnail.jpg",
+          "width": 400,
+          "height": 300
+        },
+        "card": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/colors/color_white_card.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/colors/color_white_card.jpg",
+          "width": 800,
+          "height": 600
+        },
+        "hero": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/colors/color_white_hero.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/colors/color_white_hero.jpg",
+          "width": 800,
+          "height": 600
+        },
+        "fullscreen": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/colors/color_white_fullscreen.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/colors/color_white_fullscreen.jpg",
+          "width": 800,
+          "height": 600
+        }
+      },
+      "suggested_usage": "reference",
+      "quality": "placeholder",
+      "suitable_for_hero": false,
+      "suitable_for_gallery": false,
+      "suitable_for_ai_reference": true,
+      "caption": "",
+      "layout": "",
+      "style": "",
+      "primary_color": "",
+      "alt_text": "",
+      "focus_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "display_order": 8,
+      "is_real_work": false
+    },
+    {
+      "id": "countertop_light",
+      "source_path": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/raw/countertops/countertop_light.jpg",
+      "category": "countertops",
+      "orientation": "landscape",
+      "variants": {
+        "thumbnail": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/countertops/countertop_light_thumbnail.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/countertops/countertop_light_thumbnail.jpg",
+          "width": 400,
+          "height": 300
+        },
+        "card": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/countertops/countertop_light_card.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/countertops/countertop_light_card.jpg",
+          "width": 800,
+          "height": 600
+        },
+        "hero": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/countertops/countertop_light_hero.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/countertops/countertop_light_hero.jpg",
+          "width": 800,
+          "height": 600
+        },
+        "fullscreen": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/countertops/countertop_light_fullscreen.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/countertops/countertop_light_fullscreen.jpg",
+          "width": 800,
+          "height": 600
+        }
+      },
+      "suggested_usage": "reference",
+      "quality": "placeholder",
+      "suitable_for_hero": false,
+      "suitable_for_gallery": false,
+      "suitable_for_ai_reference": true,
+      "caption": "",
+      "layout": "",
+      "style": "",
+      "primary_color": "",
+      "alt_text": "",
+      "focus_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "display_order": 9,
+      "is_real_work": false
+    },
+    {
+      "id": "countertop_stone",
+      "source_path": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/raw/countertops/countertop_stone.jpg",
+      "category": "countertops",
+      "orientation": "landscape",
+      "variants": {
+        "thumbnail": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/countertops/countertop_stone_thumbnail.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/countertops/countertop_stone_thumbnail.jpg",
+          "width": 400,
+          "height": 300
+        },
+        "card": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/countertops/countertop_stone_card.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/countertops/countertop_stone_card.jpg",
+          "width": 800,
+          "height": 600
+        },
+        "hero": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/countertops/countertop_stone_hero.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/countertops/countertop_stone_hero.jpg",
+          "width": 800,
+          "height": 600
+        },
+        "fullscreen": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/countertops/countertop_stone_fullscreen.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/countertops/countertop_stone_fullscreen.jpg",
+          "width": 800,
+          "height": 600
+        }
+      },
+      "suggested_usage": "reference",
+      "quality": "placeholder",
+      "suitable_for_hero": false,
+      "suitable_for_gallery": false,
+      "suitable_for_ai_reference": true,
+      "caption": "",
+      "layout": "",
+      "style": "",
+      "primary_color": "",
+      "alt_text": "",
+      "focus_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "display_order": 10,
+      "is_real_work": false
+    },
+    {
+      "id": "countertop_wood",
+      "source_path": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/raw/countertops/countertop_wood.jpg",
+      "category": "countertops",
+      "orientation": "landscape",
+      "variants": {
+        "thumbnail": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/countertops/countertop_wood_thumbnail.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/countertops/countertop_wood_thumbnail.jpg",
+          "width": 400,
+          "height": 300
+        },
+        "card": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/countertops/countertop_wood_card.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/countertops/countertop_wood_card.jpg",
+          "width": 800,
+          "height": 600
+        },
+        "hero": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/countertops/countertop_wood_hero.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/countertops/countertop_wood_hero.jpg",
+          "width": 800,
+          "height": 600
+        },
+        "fullscreen": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/countertops/countertop_wood_fullscreen.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/countertops/countertop_wood_fullscreen.jpg",
+          "width": 800,
+          "height": 600
+        }
+      },
+      "suggested_usage": "reference",
+      "quality": "placeholder",
+      "suitable_for_hero": false,
+      "suitable_for_gallery": false,
+      "suitable_for_ai_reference": true,
+      "caption": "",
+      "layout": "",
+      "style": "",
+      "primary_color": "",
+      "alt_text": "",
+      "focus_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "display_order": 11,
+      "is_real_work": false
+    },
+    {
+      "id": "facade_agt",
+      "source_path": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/raw/facades/facade_agt.jpg",
+      "category": "facades",
+      "orientation": "landscape",
+      "variants": {
+        "thumbnail": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/facades/facade_agt_thumbnail.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/facades/facade_agt_thumbnail.jpg",
+          "width": 400,
+          "height": 300
+        },
+        "card": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/facades/facade_agt_card.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/facades/facade_agt_card.jpg",
+          "width": 800,
+          "height": 600
+        },
+        "hero": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/facades/facade_agt_hero.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/facades/facade_agt_hero.jpg",
+          "width": 800,
+          "height": 600
+        },
+        "fullscreen": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/facades/facade_agt_fullscreen.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/facades/facade_agt_fullscreen.jpg",
+          "width": 800,
+          "height": 600
+        }
+      },
+      "suggested_usage": "reference",
+      "quality": "placeholder",
+      "suitable_for_hero": false,
+      "suitable_for_gallery": false,
+      "suitable_for_ai_reference": true,
+      "caption": "",
+      "layout": "",
+      "style": "",
+      "primary_color": "",
+      "alt_text": "",
+      "focus_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "display_order": 12,
+      "is_real_work": false
+    },
+    {
+      "id": "facade_classic",
+      "source_path": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/raw/facades/facade_classic.jpg",
+      "category": "facades",
+      "orientation": "landscape",
+      "variants": {
+        "thumbnail": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/facades/facade_classic_thumbnail.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/facades/facade_classic_thumbnail.jpg",
+          "width": 400,
+          "height": 300
+        },
+        "card": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/facades/facade_classic_card.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/facades/facade_classic_card.jpg",
+          "width": 800,
+          "height": 600
+        },
+        "hero": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/facades/facade_classic_hero.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/facades/facade_classic_hero.jpg",
+          "width": 800,
+          "height": 600
+        },
+        "fullscreen": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/facades/facade_classic_fullscreen.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/facades/facade_classic_fullscreen.jpg",
+          "width": 800,
+          "height": 600
+        }
+      },
+      "suggested_usage": "reference",
+      "quality": "placeholder",
+      "suitable_for_hero": false,
+      "suitable_for_gallery": false,
+      "suitable_for_ai_reference": true,
+      "caption": "",
+      "layout": "",
+      "style": "",
+      "primary_color": "",
+      "alt_text": "",
+      "focus_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "display_order": 13,
+      "is_real_work": false
+    },
+    {
+      "id": "facade_interno",
+      "source_path": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/raw/facades/facade_interno.jpg",
+      "category": "facades",
+      "orientation": "landscape",
+      "variants": {
+        "thumbnail": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/facades/facade_interno_thumbnail.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/facades/facade_interno_thumbnail.jpg",
+          "width": 400,
+          "height": 300
+        },
+        "card": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/facades/facade_interno_card.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/facades/facade_interno_card.jpg",
+          "width": 800,
+          "height": 600
+        },
+        "hero": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/facades/facade_interno_hero.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/facades/facade_interno_hero.jpg",
+          "width": 800,
+          "height": 600
+        },
+        "fullscreen": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/facades/facade_interno_fullscreen.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/facades/facade_interno_fullscreen.jpg",
+          "width": 800,
+          "height": 600
+        }
+      },
+      "suggested_usage": "reference",
+      "quality": "placeholder",
+      "suitable_for_hero": false,
+      "suitable_for_gallery": false,
+      "suitable_for_ai_reference": true,
+      "caption": "",
+      "layout": "",
+      "style": "",
+      "primary_color": "",
+      "alt_text": "",
+      "focus_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "display_order": 14,
+      "is_real_work": false
+    },
+    {
+      "id": "handle_button",
+      "source_path": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/raw/handles/handle_button.jpg",
+      "category": "handles",
+      "orientation": "landscape",
+      "variants": {
+        "thumbnail": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/handles/handle_button_thumbnail.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/handles/handle_button_thumbnail.jpg",
+          "width": 400,
+          "height": 300
+        },
+        "card": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/handles/handle_button_card.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/handles/handle_button_card.jpg",
+          "width": 800,
+          "height": 600
+        },
+        "hero": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/handles/handle_button_hero.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/handles/handle_button_hero.jpg",
+          "width": 800,
+          "height": 600
+        },
+        "fullscreen": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/handles/handle_button_fullscreen.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/handles/handle_button_fullscreen.jpg",
+          "width": 800,
+          "height": 600
+        }
+      },
+      "suggested_usage": "reference",
+      "quality": "placeholder",
+      "suitable_for_hero": false,
+      "suitable_for_gallery": false,
+      "suitable_for_ai_reference": true,
+      "caption": "",
+      "layout": "",
+      "style": "",
+      "primary_color": "",
+      "alt_text": "",
+      "focus_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "display_order": 15,
+      "is_real_work": false
+    },
+    {
+      "id": "handle_gola",
+      "source_path": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/raw/handles/handle_gola.jpg",
+      "category": "handles",
+      "orientation": "landscape",
+      "variants": {
+        "thumbnail": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/handles/handle_gola_thumbnail.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/handles/handle_gola_thumbnail.jpg",
+          "width": 400,
+          "height": 300
+        },
+        "card": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/handles/handle_gola_card.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/handles/handle_gola_card.jpg",
+          "width": 800,
+          "height": 600
+        },
+        "hero": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/handles/handle_gola_hero.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/handles/handle_gola_hero.jpg",
+          "width": 800,
+          "height": 600
+        },
+        "fullscreen": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/handles/handle_gola_fullscreen.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/handles/handle_gola_fullscreen.jpg",
+          "width": 800,
+          "height": 600
+        }
+      },
+      "suggested_usage": "reference",
+      "quality": "placeholder",
+      "suitable_for_hero": false,
+      "suitable_for_gallery": false,
+      "suitable_for_ai_reference": true,
+      "caption": "",
+      "layout": "",
+      "style": "",
+      "primary_color": "",
+      "alt_text": "",
+      "focus_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "display_order": 16,
+      "is_real_work": false
+    },
+    {
+      "id": "handle_scoop",
+      "source_path": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/raw/handles/handle_scoop.jpg",
+      "category": "handles",
+      "orientation": "landscape",
+      "variants": {
+        "thumbnail": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/handles/handle_scoop_thumbnail.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/handles/handle_scoop_thumbnail.jpg",
+          "width": 400,
+          "height": 300
+        },
+        "card": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/handles/handle_scoop_card.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/handles/handle_scoop_card.jpg",
+          "width": 800,
+          "height": 600
+        },
+        "hero": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/handles/handle_scoop_hero.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/handles/handle_scoop_hero.jpg",
+          "width": 800,
+          "height": 600
+        },
+        "fullscreen": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/handles/handle_scoop_fullscreen.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/handles/handle_scoop_fullscreen.jpg",
+          "width": 800,
+          "height": 600
+        }
+      },
+      "suggested_usage": "reference",
+      "quality": "placeholder",
+      "suitable_for_hero": false,
+      "suitable_for_gallery": false,
+      "suitable_for_ai_reference": true,
+      "caption": "",
+      "layout": "",
+      "style": "",
+      "primary_color": "",
+      "alt_text": "",
+      "focus_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "display_order": 17,
+      "is_real_work": false
+    },
+    {
+      "id": "handle_square_black",
+      "source_path": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/raw/handles/handle_square_black.jpg",
+      "category": "handles",
+      "orientation": "landscape",
+      "variants": {
+        "thumbnail": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/handles/handle_square_black_thumbnail.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/handles/handle_square_black_thumbnail.jpg",
+          "width": 400,
+          "height": 300
+        },
+        "card": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/handles/handle_square_black_card.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/handles/handle_square_black_card.jpg",
+          "width": 800,
+          "height": 600
+        },
+        "hero": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/handles/handle_square_black_hero.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/handles/handle_square_black_hero.jpg",
+          "width": 800,
+          "height": 600
+        },
+        "fullscreen": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/handles/handle_square_black_fullscreen.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/handles/handle_square_black_fullscreen.jpg",
+          "width": 800,
+          "height": 600
+        }
+      },
+      "suggested_usage": "reference",
+      "quality": "placeholder",
+      "suitable_for_hero": false,
+      "suitable_for_gallery": false,
+      "suitable_for_ai_reference": true,
+      "caption": "",
+      "layout": "",
+      "style": "",
+      "primary_color": "",
+      "alt_text": "",
+      "focus_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "display_order": 18,
+      "is_real_work": false
+    },
+    {
+      "id": "kitchen_01",
+      "source_path": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/raw/kitchens/kitchen_01.jpg",
+      "category": "kitchens",
+      "orientation": "landscape",
+      "variants": {
+        "thumbnail": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens/kitchen_01_thumbnail.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens/kitchen_01_thumbnail.jpg",
+          "width": 400,
+          "height": 300
+        },
+        "card": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens/kitchen_01_card.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens/kitchen_01_card.jpg",
+          "width": 800,
+          "height": 600
+        },
+        "hero": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens/kitchen_01_hero.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens/kitchen_01_hero.jpg",
+          "width": 1600,
+          "height": 1200
+        },
+        "fullscreen": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens/kitchen_01_fullscreen.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens/kitchen_01_fullscreen.jpg",
+          "width": 1600,
+          "height": 1200
+        }
+      },
+      "suggested_usage": "gallery",
+      "quality": "placeholder",
+      "suitable_for_hero": true,
+      "suitable_for_gallery": true,
+      "suitable_for_ai_reference": true,
+      "caption": "",
+      "layout": "",
+      "style": "",
+      "primary_color": "",
+      "alt_text": "",
+      "focus_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "display_order": 19,
+      "is_real_work": false
+    },
+    {
+      "id": "kitchen_02",
+      "source_path": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/raw/kitchens/kitchen_02.jpg",
+      "category": "kitchens",
+      "orientation": "landscape",
+      "variants": {
+        "thumbnail": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens/kitchen_02_thumbnail.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens/kitchen_02_thumbnail.jpg",
+          "width": 400,
+          "height": 300
+        },
+        "card": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens/kitchen_02_card.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens/kitchen_02_card.jpg",
+          "width": 800,
+          "height": 600
+        },
+        "hero": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens/kitchen_02_hero.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens/kitchen_02_hero.jpg",
+          "width": 1600,
+          "height": 1200
+        },
+        "fullscreen": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens/kitchen_02_fullscreen.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens/kitchen_02_fullscreen.jpg",
+          "width": 1600,
+          "height": 1200
+        }
+      },
+      "suggested_usage": "gallery",
+      "quality": "placeholder",
+      "suitable_for_hero": true,
+      "suitable_for_gallery": true,
+      "suitable_for_ai_reference": true,
+      "caption": "",
+      "layout": "",
+      "style": "",
+      "primary_color": "",
+      "alt_text": "",
+      "focus_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "display_order": 20,
+      "is_real_work": false
+    },
+    {
+      "id": "kitchen_03",
+      "source_path": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/raw/kitchens/kitchen_03.jpg",
+      "category": "kitchens",
+      "orientation": "landscape",
+      "variants": {
+        "thumbnail": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens/kitchen_03_thumbnail.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens/kitchen_03_thumbnail.jpg",
+          "width": 400,
+          "height": 300
+        },
+        "card": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens/kitchen_03_card.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens/kitchen_03_card.jpg",
+          "width": 800,
+          "height": 600
+        },
+        "hero": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens/kitchen_03_hero.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens/kitchen_03_hero.jpg",
+          "width": 1600,
+          "height": 1200
+        },
+        "fullscreen": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens/kitchen_03_fullscreen.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens/kitchen_03_fullscreen.jpg",
+          "width": 1600,
+          "height": 1200
+        }
+      },
+      "suggested_usage": "gallery",
+      "quality": "placeholder",
+      "suitable_for_hero": true,
+      "suitable_for_gallery": true,
+      "suitable_for_ai_reference": true,
+      "caption": "",
+      "layout": "",
+      "style": "",
+      "primary_color": "",
+      "alt_text": "",
+      "focus_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "display_order": 21,
+      "is_real_work": false
+    },
+    {
+      "id": "kitchen_04",
+      "source_path": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/raw/kitchens/kitchen_04.jpg",
+      "category": "kitchens",
+      "orientation": "landscape",
+      "variants": {
+        "thumbnail": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens/kitchen_04_thumbnail.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens/kitchen_04_thumbnail.jpg",
+          "width": 400,
+          "height": 300
+        },
+        "card": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens/kitchen_04_card.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens/kitchen_04_card.jpg",
+          "width": 800,
+          "height": 600
+        },
+        "hero": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens/kitchen_04_hero.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens/kitchen_04_hero.jpg",
+          "width": 1600,
+          "height": 1200
+        },
+        "fullscreen": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens/kitchen_04_fullscreen.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens/kitchen_04_fullscreen.jpg",
+          "width": 1600,
+          "height": 1200
+        }
+      },
+      "suggested_usage": "gallery",
+      "quality": "placeholder",
+      "suitable_for_hero": true,
+      "suitable_for_gallery": true,
+      "suitable_for_ai_reference": true,
+      "caption": "",
+      "layout": "",
+      "style": "",
+      "primary_color": "",
+      "alt_text": "",
+      "focus_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "display_order": 22,
+      "is_real_work": false
+    },
+    {
+      "id": "kitchen_05",
+      "source_path": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/raw/kitchens/kitchen_05.jpg",
+      "category": "kitchens",
+      "orientation": "landscape",
+      "variants": {
+        "thumbnail": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens/kitchen_05_thumbnail.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens/kitchen_05_thumbnail.jpg",
+          "width": 400,
+          "height": 300
+        },
+        "card": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens/kitchen_05_card.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens/kitchen_05_card.jpg",
+          "width": 800,
+          "height": 600
+        },
+        "hero": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens/kitchen_05_hero.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens/kitchen_05_hero.jpg",
+          "width": 1600,
+          "height": 1200
+        },
+        "fullscreen": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens/kitchen_05_fullscreen.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens/kitchen_05_fullscreen.jpg",
+          "width": 1600,
+          "height": 1200
+        }
+      },
+      "suggested_usage": "gallery",
+      "quality": "placeholder",
+      "suitable_for_hero": true,
+      "suitable_for_gallery": true,
+      "suitable_for_ai_reference": true,
+      "caption": "",
+      "layout": "",
+      "style": "",
+      "primary_color": "",
+      "alt_text": "",
+      "focus_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "display_order": 23,
+      "is_real_work": false
+    },
+    {
+      "id": "kitchen_06",
+      "source_path": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/raw/kitchens/kitchen_06.jpg",
+      "category": "kitchens",
+      "orientation": "landscape",
+      "variants": {
+        "thumbnail": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens/kitchen_06_thumbnail.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens/kitchen_06_thumbnail.jpg",
+          "width": 400,
+          "height": 300
+        },
+        "card": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens/kitchen_06_card.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens/kitchen_06_card.jpg",
+          "width": 800,
+          "height": 600
+        },
+        "hero": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens/kitchen_06_hero.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens/kitchen_06_hero.jpg",
+          "width": 1600,
+          "height": 1200
+        },
+        "fullscreen": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens/kitchen_06_fullscreen.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens/kitchen_06_fullscreen.jpg",
+          "width": 1600,
+          "height": 1200
+        }
+      },
+      "suggested_usage": "gallery",
+      "quality": "placeholder",
+      "suitable_for_hero": true,
+      "suitable_for_gallery": true,
+      "suitable_for_ai_reference": true,
+      "caption": "",
+      "layout": "",
+      "style": "",
+      "primary_color": "",
+      "alt_text": "",
+      "focus_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "display_order": 24,
+      "is_real_work": false
+    },
+    {
+      "id": "owner_at_kitchen",
+      "source_path": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/raw/kitchens_real/owner_at_kitchen.jpg",
+      "category": "kitchens_real",
+      "orientation": "landscape",
+      "variants": {
+        "thumbnail": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/owner_at_kitchen_thumbnail.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/owner_at_kitchen_thumbnail.jpg",
+          "width": 400,
+          "height": 266
+        },
+        "card": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/owner_at_kitchen_card.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/owner_at_kitchen_card.jpg",
+          "width": 800,
+          "height": 533
+        },
+        "hero": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/owner_at_kitchen_hero.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/owner_at_kitchen_hero.jpg",
+          "width": 1280,
+          "height": 853
+        },
+        "fullscreen": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/owner_at_kitchen_fullscreen.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/owner_at_kitchen_fullscreen.jpg",
+          "width": 1280,
+          "height": 853
+        }
+      },
+      "suggested_usage": "hero_owner",
+      "quality": "client_photo",
+      "suitable_for_hero": true,
+      "suitable_for_gallery": true,
+      "suitable_for_ai_reference": true,
+      "caption": "Артём Ермаков у одной из выполненных кухонь",
+      "layout": "corner",
+      "style": "modern",
+      "primary_color": "gray",
+      "alt_text": "Артём Ермаков на фоне серой кухни на заказ",
+      "focus_point": {
+        "x": 0.45,
+        "y": 0.45
+      },
+      "display_order": 25,
+      "is_real_work": true
+    },
+    {
+      "id": "owner_in_showroom",
+      "source_path": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/raw/kitchens_real/owner_in_showroom.jpg",
+      "category": "kitchens_real",
+      "orientation": "landscape",
+      "variants": {
+        "thumbnail": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/owner_in_showroom_thumbnail.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/owner_in_showroom_thumbnail.jpg",
+          "width": 400,
+          "height": 375
+        },
+        "card": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/owner_in_showroom_card.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/owner_in_showroom_card.jpg",
+          "width": 800,
+          "height": 750
+        },
+        "hero": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/owner_in_showroom_hero.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/owner_in_showroom_hero.jpg",
+          "width": 1024,
+          "height": 960
+        },
+        "fullscreen": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/owner_in_showroom_fullscreen.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/owner_in_showroom_fullscreen.jpg",
+          "width": 1024,
+          "height": 960
+        }
+      },
+      "suggested_usage": "gallery",
+      "quality": "client_photo",
+      "suitable_for_hero": true,
+      "suitable_for_gallery": true,
+      "suitable_for_ai_reference": true,
+      "caption": "",
+      "layout": "",
+      "style": "",
+      "primary_color": "",
+      "alt_text": "",
+      "focus_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "display_order": 26,
+      "is_real_work": true
+    },
+    {
+      "id": "owner_in_workshop",
+      "source_path": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/raw/kitchens_real/owner_in_workshop.jpg",
+      "category": "kitchens_real",
+      "orientation": "landscape",
+      "variants": {
+        "thumbnail": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/owner_in_workshop_thumbnail.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/owner_in_workshop_thumbnail.jpg",
+          "width": 400,
+          "height": 300
+        },
+        "card": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/owner_in_workshop_card.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/owner_in_workshop_card.jpg",
+          "width": 800,
+          "height": 600
+        },
+        "hero": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/owner_in_workshop_hero.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/owner_in_workshop_hero.jpg",
+          "width": 1280,
+          "height": 960
+        },
+        "fullscreen": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/owner_in_workshop_fullscreen.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/owner_in_workshop_fullscreen.jpg",
+          "width": 1280,
+          "height": 960
+        }
+      },
+      "suggested_usage": "gallery",
+      "quality": "client_photo",
+      "suitable_for_hero": true,
+      "suitable_for_gallery": true,
+      "suitable_for_ai_reference": true,
+      "caption": "",
+      "layout": "",
+      "style": "",
+      "primary_color": "",
+      "alt_text": "",
+      "focus_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "display_order": 27,
+      "is_real_work": true
+    },
+    {
+      "id": "real_kitchen_classic_white",
+      "source_path": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/raw/kitchens_real/real_kitchen_classic_white.jpg",
+      "category": "kitchens_real",
+      "orientation": "landscape",
+      "variants": {
+        "thumbnail": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/real_kitchen_classic_white_thumbnail.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/real_kitchen_classic_white_thumbnail.jpg",
+          "width": 400,
+          "height": 300
+        },
+        "card": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/real_kitchen_classic_white_card.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/real_kitchen_classic_white_card.jpg",
+          "width": 800,
+          "height": 600
+        },
+        "hero": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/real_kitchen_classic_white_hero.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/real_kitchen_classic_white_hero.jpg",
+          "width": 1280,
+          "height": 960
+        },
+        "fullscreen": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/real_kitchen_classic_white_fullscreen.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/real_kitchen_classic_white_fullscreen.jpg",
+          "width": 1280,
+          "height": 960
+        }
+      },
+      "suggested_usage": "gallery",
+      "quality": "client_photo",
+      "suitable_for_hero": true,
+      "suitable_for_gallery": true,
+      "suitable_for_ai_reference": true,
+      "caption": "Классическая белая кухня с витринными фасадами",
+      "layout": "straight",
+      "style": "classic",
+      "primary_color": "white",
+      "alt_text": "Белая классическая кухня на заказ",
+      "focus_point": {
+        "x": 0.5,
+        "y": 0.48
+      },
+      "display_order": 28,
+      "is_real_work": true
+    },
+    {
+      "id": "real_kitchen_graphite_wood",
+      "source_path": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/raw/kitchens_real/real_kitchen_graphite_wood.jpg",
+      "category": "kitchens_real",
+      "orientation": "landscape",
+      "variants": {
+        "thumbnail": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/real_kitchen_graphite_wood_thumbnail.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/real_kitchen_graphite_wood_thumbnail.jpg",
+          "width": 400,
+          "height": 300
+        },
+        "card": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/real_kitchen_graphite_wood_card.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/real_kitchen_graphite_wood_card.jpg",
+          "width": 800,
+          "height": 600
+        },
+        "hero": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/real_kitchen_graphite_wood_hero.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/real_kitchen_graphite_wood_hero.jpg",
+          "width": 1280,
+          "height": 960
+        },
+        "fullscreen": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/real_kitchen_graphite_wood_fullscreen.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/real_kitchen_graphite_wood_fullscreen.jpg",
+          "width": 1280,
+          "height": 960
+        }
+      },
+      "suggested_usage": "gallery",
+      "quality": "client_photo",
+      "suitable_for_hero": true,
+      "suitable_for_gallery": true,
+      "suitable_for_ai_reference": true,
+      "caption": "Графитовая кухня с тёплой деревянной столешницей",
+      "layout": "straight",
+      "style": "modern",
+      "primary_color": "gray",
+      "alt_text": "Графитовая кухня на заказ с деревянной столешницей",
+      "focus_point": {
+        "x": 0.5,
+        "y": 0.46
+      },
+      "display_order": 29,
+      "is_real_work": true
+    },
+    {
+      "id": "real_kitchen_green_corner",
+      "source_path": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/raw/kitchens_real/real_kitchen_green_corner.jpg",
+      "category": "kitchens_real",
+      "orientation": "portrait",
+      "variants": {
+        "thumbnail": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/real_kitchen_green_corner_thumbnail.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/real_kitchen_green_corner_thumbnail.jpg",
+          "width": 320,
+          "height": 400
+        },
+        "card": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/real_kitchen_green_corner_card.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/real_kitchen_green_corner_card.jpg",
+          "width": 640,
+          "height": 800
+        },
+        "hero": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/real_kitchen_green_corner_hero.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/real_kitchen_green_corner_hero.jpg",
+          "width": 768,
+          "height": 960
+        },
+        "fullscreen": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/real_kitchen_green_corner_fullscreen.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/real_kitchen_green_corner_fullscreen.jpg",
+          "width": 768,
+          "height": 960
+        }
+      },
+      "suggested_usage": "gallery",
+      "quality": "client_photo",
+      "suitable_for_hero": true,
+      "suitable_for_gallery": true,
+      "suitable_for_ai_reference": true,
+      "caption": "Угловая кухня в спокойном зелёном оттенке",
+      "layout": "corner",
+      "style": "modern",
+      "primary_color": "green",
+      "alt_text": "Зелёная угловая кухня на заказ",
+      "focus_point": {
+        "x": 0.5,
+        "y": 0.45
+      },
+      "display_order": 30,
+      "is_real_work": true
+    },
+    {
+      "id": "real_kitchen_green_long",
+      "source_path": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/raw/kitchens_real/real_kitchen_green_long.jpg",
+      "category": "kitchens_real",
+      "orientation": "landscape",
+      "variants": {
+        "thumbnail": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/real_kitchen_green_long_thumbnail.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/real_kitchen_green_long_thumbnail.jpg",
+          "width": 400,
+          "height": 266
+        },
+        "card": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/real_kitchen_green_long_card.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/real_kitchen_green_long_card.jpg",
+          "width": 800,
+          "height": 533
+        },
+        "hero": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/real_kitchen_green_long_hero.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/real_kitchen_green_long_hero.jpg",
+          "width": 1280,
+          "height": 853
+        },
+        "fullscreen": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/real_kitchen_green_long_fullscreen.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/real_kitchen_green_long_fullscreen.jpg",
+          "width": 1280,
+          "height": 853
+        }
+      },
+      "suggested_usage": "gallery",
+      "quality": "client_photo",
+      "suitable_for_hero": true,
+      "suitable_for_gallery": true,
+      "suitable_for_ai_reference": true,
+      "caption": "Просторная кухня с зелёными нижними фасадами",
+      "layout": "straight",
+      "style": "modern",
+      "primary_color": "green",
+      "alt_text": "Современная кухня с зелёными фасадами и белым верхом",
+      "focus_point": {
+        "x": 0.5,
+        "y": 0.42
+      },
+      "display_order": 31,
+      "is_real_work": true
+    },
+    {
+      "id": "real_kitchen_light_line",
+      "source_path": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/raw/kitchens_real/real_kitchen_light_line.jpg",
+      "category": "kitchens_real",
+      "orientation": "portrait",
+      "variants": {
+        "thumbnail": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/real_kitchen_light_line_thumbnail.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/real_kitchen_light_line_thumbnail.jpg",
+          "width": 265,
+          "height": 400
+        },
+        "card": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/real_kitchen_light_line_card.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/real_kitchen_light_line_card.jpg",
+          "width": 531,
+          "height": 800
+        },
+        "hero": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/real_kitchen_light_line_hero.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/real_kitchen_light_line_hero.jpg",
+          "width": 585,
+          "height": 880
+        },
+        "fullscreen": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/real_kitchen_light_line_fullscreen.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/real_kitchen_light_line_fullscreen.jpg",
+          "width": 585,
+          "height": 880
+        }
+      },
+      "suggested_usage": "gallery",
+      "quality": "client_photo",
+      "suitable_for_hero": true,
+      "suitable_for_gallery": true,
+      "suitable_for_ai_reference": true,
+      "caption": "Светлая линейная кухня с каменной рабочей зоной",
+      "layout": "straight",
+      "style": "modern",
+      "primary_color": "beige",
+      "alt_text": "Светлая кухня на заказ с встроенной техникой",
+      "focus_point": {
+        "x": 0.52,
+        "y": 0.45
+      },
+      "display_order": 32,
+      "is_real_work": true
+    },
+    {
+      "id": "real_kitchen_soft_gray_corner",
+      "source_path": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/raw/kitchens_real/real_kitchen_soft_gray_corner.jpg",
+      "category": "kitchens_real",
+      "orientation": "landscape",
+      "variants": {
+        "thumbnail": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/real_kitchen_soft_gray_corner_thumbnail.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/real_kitchen_soft_gray_corner_thumbnail.jpg",
+          "width": 400,
+          "height": 300
+        },
+        "card": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/real_kitchen_soft_gray_corner_card.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/real_kitchen_soft_gray_corner_card.jpg",
+          "width": 800,
+          "height": 600
+        },
+        "hero": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/real_kitchen_soft_gray_corner_hero.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/real_kitchen_soft_gray_corner_hero.jpg",
+          "width": 1280,
+          "height": 960
+        },
+        "fullscreen": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/real_kitchen_soft_gray_corner_fullscreen.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/real_kitchen_soft_gray_corner_fullscreen.jpg",
+          "width": 1280,
+          "height": 960
+        }
+      },
+      "suggested_usage": "gallery",
+      "quality": "client_photo",
+      "suitable_for_hero": true,
+      "suitable_for_gallery": true,
+      "suitable_for_ai_reference": true,
+      "caption": "Угловая кухня в серо-белой гамме",
+      "layout": "corner",
+      "style": "neoclassic",
+      "primary_color": "gray",
+      "alt_text": "Серо-белая угловая кухня на заказ",
+      "focus_point": {
+        "x": 0.52,
+        "y": 0.45
+      },
+      "display_order": 33,
+      "is_real_work": true
+    },
+    {
+      "id": "work_4481",
+      "source_path": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/raw/kitchens_real/work_4481.jpg",
+      "category": "kitchens_real",
+      "orientation": "portrait",
+      "variants": {
+        "thumbnail": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4481_thumbnail.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4481_thumbnail.jpg",
+          "width": 265,
+          "height": 400
+        },
+        "card": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4481_card.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4481_card.jpg",
+          "width": 531,
+          "height": 800
+        },
+        "hero": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4481_hero.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4481_hero.jpg",
+          "width": 585,
+          "height": 880
+        },
+        "fullscreen": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4481_fullscreen.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4481_fullscreen.jpg",
+          "width": 585,
+          "height": 880
+        }
+      },
+      "suggested_usage": "gallery",
+      "quality": "client_photo",
+      "suitable_for_hero": true,
+      "suitable_for_gallery": true,
+      "suitable_for_ai_reference": true,
+      "caption": "Светлая кухня с пеналами",
+      "layout": "",
+      "style": "modern",
+      "primary_color": "beige",
+      "alt_text": "Светлая кухня с пеналами и встроенной техникой",
+      "focus_point": {
+        "x": 0.52,
+        "y": 0.45
+      },
+      "display_order": 34,
+      "is_real_work": true
+    },
+    {
+      "id": "work_4482",
+      "source_path": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/raw/kitchens_real/work_4482.jpg",
+      "category": "kitchens_real",
+      "orientation": "portrait",
+      "variants": {
+        "thumbnail": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4482_thumbnail.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4482_thumbnail.jpg",
+          "width": 300,
+          "height": 400
+        },
+        "card": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4482_card.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4482_card.jpg",
+          "width": 600,
+          "height": 800
+        },
+        "hero": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4482_hero.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4482_hero.jpg",
+          "width": 720,
+          "height": 960
+        },
+        "fullscreen": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4482_fullscreen.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4482_fullscreen.jpg",
+          "width": 720,
+          "height": 960
+        }
+      },
+      "suggested_usage": "gallery",
+      "quality": "client_photo",
+      "suitable_for_hero": true,
+      "suitable_for_gallery": true,
+      "suitable_for_ai_reference": true,
+      "caption": "Угловая кухня с древесной стеновой панелью",
+      "layout": "corner",
+      "style": "modern",
+      "primary_color": "gray",
+      "alt_text": "Угловая кухня с серыми фасадами и древесной стеновой панелью",
+      "focus_point": {
+        "x": 0.52,
+        "y": 0.46
+      },
+      "display_order": 35,
+      "is_real_work": true
+    },
+    {
+      "id": "work_4485",
+      "source_path": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/raw/kitchens_real/work_4485.jpg",
+      "category": "kitchens_real",
+      "orientation": "portrait",
+      "variants": {
+        "thumbnail": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4485_thumbnail.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4485_thumbnail.jpg",
+          "width": 300,
+          "height": 400
+        },
+        "card": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4485_card.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4485_card.jpg",
+          "width": 600,
+          "height": 800
+        },
+        "hero": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4485_hero.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4485_hero.jpg",
+          "width": 720,
+          "height": 960
+        },
+        "fullscreen": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4485_fullscreen.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4485_fullscreen.jpg",
+          "width": 720,
+          "height": 960
+        }
+      },
+      "suggested_usage": "gallery",
+      "quality": "client_photo",
+      "suitable_for_hero": true,
+      "suitable_for_gallery": true,
+      "suitable_for_ai_reference": true,
+      "caption": "Светлая рабочая зона без ручек",
+      "layout": "",
+      "style": "modern",
+      "primary_color": "white",
+      "alt_text": "Светлая рабочая зона кухни без ручек",
+      "focus_point": {
+        "x": 0.48,
+        "y": 0.45
+      },
+      "display_order": 36,
+      "is_real_work": true
+    },
+    {
+      "id": "work_4486",
+      "source_path": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/raw/kitchens_real/work_4486.jpg",
+      "category": "kitchens_real",
+      "orientation": "portrait",
+      "variants": {
+        "thumbnail": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4486_thumbnail.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4486_thumbnail.jpg",
+          "width": 320,
+          "height": 400
+        },
+        "card": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4486_card.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4486_card.jpg",
+          "width": 640,
+          "height": 800
+        },
+        "hero": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4486_hero.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4486_hero.jpg",
+          "width": 768,
+          "height": 960
+        },
+        "fullscreen": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4486_fullscreen.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4486_fullscreen.jpg",
+          "width": 768,
+          "height": 960
+        }
+      },
+      "suggested_usage": "gallery",
+      "quality": "client_photo",
+      "suitable_for_hero": true,
+      "suitable_for_gallery": true,
+      "suitable_for_ai_reference": true,
+      "caption": "Угловая кухня с зелёным акцентом",
+      "layout": "corner",
+      "style": "modern",
+      "primary_color": "green",
+      "alt_text": "Угловая кухня с зелёными нижними фасадами",
+      "focus_point": {
+        "x": 0.5,
+        "y": 0.45
+      },
+      "display_order": 37,
+      "is_real_work": true
+    },
+    {
+      "id": "work_4487",
+      "source_path": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/raw/kitchens_real/work_4487.jpg",
+      "category": "kitchens_real",
+      "orientation": "landscape",
+      "variants": {
+        "thumbnail": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4487_thumbnail.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4487_thumbnail.jpg",
+          "width": 400,
+          "height": 300
+        },
+        "card": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4487_card.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4487_card.jpg",
+          "width": 800,
+          "height": 600
+        },
+        "hero": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4487_hero.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4487_hero.jpg",
+          "width": 1280,
+          "height": 960
+        },
+        "fullscreen": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4487_fullscreen.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4487_fullscreen.jpg",
+          "width": 1280,
+          "height": 960
+        }
+      },
+      "suggested_usage": "gallery",
+      "quality": "client_photo",
+      "suitable_for_hero": true,
+      "suitable_for_gallery": true,
+      "suitable_for_ai_reference": true,
+      "caption": "Фрагмент серой кухни",
+      "layout": "",
+      "style": "modern",
+      "primary_color": "gray",
+      "alt_text": "Рабочая зона кухни с серыми фасадами",
+      "focus_point": {
+        "x": 0.5,
+        "y": 0.46
+      },
+      "display_order": 38,
+      "is_real_work": true
+    },
+    {
+      "id": "work_4488",
+      "source_path": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/raw/kitchens_real/work_4488.jpg",
+      "category": "kitchens_real",
+      "orientation": "landscape",
+      "variants": {
+        "thumbnail": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4488_thumbnail.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4488_thumbnail.jpg",
+          "width": 400,
+          "height": 266
+        },
+        "card": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4488_card.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4488_card.jpg",
+          "width": 800,
+          "height": 533
+        },
+        "hero": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4488_hero.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4488_hero.jpg",
+          "width": 1280,
+          "height": 853
+        },
+        "fullscreen": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4488_fullscreen.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4488_fullscreen.jpg",
+          "width": 1280,
+          "height": 853
+        }
+      },
+      "suggested_usage": "gallery",
+      "quality": "client_photo",
+      "suitable_for_hero": true,
+      "suitable_for_gallery": true,
+      "suitable_for_ai_reference": true,
+      "caption": "Зелёно-белая кухня с длинной рабочей зоной",
+      "layout": "",
+      "style": "modern",
+      "primary_color": "green",
+      "alt_text": "Кухня с зелёными фасадами и светлой столешницей",
+      "focus_point": {
+        "x": 0.5,
+        "y": 0.42
+      },
+      "display_order": 39,
+      "is_real_work": true
+    },
+    {
+      "id": "work_4489",
+      "source_path": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/raw/kitchens_real/work_4489.jpg",
+      "category": "kitchens_real",
+      "orientation": "landscape",
+      "variants": {
+        "thumbnail": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4489_thumbnail.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4489_thumbnail.jpg",
+          "width": 400,
+          "height": 300
+        },
+        "card": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4489_card.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4489_card.jpg",
+          "width": 800,
+          "height": 600
+        },
+        "hero": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4489_hero.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4489_hero.jpg",
+          "width": 1280,
+          "height": 960
+        },
+        "fullscreen": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4489_fullscreen.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4489_fullscreen.jpg",
+          "width": 1280,
+          "height": 960
+        }
+      },
+      "suggested_usage": "gallery",
+      "quality": "client_photo",
+      "suitable_for_hero": true,
+      "suitable_for_gallery": true,
+      "suitable_for_ai_reference": true,
+      "caption": "Угловая кухня с встроенной техникой",
+      "layout": "corner",
+      "style": "modern",
+      "primary_color": "gray",
+      "alt_text": "Компактная угловая кухня со встроенной техникой",
+      "focus_point": {
+        "x": 0.5,
+        "y": 0.45
+      },
+      "display_order": 40,
+      "is_real_work": true
+    },
+    {
+      "id": "work_4490",
+      "source_path": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/raw/kitchens_real/work_4490.jpg",
+      "category": "kitchens_real",
+      "orientation": "portrait",
+      "variants": {
+        "thumbnail": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4490_thumbnail.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4490_thumbnail.jpg",
+          "width": 300,
+          "height": 400
+        },
+        "card": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4490_card.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4490_card.jpg",
+          "width": 600,
+          "height": 800
+        },
+        "hero": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4490_hero.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4490_hero.jpg",
+          "width": 720,
+          "height": 960
+        },
+        "fullscreen": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4490_fullscreen.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4490_fullscreen.jpg",
+          "width": 720,
+          "height": 960
+        }
+      },
+      "suggested_usage": "gallery",
+      "quality": "client_photo",
+      "suitable_for_hero": true,
+      "suitable_for_gallery": true,
+      "suitable_for_ai_reference": true,
+      "caption": "Рабочая линия кухни",
+      "layout": "",
+      "style": "modern",
+      "primary_color": "gray",
+      "alt_text": "Столешница и варочная зона кухни",
+      "focus_point": {
+        "x": 0.5,
+        "y": 0.45
+      },
+      "display_order": 41,
+      "is_real_work": true
+    },
+    {
+      "id": "work_4491",
+      "source_path": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/raw/kitchens_real/work_4491.jpg",
+      "category": "kitchens_real",
+      "orientation": "landscape",
+      "variants": {
+        "thumbnail": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4491_thumbnail.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4491_thumbnail.jpg",
+          "width": 400,
+          "height": 300
+        },
+        "card": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4491_card.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4491_card.jpg",
+          "width": 800,
+          "height": 600
+        },
+        "hero": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4491_hero.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4491_hero.jpg",
+          "width": 1280,
+          "height": 960
+        },
+        "fullscreen": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4491_fullscreen.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4491_fullscreen.jpg",
+          "width": 1280,
+          "height": 960
+        }
+      },
+      "suggested_usage": "gallery",
+      "quality": "client_photo",
+      "suitable_for_hero": true,
+      "suitable_for_gallery": true,
+      "suitable_for_ai_reference": true,
+      "caption": "Угловая кухня с древесной столешницей",
+      "layout": "corner",
+      "style": "modern",
+      "primary_color": "gray",
+      "alt_text": "Угловая кухня в графитовых и древесных оттенках",
+      "focus_point": {
+        "x": 0.5,
+        "y": 0.46
+      },
+      "display_order": 42,
+      "is_real_work": true
+    },
+    {
+      "id": "work_4492",
+      "source_path": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/raw/kitchens_real/work_4492.jpg",
+      "category": "kitchens_real",
+      "orientation": "landscape",
+      "variants": {
+        "thumbnail": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4492_thumbnail.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4492_thumbnail.jpg",
+          "width": 400,
+          "height": 300
+        },
+        "card": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4492_card.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4492_card.jpg",
+          "width": 800,
+          "height": 600
+        },
+        "hero": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4492_hero.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4492_hero.jpg",
+          "width": 1280,
+          "height": 960
+        },
+        "fullscreen": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4492_fullscreen.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4492_fullscreen.jpg",
+          "width": 1280,
+          "height": 960
+        }
+      },
+      "suggested_usage": "gallery",
+      "quality": "client_photo",
+      "suitable_for_hero": true,
+      "suitable_for_gallery": true,
+      "suitable_for_ai_reference": true,
+      "caption": "Компактная линейная кухня",
+      "layout": "straight",
+      "style": "modern",
+      "primary_color": "gray",
+      "alt_text": "Компактная линейная кухня в серых оттенках",
+      "focus_point": {
+        "x": 0.5,
+        "y": 0.45
+      },
+      "display_order": 43,
+      "is_real_work": true
+    },
+    {
+      "id": "work_4493",
+      "source_path": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/raw/kitchens_real/work_4493.jpg",
+      "category": "kitchens_real",
+      "orientation": "landscape",
+      "variants": {
+        "thumbnail": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4493_thumbnail.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4493_thumbnail.jpg",
+          "width": 400,
+          "height": 300
+        },
+        "card": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4493_card.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4493_card.jpg",
+          "width": 800,
+          "height": 600
+        },
+        "hero": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4493_hero.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4493_hero.jpg",
+          "width": 1280,
+          "height": 960
+        },
+        "fullscreen": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4493_fullscreen.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4493_fullscreen.jpg",
+          "width": 1280,
+          "height": 960
+        }
+      },
+      "suggested_usage": "gallery",
+      "quality": "client_photo",
+      "suitable_for_hero": true,
+      "suitable_for_gallery": true,
+      "suitable_for_ai_reference": true,
+      "caption": "Серо-белая угловая кухня",
+      "layout": "corner",
+      "style": "modern",
+      "primary_color": "gray",
+      "alt_text": "Серо-белая угловая кухня",
+      "focus_point": {
+        "x": 0.5,
+        "y": 0.45
+      },
+      "display_order": 44,
+      "is_real_work": true
+    },
+    {
+      "id": "work_4494",
+      "source_path": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/raw/kitchens_real/work_4494.jpg",
+      "category": "kitchens_real",
+      "orientation": "portrait",
+      "variants": {
+        "thumbnail": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4494_thumbnail.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4494_thumbnail.jpg",
+          "width": 300,
+          "height": 400
+        },
+        "card": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4494_card.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4494_card.jpg",
+          "width": 600,
+          "height": 800
+        },
+        "hero": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4494_hero.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4494_hero.jpg",
+          "width": 720,
+          "height": 960
+        },
+        "fullscreen": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4494_fullscreen.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4494_fullscreen.jpg",
+          "width": 720,
+          "height": 960
+        }
+      },
+      "suggested_usage": "gallery",
+      "quality": "client_photo",
+      "suitable_for_hero": true,
+      "suitable_for_gallery": true,
+      "suitable_for_ai_reference": true,
+      "caption": "П-образная кухня в зелёном цвете",
+      "layout": "u_shape",
+      "style": "modern",
+      "primary_color": "green",
+      "alt_text": "П-образная зелёная кухня в компактном помещении",
+      "focus_point": {
+        "x": 0.5,
+        "y": 0.48
+      },
+      "display_order": 45,
+      "is_real_work": true
+    },
+    {
+      "id": "work_4495",
+      "source_path": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/raw/kitchens_real/work_4495.jpg",
+      "category": "kitchens_real",
+      "orientation": "landscape",
+      "variants": {
+        "thumbnail": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4495_thumbnail.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4495_thumbnail.jpg",
+          "width": 400,
+          "height": 300
+        },
+        "card": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4495_card.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4495_card.jpg",
+          "width": 800,
+          "height": 600
+        },
+        "hero": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4495_hero.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4495_hero.jpg",
+          "width": 1280,
+          "height": 960
+        },
+        "fullscreen": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4495_fullscreen.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4495_fullscreen.jpg",
+          "width": 1280,
+          "height": 960
+        }
+      },
+      "suggested_usage": "gallery",
+      "quality": "client_photo",
+      "suitable_for_hero": true,
+      "suitable_for_gallery": true,
+      "suitable_for_ai_reference": true,
+      "caption": "Классическая угловая кухня",
+      "layout": "corner",
+      "style": "classic",
+      "primary_color": "white",
+      "alt_text": "Классическая белая угловая кухня",
+      "focus_point": {
+        "x": 0.5,
+        "y": 0.46
+      },
+      "display_order": 46,
+      "is_real_work": true
+    },
+    {
+      "id": "work_4496",
+      "source_path": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/raw/kitchens_real/work_4496.jpg",
+      "category": "kitchens_real",
+      "orientation": "portrait",
+      "variants": {
+        "thumbnail": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4496_thumbnail.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4496_thumbnail.jpg",
+          "width": 300,
+          "height": 400
+        },
+        "card": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4496_card.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4496_card.jpg",
+          "width": 600,
+          "height": 800
+        },
+        "hero": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4496_hero.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4496_hero.jpg",
+          "width": 720,
+          "height": 960
+        },
+        "fullscreen": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4496_fullscreen.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/work_4496_fullscreen.jpg",
+          "width": 720,
+          "height": 960
+        }
+      },
+      "suggested_usage": "gallery",
+      "quality": "client_photo",
+      "suitable_for_hero": true,
+      "suitable_for_gallery": true,
+      "suitable_for_ai_reference": true,
+      "caption": "Небольшая угловая кухня",
+      "layout": "corner",
+      "style": "modern",
+      "primary_color": "gray",
+      "alt_text": "Небольшая угловая кухня в светло-серых оттенках",
+      "focus_point": {
+        "x": 0.5,
+        "y": 0.46
+      },
+      "display_order": 47,
+      "is_real_work": true
+    },
+    {
+      "id": "logo",
+      "source_path": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/raw/logo/logo.png",
+      "category": "logo",
+      "orientation": "landscape",
+      "variants": {
+        "thumbnail": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/logo/logo_thumbnail.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/logo/logo_thumbnail.jpg",
+          "width": 400,
+          "height": 120
+        },
+        "card": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/logo/logo_card.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/logo/logo_card.jpg",
+          "width": 400,
+          "height": 120
+        },
+        "hero": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/logo/logo_hero.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/logo/logo_hero.jpg",
+          "width": 400,
+          "height": 120
+        },
+        "fullscreen": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/logo/logo_fullscreen.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/logo/logo_fullscreen.jpg",
+          "width": 400,
+          "height": 120
+        }
+      },
+      "suggested_usage": "logo",
+      "quality": "placeholder",
+      "suitable_for_hero": true,
+      "suitable_for_gallery": false,
+      "suitable_for_ai_reference": false,
+      "caption": "",
+      "layout": "",
+      "style": "",
+      "primary_color": "",
+      "alt_text": "",
+      "focus_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "display_order": 48,
+      "is_real_work": false
+    },
+    {
+      "id": "owner",
+      "source_path": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/raw/owner/owner.jpg",
+      "category": "owner",
+      "orientation": "portrait",
+      "variants": {
+        "thumbnail": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/owner/owner_thumbnail.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/owner/owner_thumbnail.jpg",
+          "width": 320,
+          "height": 400
+        },
+        "card": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/owner/owner_card.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/owner/owner_card.jpg",
+          "width": 640,
+          "height": 800
+        },
+        "hero": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/owner/owner_hero.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/owner/owner_hero.jpg",
+          "width": 1200,
+          "height": 1500
+        },
+        "fullscreen": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/owner/owner_fullscreen.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/owner/owner_fullscreen.jpg",
+          "width": 1200,
+          "height": 1500
+        }
+      },
+      "suggested_usage": "hero_owner",
+      "quality": "placeholder",
+      "suitable_for_hero": true,
+      "suitable_for_gallery": false,
+      "suitable_for_ai_reference": false,
+      "caption": "",
+      "layout": "",
+      "style": "",
+      "primary_color": "",
+      "alt_text": "",
+      "focus_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "display_order": 49,
+      "is_real_work": false
+    }
+  ]
+}
