@@ -21,10 +21,15 @@ const site = {
     ["work_4492", "Линейная кухня", "Линейная кухня в спокойных серых оттенках"],
     ["work_4493", "Угловая кухня", "Серо-белая угловая кухня"],
     ["work_4495", "Угловая кухня", "Классическая белая угловая кухня"],
-    ["work_4481", "Линейная кухня", "Светлая кухня с пеналами и встроенной техникой"],
+    ["work_4481", "Светлая кухня с пеналами", "Светлая кухня с пеналами и встроенной техникой"],
     ["work_4491", "Угловая кухня", "Угловая кухня с древесной столешницей"],
     ["work_4489", "Угловая кухня", "Компактная угловая кухня со встроенной техникой"],
-    ["work_4488", "Линейная кухня", "Зелёно-белая кухня с длинной рабочей зоной"],
+    ["work_4488", "Зелёно-белая кухня", "Кухня с зелёными фасадами и светлой столешницей"],
+    ["work_4482", "Угловая кухня", "Угловая кухня с серыми фасадами и древесной стеновой панелью"],
+    ["work_4485", "Светлая рабочая зона", "Светлая рабочая зона кухни без ручек"],
+    ["work_4487", "Фрагмент серой кухни", "Рабочая зона кухни с серыми фасадами"],
+    ["work_4490", "Рабочая линия кухни", "Столешница и варочная зона кухни"],
+    ["work_4496", "Небольшая угловая кухня", "Небольшая угловая кухня в светло-серых оттенках"],
   ].map(([image, title, alt]) => ({ image, title, alt })),
   styles: [
     ["Современные", "Чистые линии, удобное хранение и встроенная техника", "work_4486"],
@@ -75,7 +80,7 @@ function maxCta(label, source, className = "") {
     : `<button class="max-cta ${className}" type="button" aria-disabled="true" data-cta="${source}">${content}</button>`;
 }
 
-const navItems = [["#works", "Работы"], ["#styles", "Варианты"], ["#about", "Обо мне"], ["#process", "Как работаю"], ["#faq", "Вопросы"], ["#contacts", "Контакты"]];
+const navItems = [["#works", "Работы"], ["#layouts", "Планировки"], ["#styles", "Варианты"], ["#about", "Обо мне"], ["#process", "Как работаю"], ["#contacts", "Контакты"]];
 const nav = () => navItems.map(([href, label]) => `<a href="${href}">${label}</a>`).join("");
 
 function header() {
@@ -90,10 +95,9 @@ function header() {
 
 function hero() {
   return `<section class="hero" id="top">
-    <div class="hero-media">${picture({ webp: "media/kitchens_real/owner_in_workshop_hero.webp", jpg: "media/kitchens_real/owner_in_workshop_hero.jpg", alt: "Артём Ермаков в мебельном цехе", className: "hero-picture" })}</div>
+    <div class="hero-media"><img src="${asset("media/kitchens_real/owner_in_workshop_wide_hero.jpg")}" alt="Артём Ермаков в мебельном цехе" class="hero-picture"></div>
     <div class="hero-overlay"></div>
     <div class="hero-copy"><p class="hero-kicker">Кухни и мебель на заказ</p><h1>Кухни на заказ<br>в городе Людиново</h1><p>Меня зовут Артём Ермаков. Я лично веду каждый проект: от первого разговора и замера до установки готовой кухни.</p><div class="hero-actions">${maxCta("Собрать кухню в MAX", "hero")}<a class="text-link" href="#works">Посмотреть работы ${icon.arrow}</a></div></div>
-    <div class="owner-card"><strong>Артём Ермаков</strong><span>Основатель компании «Интерьер»</span></div>
   </section>`;
 }
 
@@ -108,9 +112,19 @@ function workCard(work, mode = "") {
 }
 
 function works() {
-  const featured = site.works.slice(0, 5);
-  const extra = site.works.slice(5);
+  const featured = site.works.slice(0, 8);
+  const extra = site.works.slice(8);
   return `<section class="section works" id="works"><div class="section-head"><div><p class="eyebrow">Реальные проекты</p><h2>Наши работы</h2></div><p>Кухни, которые уже собраны и установлены.</p></div><div class="work-stage"><div class="carousel-controls"><button type="button" data-carousel-prev aria-label="Предыдущая работа">${icon.left}</button><button type="button" data-carousel-next aria-label="Следующая работа">${icon.right}</button></div><div class="work-rail" data-work-carousel>${featured.map((work) => workCard(work, "rail-card")).join("")}</div></div><button class="reveal-works" type="button" data-more-works aria-expanded="false"><span>Показать все работы</span>${icon.down}</button><div class="works-extra" data-works-extra hidden>${extra.map((work) => workCard(work)).join("")}</div></section>`;
+}
+
+function layouts() {
+  const items = [
+    ["Прямая кухня", "Для компактных помещений и ровной рабочей линии", "work_4492"],
+    ["Угловая кухня", "Больше рабочих поверхностей и удобное хранение", "work_4486"],
+    ["П-образная кухня", "Максимум полезной зоны в небольшом помещении", "work_4494"],
+    ["Кухня с островом", "Решение для просторного помещения и открытой планировки", "work_4481"],
+  ];
+  return `<section class="section layouts" id="layouts"><div class="section-head"><div><p class="eyebrow">Планировка</p><h2>Какая кухня подойдёт вам</h2></div><p>Начинаем с формы: она задаёт удобство, хранение и место для техники.</p></div><div class="layout-grid">${items.map(([title, text, image]) => `<article class="layout-card">${picture({ ...kitchenImage(image), alt: title, className: "layout-picture" })}<div><span>${title}</span><p>${text}</p></div></article>`).join("")}</div></section>`;
 }
 
 function styles() {
@@ -140,7 +154,7 @@ function contacts() {
 }
 
 function render() {
-  document.querySelector("#app").innerHTML = `${header()}<main>${hero()}${proof()}${works()}${styles()}${botSection()}${about()}${process()}${faq()}${contacts()}</main><footer class="footer"><strong>${site.brand}</strong><span>Кухни и мебель на заказ в Людинове и ближайших районах.</span></footer><div class="lightbox" data-lightbox-modal hidden><button type="button" aria-label="Закрыть фото" data-lightbox-close>${icon.close}</button><img src="" alt=""><strong data-lightbox-title></strong></div>`;
+  document.querySelector("#app").innerHTML = `${header()}<main>${hero()}${proof()}${works()}${layouts()}${styles()}${botSection()}${about()}${process()}${faq()}${contacts()}</main><footer class="footer"><strong>${site.brand}</strong><span>Кухни и мебель на заказ в Людинове и ближайших районах.</span></footer><div class="lightbox" data-lightbox-modal hidden><button type="button" aria-label="Закрыть фото" data-lightbox-close>${icon.close}</button><img src="" alt=""><strong data-lightbox-title></strong></div>`;
 }
 
 function bindMenu() {

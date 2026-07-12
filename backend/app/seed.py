@@ -24,19 +24,17 @@ from backend.app.models import (
 # ───────────────────────── Данные воронки ─────────────────────────
 
 FUNNEL_QUESTIONS = [
-    {"key": "welcome", "title": "Я Артём. Соберём будущую кухню по шагам.", "type": "text", "order": 1, "required": False, "active": True, "allow_skip": True},
-    {"key": "contact", "title": "Оставьте контакт для связи по вашему проекту", "type": "contact", "order": 2, "required": True, "active": True},
+    {"key": "contact", "title": "Оставьте контакт для связи по проекту", "type": "contact", "order": 1, "required": True, "active": True},
+    {"key": "form", "title": "Какую планировку рассматриваете?", "type": "single_choice", "order": 2, "required": True, "active": True, "generation_key": "form"},
     {"key": "width", "title": "Какая примерная ширина рабочей зоны? Напишите в сантиметрах", "type": "text", "order": 3, "required": True, "active": True, "generation_key": "width"},
     {"key": "height", "title": "Какая высота помещения? Напишите в сантиметрах", "type": "text", "order": 4, "required": True, "active": True, "generation_key": "height"},
     {"key": "area", "title": "Какая примерная площадь кухни? Напишите в м²", "type": "text", "order": 5, "required": True, "active": True, "generation_key": "area"},
-    {"key": "form", "title": "Какую планировку рассматриваете?", "type": "single_choice", "order": 6, "required": True, "active": True, "generation_key": "form"},
-    {"key": "style", "title": "Какой стиль вам ближе?", "type": "single_choice", "order": 7, "required": True, "active": True, "generation_key": "style"},
-    {"key": "color", "title": "Какой цвет фасадов нравится?", "type": "single_choice", "order": 8, "required": True, "active": True, "generation_key": "color"},
-    {"key": "facade", "title": "Какие фасады рассматриваете?", "type": "single_choice", "order": 9, "required": True, "active": True, "generation_key": "facade"},
-    {"key": "handle", "title": "Какие ручки или систему открывания выбрать?", "type": "single_choice", "order": 10, "required": True, "active": True, "generation_key": "handle"},
-    {"key": "photo", "title": "Пришлите одно фото помещения. Так я увижу планировку и важные детали.", "type": "photo", "order": 11, "required": True, "active": True},
-    {"key": "wishes", "title": "Есть ли важные пожелания: техника, хранение, бюджет, сроки?", "type": "text", "order": 12, "required": False, "active": True, "allow_skip": True, "generation_key": "wishes"},
-    {"key": "confirmation", "title": "Проверьте подбор", "type": "confirmation", "order": 13, "required": True, "active": True},
+    {"key": "style", "title": "Какой стиль вам ближе?", "type": "single_choice", "order": 6, "required": True, "active": True, "generation_key": "style"},
+    {"key": "color", "title": "Какой цвет фасадов нравится?", "type": "single_choice", "order": 7, "required": True, "active": True, "generation_key": "color"},
+    {"key": "facade", "title": "Какие фасады рассматриваете?", "type": "single_choice", "order": 8, "required": True, "active": True, "generation_key": "facade"},
+    {"key": "handle", "title": "Какие ручки или систему открывания выбрать?", "type": "single_choice", "order": 9, "required": True, "active": True, "generation_key": "handle"},
+    {"key": "photo", "title": "Пришлите одно фото помещения", "type": "photo", "order": 10, "required": True, "active": True},
+    {"key": "confirmation", "title": "Проверьте подбор", "type": "confirmation", "order": 11, "required": True, "active": True},
 ]
 
 FUNNEL_OPTIONS = {
