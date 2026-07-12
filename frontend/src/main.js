@@ -16,21 +16,21 @@ const site = {
     yandexUrl: "https://yandex.ru/maps/org/interyer/196977992081/",
   },
   works: [
-    ["work_4486", "Угловая кухня", "Современная кухня с зелёными нижними фасадами"],
-    ["work_4494", "П-образная кухня", "Компактная П-образная кухня в зелёном цвете"],
-    ["work_4492", "Линейная кухня", "Линейная кухня в спокойных серых оттенках"],
-    ["work_4493", "Угловая кухня", "Серо-белая угловая кухня"],
-    ["work_4495", "Угловая кухня", "Классическая белая угловая кухня"],
-    ["work_4481", "Светлая кухня с пеналами", "Светлая кухня с пеналами и встроенной техникой"],
-    ["work_4491", "Угловая кухня", "Угловая кухня с древесной столешницей"],
-    ["work_4489", "Угловая кухня", "Компактная угловая кухня со встроенной техникой"],
-    ["work_4488", "Зелёно-белая кухня", "Кухня с зелёными фасадами и светлой столешницей"],
-    ["work_4482", "Угловая кухня", "Угловая кухня с серыми фасадами и древесной стеновой панелью"],
-    ["work_4485", "Светлая рабочая зона", "Светлая рабочая зона кухни без ручек"],
-    ["work_4487", "Фрагмент серой кухни", "Рабочая зона кухни с серыми фасадами"],
-    ["work_4490", "Рабочая линия кухни", "Столешница и варочная зона кухни"],
-    ["work_4496", "Небольшая угловая кухня", "Небольшая угловая кухня в светло-серых оттенках"],
-  ].map(([image, title, alt]) => ({ image, title, alt })),
+    ["work_4486", "Угловая кухня", "Современная кухня с зелёными нижними фасадами", "corner"],
+    ["work_4494", "П-образная кухня", "Компактная П-образная кухня в зелёном цвете", "u-shaped"],
+    ["work_4492", "Линейная кухня", "Линейная кухня в спокойных серых оттенках", "linear"],
+    ["work_4493", "Угловая кухня", "Серо-белая угловая кухня", "corner"],
+    ["work_4495", "Угловая кухня", "Классическая белая угловая кухня", "corner"],
+    ["work_4481", "Светлая кухня с пеналами", "Светлая кухня с пеналами и встроенной техникой", "other"],
+    ["work_4491", "Угловая кухня", "Угловая кухня с древесной столешницей", "corner"],
+    ["work_4489", "Угловая кухня", "Компактная угловая кухня со встроенной техникой", "corner"],
+    ["work_4488", "Зелёно-белая кухня", "Кухня с зелёными фасадами и светлой столешницей", "other"],
+    ["work_4482", "Угловая кухня", "Угловая кухня с серыми фасадами и древесной стеновой панелью", "corner"],
+    ["work_4485", "Светлая рабочая зона", "Светлая рабочая зона кухни без ручек", "other"],
+    ["work_4487", "Фрагмент серой кухни", "Рабочая зона кухни с серыми фасадами", "other"],
+    ["work_4490", "Рабочая линия кухни", "Столешница и варочная зона кухни", "linear"],
+    ["work_4496", "Небольшая угловая кухня", "Небольшая угловая кухня в светло-серых оттенках", "corner"],
+  ].map(([image, title, alt, type]) => ({ image, title, alt, type })),
   styles: [
     ["Современные", "Чистые линии, удобное хранение и встроенная техника", "work_4486"],
     ["Неоклассика", "Светлая палитра и спокойные детали", "work_4493"],
@@ -108,13 +108,14 @@ function proof() {
 function workCard(work, mode = "") {
   const image = kitchenImage(work.image, "card");
   const full = kitchenImage(work.image, "fullscreen");
-  return `<article class="work-card ${mode}" data-lightbox="${asset(full.jpg)}" data-title="${work.title}"><button class="work-image" type="button" aria-label="Открыть: ${work.title}">${picture({ ...image, alt: work.alt, className: "work-picture" })}<span class="work-caption"><strong>${work.title}</strong><i>Открыть фото</i></span></button></article>`;
+  return `<article class="work-card ${mode}" data-work-type="${work.type}" data-lightbox="${asset(full.jpg)}" data-title="${work.title}"><button class="work-image" type="button" aria-label="Открыть: ${work.title}">${picture({ ...image, alt: work.alt, className: "work-picture" })}<span class="work-caption"><strong>${work.title}</strong><i>Открыть фото</i></span></button></article>`;
 }
 
 function works() {
-  const featured = site.works.slice(0, 6);
-  const extra = site.works.slice(6);
-  return `<section class="section works" id="works"><div class="section-head"><div><p class="eyebrow">Реальные проекты</p><h2>Наши работы</h2></div><p>Кухни, которые уже собраны и установлены.</p></div><div class="work-grid">${featured.map((work) => workCard(work)).join("")}</div><button class="reveal-works" type="button" data-more-works aria-expanded="false"><span>Показать ещё работы</span>${icon.down}</button><div class="works-extra" data-works-extra hidden>${extra.map((work) => workCard(work)).join("")}</div></section>`;
+  const featured = site.works.slice(0, 3);
+  const extra = site.works.slice(3);
+  const filters = [["all", "Все работы"], ["corner", "Угловые"], ["u-shaped", "П-образные"], ["linear", "Линейные"], ["other", "Другие решения"]];
+  return `<section class="section works" id="works"><div class="section-head"><div><p class="eyebrow">Реальные проекты</p><h2>Наши работы</h2></div><p>Кухни, которые уже собраны и установлены.</p></div><div class="work-filters" aria-label="Фильтр работ">${filters.map(([type, label], index) => `<button type="button" data-work-filter="${type}" aria-pressed="${index === 0}">${label}</button>`).join("")}</div><div class="work-grid" data-featured-works>${featured.map((work) => workCard(work)).join("")}</div><button class="reveal-works" type="button" data-more-works aria-expanded="false"><span>Показать ещё работы</span>${icon.down}</button><div class="works-extra" data-works-extra hidden>${extra.map((work) => workCard(work)).join("")}</div></section>`;
 }
 
 function layouts() {
@@ -168,6 +169,18 @@ function bindMenu() {
 function bindGallery() {
   const reveal = document.querySelector("[data-more-works]"); const extra = document.querySelector("[data-works-extra]");
   reveal.addEventListener("click", () => { const open = reveal.getAttribute("aria-expanded") === "true"; reveal.setAttribute("aria-expanded", String(!open)); reveal.querySelector("span").textContent = open ? "Показать ещё работы" : "Скрыть дополнительные работы"; extra.hidden = open; });
+  const filters = document.querySelectorAll("[data-work-filter]");
+  const cards = document.querySelectorAll("[data-work-type]");
+  filters.forEach((filter) => filter.addEventListener("click", () => {
+    const type = filter.dataset.workFilter;
+    filters.forEach((button) => button.setAttribute("aria-pressed", String(button === filter)));
+    if (type !== "all" && extra.hidden) {
+      extra.hidden = false;
+      reveal.setAttribute("aria-expanded", "true");
+      reveal.querySelector("span").textContent = "Скрыть дополнительные работы";
+    }
+    cards.forEach((card) => { card.hidden = type !== "all" && card.dataset.workType !== type; });
+  }));
 }
 
 function bindReviews() {
