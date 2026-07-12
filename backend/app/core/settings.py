@@ -42,6 +42,8 @@ class Settings(BaseSettings):
     MAX_API_URL: str = ""
     MAX_BOT_TOKEN: str = ""
     MAX_BOT_URL: str = ""
+    MAX_WEBHOOK_URL: str = ""
+    MAX_WEBHOOK_SECRET: str = ""
 
     # --- AI-провайдер ---
     AI_PROVIDER: str = "mock"  # mock | openai_compatible

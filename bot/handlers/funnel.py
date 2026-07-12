@@ -69,11 +69,8 @@ async def _delete_message_safely(bot: object, chat_id: int, message_id: int) -> 
 
 
 async def _cleanup_step_messages(message: Message, state: FSMContext, *, delete_user_message: bool) -> None:
-    data = await state.get_data()
-    for message_id in data.get("cleanup_message_ids", []):
-        await _delete_message_safely(message.bot, message.chat.id, int(message_id))
-    if delete_user_message:
-        await _delete_message_safely(message.bot, message.chat.id, message.message_id)
+    """Keep the briefing history intact and avoid inconsistent deletions."""
+    del message, state, delete_user_message
 
 
 def _callback_chat_id(callback: CallbackQuery) -> int:
@@ -83,13 +80,8 @@ def _callback_chat_id(callback: CallbackQuery) -> int:
 
 
 async def _delete_callback_message(callback: CallbackQuery) -> None:
-    if callback.message is None or not getattr(callback.message, "message_id", None):
-        return
-    await _delete_message_safely(
-        callback.bot,
-        _callback_chat_id(callback),
-        int(callback.message.message_id),
-    )
+    """Keep the chosen option in the chat instead of deleting only part of it."""
+    del callback
 
 
 async def _ensure_account(db: AsyncSession, telegram_user: TelegramUser) -> MessengerAccount:
@@ -155,7 +147,7 @@ async def _send_question(
     if question is None:
         sent = await adapter.send_text(
             chat_id,
-            "Подбор собран. Оставьте номер, чтобы администратор получил заявку: форму кухни, фото помещения и ваши пожелания.",
+            "Подбор собран. Я передам его Артёму, чтобы обсудить следующий шаг по вашему проекту.",
         )
         await state.set_state(FunnelStates.waiting_contact)
         await state.update_data(session_id=session.id)
@@ -198,7 +190,7 @@ async def _send_question(
     if question.type == "contact":
         sent = await adapter.request_contact(
             chat_id,
-            "Остался последний шаг: отправьте номер. Бот передаст заявку администратору, а менеджер свяжется с вами по следующему шагу.",
+            "Оставьте номер для связи по вашему проекту. Артём получит собранную заявку и свяжется с вами.",
         )
         await state.set_state(FunnelStates.waiting_contact)
         await state.update_data(session_id=session.id, question_id=question.id)
@@ -240,7 +232,7 @@ async def start(message: Message, db: AsyncSession, state: FSMContext) -> None:
     first = await service.get_next_question(session, None)
     await adapter.send_text(
         message.chat.id,
-        "Здравствуйте! Я Артём. Давайте быстро соберём кухню под ваше помещение: форма, стиль, материалы и фото для визуализации.",
+        "Здравствуйте! Я Артём. Давайте спокойно соберём будущую кухню: размеры, планировку, стиль, материалы и фото помещения.",
     )
     await _send_question(db, adapter, message.chat.id, session, first, state)
 

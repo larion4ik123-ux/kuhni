@@ -21,41 +21,22 @@ from backend.app.models import (
     SiteBlock,
 )
 
-# ───────────────────────── Данные воронки (16 шагов) ─────────────────────────
+# ───────────────────────── Данные воронки ─────────────────────────
 
 FUNNEL_QUESTIONS = [
-    # 1
-    {"key": "welcome", "title": "Я Артём. Давайте соберём кухню под ваше помещение: форма, стиль, материалы и фото для визуализации.", "type": "text", "order": 1, "required": False, "active": True, "allow_skip": True},
-    # 2
-    {"key": "form", "title": "Какая форма кухни вам нужна?", "type": "single_choice", "order": 2, "required": True, "active": True, "generation_key": "form"},
-    # 3
-    {"key": "style", "title": "Какой стиль предпочитаете?", "type": "single_choice", "order": 3, "required": True, "active": True, "generation_key": "style"},
-    # 4
-    {"key": "color", "title": "Какой цвет фасадов?", "type": "single_choice", "order": 4, "required": True, "active": True, "generation_key": "color"},
-    # 5
-    {"key": "facade", "title": "Материал фасада", "type": "single_choice", "order": 5, "required": True, "active": True, "generation_key": "facade"},
-    # 6
-    {"key": "handle", "title": "Ручки / система открывания", "type": "single_choice", "order": 6, "required": True, "active": True, "generation_key": "handle"},
-    # 7
-    {"key": "countertop", "title": "Столешница", "type": "single_choice", "order": 7, "required": False, "active": False, "generation_key": "countertop"},
-    # 8
-    {"key": "hardware", "title": "Фурнитура", "type": "single_choice", "order": 8, "required": False, "active": False, "generation_key": "hardware"},
-    # 9
-    {"key": "size", "title": "Напишите примерный размер или площадь помещения", "type": "text", "order": 9, "required": True, "active": True, "generation_key": "size"},
-    # 10
-    {"key": "deadline", "title": "Желаемый срок изготовления", "type": "text", "order": 10, "required": True, "active": True},
-    # 11
-    {"key": "budget", "title": "Примерный бюджет", "type": "text", "order": 11, "required": False, "active": False, "allow_skip": True},
-    # 12
-    {"key": "wishes", "title": "Дополнительные пожелания", "type": "text", "order": 12, "required": False, "active": True, "allow_skip": True, "generation_key": "wishes"},
-    # 13
-    {"key": "room_type", "title": "Тип исходного помещения", "type": "single_choice", "order": 13, "required": True, "active": True, "generation_key": "room_type"},
-    # 14
-    {"key": "photo", "title": "Пришлите фото помещения: по нему бот подготовит основу для визуализации кухни в вашем интерьере", "type": "photo", "order": 14, "required": True, "active": True},
-    # 15
-    {"key": "confirmation", "title": "Проверьте подбор. Если всё верно, бот передаст заявку администратору.", "type": "confirmation", "order": 15, "required": True, "active": True},
-    # 16
-    {"key": "contact", "title": "Оставьте номер, чтобы Артём связал подбор с вами", "type": "contact", "order": 16, "required": True, "active": True},
+    {"key": "welcome", "title": "Я Артём. Соберём будущую кухню по шагам.", "type": "text", "order": 1, "required": False, "active": True, "allow_skip": True},
+    {"key": "contact", "title": "Оставьте контакт для связи по вашему проекту", "type": "contact", "order": 2, "required": True, "active": True},
+    {"key": "width", "title": "Какая примерная ширина рабочей зоны? Напишите в сантиметрах", "type": "text", "order": 3, "required": True, "active": True, "generation_key": "width"},
+    {"key": "height", "title": "Какая высота помещения? Напишите в сантиметрах", "type": "text", "order": 4, "required": True, "active": True, "generation_key": "height"},
+    {"key": "area", "title": "Какая примерная площадь кухни? Напишите в м²", "type": "text", "order": 5, "required": True, "active": True, "generation_key": "area"},
+    {"key": "form", "title": "Какую планировку рассматриваете?", "type": "single_choice", "order": 6, "required": True, "active": True, "generation_key": "form"},
+    {"key": "style", "title": "Какой стиль вам ближе?", "type": "single_choice", "order": 7, "required": True, "active": True, "generation_key": "style"},
+    {"key": "color", "title": "Какой цвет фасадов нравится?", "type": "single_choice", "order": 8, "required": True, "active": True, "generation_key": "color"},
+    {"key": "facade", "title": "Какие фасады рассматриваете?", "type": "single_choice", "order": 9, "required": True, "active": True, "generation_key": "facade"},
+    {"key": "handle", "title": "Какие ручки или систему открывания выбрать?", "type": "single_choice", "order": 10, "required": True, "active": True, "generation_key": "handle"},
+    {"key": "photo", "title": "Пришлите одно фото помещения. Так я увижу планировку и важные детали.", "type": "photo", "order": 11, "required": True, "active": True},
+    {"key": "wishes", "title": "Есть ли важные пожелания: техника, хранение, бюджет, сроки?", "type": "text", "order": 12, "required": False, "active": True, "allow_skip": True, "generation_key": "wishes"},
+    {"key": "confirmation", "title": "Проверьте подбор", "type": "confirmation", "order": 13, "required": True, "active": True},
 ]
 
 FUNNEL_OPTIONS = {
@@ -239,6 +220,18 @@ async def seed() -> None:
         # Вопросы воронки
         for q in FUNNEL_QUESTIONS:
             await _upsert_question(db, q)
+
+        # Preserve historical answers but prevent retired questions from
+        # reappearing in the current customer journey after a reseed.
+        active_keys = {question["key"] for question in FUNNEL_QUESTIONS}
+        stale_questions = await db.execute(
+            select(FunnelQuestion).where(
+                FunnelQuestion.active.is_(True), FunnelQuestion.key.not_in(active_keys)
+            )
+        )
+        for question in stale_questions.scalars():
+            question.active = False
+            db.add(question)
 
         # Блоки сайта
         for b in SITE_BLOCKS:

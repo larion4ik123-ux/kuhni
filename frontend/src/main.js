@@ -1,306 +1,166 @@
 import "./styles.css";
 
 const basePath = import.meta.env.BASE_URL || "/";
+const maxBotUrl = (import.meta.env.VITE_MAX_BOT_URL || "").trim();
 const asset = (path) => `${basePath}${path}`.replace(/\/{2,}/g, "/");
 
 const site = {
-  brand: {
-    name: "Мебельный салон Интерьер",
-    logo: {
-      webp: "media/brand/logo_interier_cropped_card.webp",
-      jpg: "media/brand/logo_interier_cropped_card.jpg",
-      alt: "Логотип мебельного салона Интерьер",
-    },
-  },
-  owner: {
-    name: "Артём Ермаков",
-    role: "основатель компании «Интерьер»",
-  },
+  brand: "Мебельный салон Интерьер",
+  owner: "Артём Ермаков",
   contacts: {
     phone: "+7 (XXX) XXX-XX-XX",
     address: "—",
     region: "Людиново и ближайшие районы области",
     hours: "Пн-Пт: 9:00-18:00",
   },
-  hero: {
-    title: "Кухни на заказ в городе Людиново",
-    text: "Меня зовут Артём Ермаков. Я основатель компании «Интерьер» и лично участвую в каждом проекте: от первого разговора и замера до установки кухни.",
-    image: {
-      webp: "media/kitchens_real/owner_in_workshop_hero.webp",
-      jpg: "media/kitchens_real/owner_in_workshop_hero.jpg",
-      alt: "Артём Ермаков в мебельном цехе",
-    },
-  },
-  advantages: [
-    ["Более 10 лет", "изготавливаем кухни и мебель на заказ"],
-    ["Лично отвечаю", "за замер, сроки и качество проекта"],
-    ["Людиново и округ", "работаем по городу и ближайшим районам"],
-  ],
-  generatorSteps: [
-    ["01", "Расскажите о кухне", "Выберите форму, стиль и то, что для вас важно."],
-    ["02", "Добавьте фото помещения", "Так легче понять планировку и предложить подходящее решение."],
-    ["03", "Получите идею и оставьте заявку", "MAX-бот соберёт пожелания, а Артём свяжется, чтобы обсудить проект."],
-  ],
-  gallery: [
-    ["work_4486", "Угловая кухня с зелёным акцентом", "Угловая", "Угловая кухня с зелёными нижними фасадами"],
-    ["work_4494", "П-образная кухня в зелёном цвете", "П-образная", "П-образная зелёная кухня в компактном помещении"],
-    ["work_4492", "Компактная линейная кухня", "Линейная", "Компактная линейная кухня в серых оттенках"],
-    ["work_4493", "Серо-белая угловая кухня", "Угловая", "Серо-белая угловая кухня"],
-    ["work_4495", "Классическая угловая кухня", "Угловая", "Классическая белая угловая кухня"],
-    ["work_4481", "Светлая кухня с пеналами", "Линейная", "Светлая кухня с пеналами и встроенной техникой"],
-    ["work_4491", "Угловая кухня с древесной столешницей", "Угловая", "Угловая кухня в графитовых и древесных оттенках"],
-    ["work_4489", "Угловая кухня со встроенной техникой", "Угловая", "Компактная угловая кухня со встроенной техникой"],
-    ["work_4488", "Зелёно-белая кухня с длинной рабочей зоной", "Линейная", "Кухня с зелёными фасадами и светлой столешницей"],
-  ].map(([image, title, type, alt]) => ({ image, title, type, alt })),
+  works: [
+    ["work_4486", "Угловая кухня", "Современная кухня с зелёными нижними фасадами"],
+    ["work_4494", "П-образная кухня", "Компактная П-образная кухня в зелёном цвете"],
+    ["work_4492", "Линейная кухня", "Линейная кухня в спокойных серых оттенках"],
+    ["work_4493", "Угловая кухня", "Серо-белая угловая кухня"],
+    ["work_4495", "Угловая кухня", "Классическая белая угловая кухня"],
+    ["work_4481", "Линейная кухня", "Светлая кухня с пеналами и встроенной техникой"],
+    ["work_4491", "Угловая кухня", "Угловая кухня с древесной столешницей"],
+    ["work_4489", "Угловая кухня", "Компактная угловая кухня со встроенной техникой"],
+    ["work_4488", "Линейная кухня", "Зелёно-белая кухня с длинной рабочей зоной"],
+  ].map(([image, title, alt]) => ({ image, title, alt })),
   styles: [
-    {
-      title: "Современный",
-      text: "Чёткие линии, спокойные фасады, встроенная техника и удобные зоны хранения.",
-      image: "work_4486",
-      alt: "Современная угловая кухня",
-    },
-    {
-      title: "Неоклассика",
-      text: "Мягкая геометрия, светлые оттенки и детали, которые делают интерьер теплее.",
-      image: "work_4493",
-      alt: "Кухня в стиле неоклассика",
-    },
-    {
-      title: "Модерн",
-      text: "Выразительные сочетания цвета и фактуры для интерьера с характером.",
-      image: "work_4481",
-      alt: "Кухня в стиле модерн",
-    },
-    {
-      title: "Классика",
-      text: "Фасады с выразительной фактурой, тёплая палитра и привычная домашняя атмосфера.",
-      image: "work_4495",
-      alt: "Классическая кухня",
-    },
+    ["Современные", "Чистые линии, удобное хранение и встроенная техника", "work_4486"],
+    ["Неоклассика", "Светлая палитра и спокойные детали", "work_4493"],
+    ["Модерн", "Выразительные сочетания цвета и фактуры", "work_4481"],
+    ["Классика", "Тёплая атмосфера и фасады с характером", "work_4495"],
   ],
   process: [
-    ["Оставляете заявку", "В MAX-боте кратко рассказываете о будущей кухне и добавляете фото помещения."],
-    ["Разбираем задачу", "Я смотрю планировку, пожелания, технику и заранее отмечаю важные нюансы."],
-    ["Встречаемся на замере", "Уточняем размеры, розетки, воду, газ и все привязки на месте."],
-    ["Согласовываем проект", "Подбираем материалы, наполнение и финальную конфигурацию кухни."],
-    ["Изготавливаем кухню", "Собираем изделие в цехе под согласованный проект."],
-    ["Доставляем и монтируем", "Привозим, устанавливаем и сдаём готовую кухню на объекте."],
-  ],
-  faq: [
-    ["Можно ли заказать кухню по фотографии?", "Фото поможет обсудить идею и планировку. Точные размеры и технические нюансы уточняем на замере."],
-    ["Что делает MAX-бот?", "Бот помогает собрать пожелания и фото помещения в одну заявку, чтобы к разговору с Артёмом уже было понятно направление проекта."],
-    ["Можно ли посмотреть материалы до заказа?", "Да. На встрече и при согласовании проекта выбираем фасады, столешницу, фурнитуру и оттенки под вашу задачу."],
-    ["Делаете ли доставку и монтаж?", "Да. Изготавливаем, доставляем и устанавливаем кухню на объекте."],
+    ["Знакомимся с задачей", "Обсуждаем помещение, стиль и ваши пожелания."],
+    ["Выезжаю на замер", "Проверяю размеры, коммуникации и все важные привязки."],
+    ["Готовим проект", "Подбираем материалы, наполнение и финальную конфигурацию."],
+    ["Изготавливаем", "Собираем кухню в цехе под согласованный проект."],
+    ["Доставляем", "Бережно привозим кухню на объект."],
+    ["Устанавливаем", "Монтируем и сдаём готовую кухню."],
   ],
 };
 
 const icon = {
-  max: `<img class="max-logo-icon" src="${asset("media/brand/max_icon.png")}" alt="" aria-hidden="true" decoding="async">`,
-  arrow: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h12.2m-4.7-5 5 5-5 5"/></svg>',
-  chevronLeft: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg>',
-  chevronRight: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>',
-  chevronDown: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>',
+  max: `<img class="max-logo-icon" src="${asset("media/brand/max_icon.png")}" alt="" aria-hidden="true">`,
+  arrow: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h12m-4.5-4.5L17 12l-4.5 4.5"/></svg>',
+  left: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14.5 6-6 6 6 6"/></svg>',
+  right: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9.5 6 6 6-6 6"/></svg>',
+  down: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>',
   menu: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>',
   close: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg>',
 };
 
 function kitchenImage(id, variant = "card") {
-  return {
-    webp: `media/kitchens_real/${id}_${variant}.webp`,
-    jpg: `media/kitchens_real/${id}_${variant}.jpg`,
-  };
+  return { webp: `media/kitchens_real/${id}_${variant}.webp`, jpg: `media/kitchens_real/${id}_${variant}.jpg` };
 }
 
 function picture({ webp, jpg, alt, className = "", loading = "eager" }) {
   return `<picture class="${className}"><source srcset="${asset(webp)}" type="image/webp"><img src="${asset(jpg)}" alt="${alt}" loading="${loading}" decoding="async"></picture>`;
 }
 
-function cta(label, source, variant = "primary") {
-  return `<button class="button button-${variant} pseudo-cta" type="button" aria-disabled="true" data-cta="${source}">${icon.max}<span>${label}</span>${icon.arrow}</button>`;
+function maxCta(label, source, className = "") {
+  const content = `${icon.max}<span>${label}</span>${icon.arrow}`;
+  return maxBotUrl
+    ? `<a class="max-cta ${className}" href="${maxBotUrl}" data-cta="${source}">${content}</a>`
+    : `<button class="max-cta ${className}" type="button" aria-disabled="true" data-cta="${source}">${content}</button>`;
 }
 
-function nav() {
-  return [
-    ["#works", "Работы"],
-    ["#about", "Обо мне"],
-    ["#generator", "MAX-бот"],
-    ["#styles", "Варианты"],
-    ["#process", "Как работаем"],
-    ["#contacts", "Контакты"],
-  ].map(([href, label]) => `<a href="${href}">${label}</a>`).join("");
-}
+const navItems = [["#works", "Работы"], ["#styles", "Варианты"], ["#about", "Обо мне"], ["#process", "Как работаю"], ["#faq", "Вопросы"], ["#contacts", "Контакты"]];
+const nav = () => navItems.map(([href, label]) => `<a href="${href}">${label}</a>`).join("");
 
-function renderHeader() {
+function header() {
   return `<header class="site-header" data-header>
-    <a class="brand" href="#top" aria-label="${site.brand.name}">${picture({ ...site.brand.logo, className: "brand-logo", loading: "eager" })}</a>
+    <a class="brand" href="#top" aria-label="${site.brand}">${picture({ webp: "media/brand/logo_interier_cropped_card.webp", jpg: "media/brand/logo_interier_cropped_card.jpg", alt: "Логотип мебельного салона Интерьер", className: "brand-logo" })}</a>
     <nav class="desktop-nav" aria-label="Основная навигация">${nav()}</nav>
-    <button class="header-cta pseudo-cta" type="button" aria-disabled="true" data-cta="website_main">${icon.max}<span>Перейти в MAX</span></button>
+    ${maxCta("Собрать кухню", "header", "header-cta")}
     <button class="menu-button" type="button" aria-label="Открыть меню" data-menu-toggle>${icon.menu}</button>
-    <div class="mobile-panel" data-mobile-panel>
-      <button class="menu-close" type="button" aria-label="Закрыть меню" data-menu-close>${icon.close}</button>
-      <nav aria-label="Мобильная навигация">${nav()}</nav>
-      ${cta("Перейти в MAX", "website_main")}
-    </div>
+    <div class="mobile-panel" data-mobile-panel><button class="menu-close" type="button" aria-label="Закрыть меню" data-menu-close>${icon.close}</button><nav aria-label="Мобильная навигация">${nav()}</nav>${maxCta("Собрать кухню в MAX", "mobile_menu")}</div>
   </header>`;
 }
 
-function renderHero() {
-  return `<section class="hero section" id="top">
-    <div class="hero-copy">
-      <p class="eyebrow">Мебельный салон «Интерьер»</p>
-      <h1>${site.hero.title}</h1>
-      <p class="lead">${site.hero.text}</p>
-      <div class="hero-actions">
-        <div class="hero-primary-action">${cta("Подобрать кухню в MAX", "website_main")}<small>Подбор идеи и заявка в одном диалоге</small></div>
-        <a class="button button-ghost" href="#works"><span>Посмотреть работы</span>${icon.arrow}</a>
-      </div>
-    </div>
-    <div class="hero-media">${picture({ ...site.hero.image, className: "hero-picture", loading: "eager" })}</div>
+function hero() {
+  return `<section class="hero" id="top">
+    <div class="hero-media">${picture({ webp: "media/kitchens_real/owner_in_workshop_hero.webp", jpg: "media/kitchens_real/owner_in_workshop_hero.jpg", alt: "Артём Ермаков в мебельном цехе", className: "hero-picture" })}</div>
+    <div class="hero-overlay"></div>
+    <div class="hero-copy"><p class="hero-kicker">Кухни и мебель на заказ</p><h1>Кухни на заказ<br>в городе Людиново</h1><p>Меня зовут Артём Ермаков. Я лично веду каждый проект: от первого разговора и замера до установки готовой кухни.</p><div class="hero-actions">${maxCta("Собрать кухню в MAX", "hero")}<a class="text-link" href="#works">Посмотреть работы ${icon.arrow}</a></div></div>
+    <div class="owner-card"><strong>Артём Ермаков</strong><span>Основатель компании «Интерьер»</span></div>
   </section>`;
 }
 
-function renderAdvantages() {
-  return `<section class="section advantages" aria-label="Преимущества">
-    ${site.advantages.map(([value, text]) => `<div><strong>${value}</strong><span>${text}</span></div>`).join("")}
-  </section>`;
+function proof() {
+  return `<section class="proof section" aria-label="Преимущества"><div><strong>Более 10 лет</strong><span>изготавливаем кухни и мебель на заказ</span></div><div><strong>Сотни проектов</strong><span>в Людинове и ближайших районах</span></div><div><strong>Личный контроль</strong><span>за сроками и качеством каждого заказа</span></div></section>`;
 }
 
-function renderGalleryCards(items, mode = "") {
-  return items.map((item) => {
-    const image = kitchenImage(item.image, "card");
-    const full = kitchenImage(item.image, "fullscreen");
-    return `<article class="work-item ${mode}" data-lightbox="${asset(full.jpg)}" data-title="${item.title}">
-      <button class="work-image" type="button" aria-label="Открыть фото: ${item.title}">
-        ${picture({ ...image, alt: item.alt, className: "work-picture" })}
-        <span class="work-caption"><em>${item.type}</em><strong>${item.title}</strong></span>
-      </button>
-    </article>`;
-  }).join("");
+function workCard(work, mode = "") {
+  const image = kitchenImage(work.image, "card");
+  const full = kitchenImage(work.image, "fullscreen");
+  return `<article class="work-card ${mode}" data-lightbox="${asset(full.jpg)}" data-title="${work.title}"><button class="work-image" type="button" aria-label="Открыть: ${work.title}">${picture({ ...image, alt: work.alt, className: "work-picture" })}<span class="work-caption"><strong>${work.title}</strong><i>Открыть фото</i></span></button></article>`;
 }
 
-function renderGallery() {
-  const featured = site.gallery.slice(0, 6);
-  const more = site.gallery.slice(6);
-  return `<section class="section works" id="works">
-    <div class="section-heading"><div><p class="eyebrow">Портфолио</p><h2>Наши работы</h2></div><p>Кухни, которые уже собраны и установлены в Людинове и ближайших районах.</p></div>
-    <div class="works-showcase"><div class="carousel-toolbar" aria-label="Листать работы"><button class="carousel-button" type="button" aria-label="Предыдущая кухня" data-carousel-prev>${icon.chevronLeft}</button><button class="carousel-button" type="button" aria-label="Следующая кухня" data-carousel-next>${icon.chevronRight}</button></div><div class="works-carousel" data-work-carousel>${renderGalleryCards(featured, "carousel-card")}</div></div>
-    <button class="more-works" type="button" aria-expanded="false" data-more-works><span>Все работы</span>${icon.chevronDown}</button>
-    <div class="works-extra" data-works-extra hidden>${renderGalleryCards(more, "extra-card")}</div>
-    <div class="inline-cta">${cta("Подобрать свою кухню в MAX", "website_works", "secondary")}</div>
-  </section>`;
+function works() {
+  const featured = site.works.slice(0, 5);
+  const extra = site.works.slice(5);
+  return `<section class="section works" id="works"><div class="section-head"><div><p class="eyebrow">Реальные проекты</p><h2>Наши работы</h2></div><p>Кухни, которые уже собраны и установлены.</p></div><div class="work-stage"><div class="carousel-controls"><button type="button" data-carousel-prev aria-label="Предыдущая работа">${icon.left}</button><button type="button" data-carousel-next aria-label="Следующая работа">${icon.right}</button></div><div class="work-rail" data-work-carousel>${featured.map((work) => workCard(work, "rail-card")).join("")}</div></div><button class="reveal-works" type="button" data-more-works aria-expanded="false"><span>Показать все работы</span>${icon.down}</button><div class="works-extra" data-works-extra hidden>${extra.map((work) => workCard(work)).join("")}</div></section>`;
 }
 
-function renderAbout() {
-  const photo = { webp: "media/kitchens_real/owner_in_showroom_card.webp", jpg: "media/kitchens_real/owner_in_showroom_card.jpg", alt: "Артём Ермаков в салоне кухни" };
-  return `<section class="section about" id="about">
-    <div class="about-image">${picture({ ...photo, className: "about-picture" })}</div>
-    <div><p class="eyebrow">${site.owner.role}</p><h2>Меня зовут Артём Ермаков</h2>
-      <p>Мы занимаемся изготовлением кухонь и мебели на заказ уже больше 10 лет. За это время реализовали сотни проектов для Людинова и ближайших районов области.</p>
-      <p>Я лично участвую во всех этапах каждого заказа: от замера до установки. Если нужен надёжный партнёр, который отвечает за сроки и качество, будем рады обсудить ваш проект без лишней суеты.</p>
-      <blockquote>«Я ручаюсь за качество каждого изделия, которое выходит из нашего цеха. Если вам что-то не понравится, я решу вопрос лично».</blockquote>
-      <div class="inline-cta">${cta("Обсудить кухню в MAX", "website_about", "secondary")}</div>
-    </div>
-  </section>`;
+function styles() {
+  return `<section class="section styles" id="styles"><div class="section-head"><div><p class="eyebrow">Для вашего дома</p><h2>Выберите направление</h2></div><p>Подберём стиль, который будет уместен именно в вашем интерьере.</p></div><div class="style-grid">${site.styles.map(([title, text, image]) => `<article class="style-card">${picture({ ...kitchenImage(image), alt: `${title} кухня`, className: "style-picture" })}<div><h3>${title}</h3><p>${text}</p></div></article>`).join("")}</div></section>`;
 }
 
-function renderGenerator() {
-  return `<section class="section generator" id="generator">
-    <div class="section-heading"><div><p class="eyebrow">MAX-бот</p><h2>Соберите идею кухни в MAX</h2></div><p>Коротко расскажите о задаче, добавьте фото помещения и отправьте заявку Артёму.</p></div>
-    <ol class="generator-steps">${site.generatorSteps.map(([number, title, text]) => `<li><span>${number}</span><strong>${title}</strong><p>${text}</p></li>`).join("")}</ol>
-    <div class="section-cta slim generator-cta">${cta("Перейти в MAX", "website_generator")}</div>
-  </section>`;
+function botSection() {
+  return `<section class="bot-section" id="bot"><div class="bot-inner"><div><p class="eyebrow">MAX-бот</p><h2>Соберите кухню своей мечты</h2><p>Ответьте на короткие вопросы, выберите материалы и добавьте фото помещения. Бот соберёт будущую кухню в понятный проект.</p>${maxCta("Открыть MAX-бот", "bot")}</div><ol><li><span>01</span><strong>Планировка и размеры</strong><p>Форма кухни, ширина, высота и площадь помещения.</p></li><li><span>02</span><strong>Стиль и детали</strong><p>Фасады, цвет, ручки, техника и ваши пожелания.</p></li><li><span>03</span><strong>Фото помещения</strong><p>Чтобы проект учитывал вашу реальную кухню.</p></li></ol></div></section>`;
 }
 
-function renderStyles() {
-  return `<section class="section styles" id="styles"><div class="section-heading compact"><div><p class="eyebrow">Направления</p><h2>Какой стиль вам ближе</h2></div></div><div class="style-grid">${site.styles.map((style) => {
-    const image = kitchenImage(style.image, "card");
-    return `<article class="style-card">${picture({ ...image, alt: style.alt, className: "style-picture" })}<div><h3>${style.title}</h3><p>${style.text}</p></div></article>`;
-  }).join("")}</div><div class="inline-cta">${cta("Подобрать стиль в MAX", "website_styles", "secondary")}</div></section>`;
+function about() {
+  return `<section class="section about" id="about"><div class="about-image">${picture({ ...kitchenImage("owner_in_showroom"), alt: "Артём Ермаков в салоне", className: "about-picture" })}</div><div class="about-copy"><p class="eyebrow">Обо мне</p><h2>Меня зовут Артём Ермаков</h2><p>Я основатель компании «Интерьер» в Людинове. Мы занимаемся изготовлением кухонь и мебели на заказ уже больше десяти лет.</p><p>Я лично участвую во всех этапах каждого заказа: от замера до установки. Когда есть один ответственный человек, проще договориться и быть уверенным в результате.</p><blockquote>«Я ручаюсь за качество каждого изделия, которое выходит из нашего цеха. Если вам что-то не понравится, я решу вопрос лично».</blockquote></div></section>`;
 }
 
-function renderProcess() {
-  return `<section class="section process" id="process"><div class="section-heading compact"><div><p class="eyebrow">По делу</p><h2>Как я работаю</h2></div></div><ol class="process-list">${site.process.map(([title, text], index) => `<li><span>${String(index + 1).padStart(2, "0")}</span><div><h3>${title}</h3><p>${text}</p></div></li>`).join("")}</ol><div class="inline-cta">${cta("Начать подбор в MAX", "website_process", "secondary")}</div></section>`;
+function process() {
+  return `<section class="section process" id="process"><div class="section-head compact"><div><p class="eyebrow">Без лишней суеты</p><h2>Как я работаю</h2></div></div><ol class="process-grid">${site.process.map(([title, text], index) => `<li><span>${String(index + 1).padStart(2, "0")}</span><div><h3>${title}</h3><p>${text}</p></div></li>`).join("")}</ol></section>`;
 }
 
-function renderFaq() {
-  return `<section class="section faq" id="faq"><div class="section-heading compact"><div><p class="eyebrow">Важно знать</p><h2>Ответы на вопросы</h2></div></div><div class="faq-list">${site.faq.map(([question, answer]) => `<details><summary>${question}</summary><p>${answer}</p></details>`).join("")}</div></section>`;
+function faq() {
+  const items = [["Можно ли заказать кухню по фотографии?", "Да. По фотографии можно обсудить идею и планировку, а точные размеры и технические нюансы уточняем на замере."], ["Что можно сделать в MAX-боте?", "Выбрать форму и стиль кухни, отметить материалы и детали, добавить размеры и фото помещения."], ["Можно ли посмотреть материалы до заказа?", "Да. На встрече подберём фасады, столешницу, фурнитуру и оттенки под вашу задачу."], ["Делаете ли доставку и монтаж?", "Да. Изготавливаем кухню, доставляем на объект и устанавливаем."]];
+  return `<section class="section faq" id="faq"><div class="section-head compact"><div><p class="eyebrow">Ответы на вопросы</p><h2>Важное перед началом</h2></div></div><div class="faq-list">${items.map(([q, a]) => `<details><summary>${q}</summary><p>${a}</p></details>`).join("")}</div></section>`;
 }
 
-function renderContacts() {
-  return `<section class="section contacts" id="contacts"><div><p class="eyebrow">Связь</p><h2>Обсудим вашу кухню</h2><p>Опишите задачу в MAX-боте, а Артём посмотрит заявку и поможет определить следующий шаг.</p>${cta("Перейти в MAX", "website_contacts")}</div><dl class="contact-list"><div><dt>Телефон</dt><dd>${site.contacts.phone}</dd></div><div><dt>Адрес</dt><dd>${site.contacts.address}</dd></div><div><dt>Регион работы</dt><dd>${site.contacts.region}</dd></div><div><dt>Часы связи</dt><dd>${site.contacts.hours}</dd></div></dl></section>`;
+function contacts() {
+  return `<section class="section contacts" id="contacts"><div><p class="eyebrow">Контакты</p><h2>Обсудим вашу будущую кухню</h2><p>Работаю в Людинове и ближайших районах области.</p></div><dl><div><dt>Телефон</dt><dd>${site.contacts.phone}</dd></div><div><dt>Адрес</dt><dd>${site.contacts.address}</dd></div><div><dt>Регион работы</dt><dd>${site.contacts.region}</dd></div><div><dt>Время работы</dt><dd>${site.contacts.hours}</dd></div></dl></section>`;
 }
 
-function renderFooter() {
-  return `<footer class="footer"><p>${site.brand.name}</p><p>Кухни и мебель на заказ в Людинове и ближайших районах.</p></footer>`;
-}
-
-function renderApp() {
-  document.querySelector("#app").innerHTML = `${renderHeader()}<main>${renderHero()}${renderAdvantages()}${renderGallery()}${renderAbout()}${renderGenerator()}${renderStyles()}${renderProcess()}${renderFaq()}${renderContacts()}</main>${renderFooter()}<div class="lightbox" data-lightbox-modal hidden><button type="button" aria-label="Закрыть фото" data-lightbox-close>${icon.close}</button><img src="" alt=""><div><strong data-lightbox-title></strong></div></div>`;
+function render() {
+  document.querySelector("#app").innerHTML = `${header()}<main>${hero()}${proof()}${works()}${styles()}${botSection()}${about()}${process()}${faq()}${contacts()}</main><footer class="footer"><strong>${site.brand}</strong><span>Кухни и мебель на заказ в Людинове и ближайших районах.</span></footer><div class="mobile-max">${maxCta("Собрать кухню в MAX", "mobile_sticky")}</div><div class="lightbox" data-lightbox-modal hidden><button type="button" aria-label="Закрыть фото" data-lightbox-close>${icon.close}</button><img src="" alt=""><strong data-lightbox-title></strong></div>`;
 }
 
 function bindMenu() {
   const panel = document.querySelector("[data-mobile-panel]");
-  const open = document.querySelector("[data-menu-toggle]");
-  const close = document.querySelector("[data-menu-close]");
-  const setOpen = (value) => { panel.classList.toggle("is-open", value); document.body.classList.toggle("has-menu", value); };
-  open.addEventListener("click", () => setOpen(true));
-  close.addEventListener("click", () => setOpen(false));
+  const setOpen = (open) => { panel.classList.toggle("is-open", open); document.body.classList.toggle("has-menu", open); };
+  document.querySelector("[data-menu-toggle]").addEventListener("click", () => setOpen(true));
+  document.querySelector("[data-menu-close]").addEventListener("click", () => setOpen(false));
   panel.querySelectorAll("a").forEach((link) => link.addEventListener("click", () => setOpen(false)));
 }
 
-function bindWorkShowcase() {
-  const rail = document.querySelector("[data-work-carousel]");
-  const prev = document.querySelector("[data-carousel-prev]");
-  const next = document.querySelector("[data-carousel-next]");
-  const moreButton = document.querySelector("[data-more-works]");
-  const moreGrid = document.querySelector("[data-works-extra]");
-  if (!rail) return;
-  const cardStep = () => (rail.querySelector(".work-item")?.getBoundingClientRect().width || 360) + 16;
-  const scrollCarousel = (direction = 1) => {
-    const atEnd = rail.scrollLeft + rail.clientWidth >= rail.scrollWidth - 24;
-    if (direction > 0 && atEnd) rail.scrollTo({ left: 0, behavior: "smooth" });
-    else rail.scrollBy({ left: cardStep() * direction, behavior: "smooth" });
-  };
-  prev?.addEventListener("click", () => scrollCarousel(-1));
-  next?.addEventListener("click", () => scrollCarousel(1));
-  if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    let autoplay = window.setInterval(() => scrollCarousel(1), 4800);
-    const stop = () => { if (autoplay) { window.clearInterval(autoplay); autoplay = null; } };
-    const start = () => { if (!autoplay) autoplay = window.setInterval(() => scrollCarousel(1), 4800); };
-    rail.addEventListener("pointerenter", stop); rail.addEventListener("pointerleave", start); rail.addEventListener("focusin", stop); rail.addEventListener("focusout", start);
-  }
-  moreButton?.addEventListener("click", () => {
-    const isOpen = moreButton.getAttribute("aria-expanded") === "true";
-    moreButton.setAttribute("aria-expanded", String(!isOpen));
-    moreButton.querySelector("span").textContent = isOpen ? "Все работы" : "Скрыть работы";
-    moreGrid.hidden = isOpen;
-  });
-}
-
 function bindGallery() {
-  const modal = document.querySelector("[data-lightbox-modal]");
-  const image = modal.querySelector("img");
-  const title = modal.querySelector("[data-lightbox-title]");
-  document.addEventListener("click", (event) => {
-    const item = event.target.closest("[data-lightbox]");
-    if (!item) return;
-    image.src = item.dataset.lightbox; image.alt = item.dataset.title; title.textContent = item.dataset.title;
-    modal.hidden = false; document.body.classList.add("has-lightbox");
-  });
-  const close = () => { modal.hidden = true; image.removeAttribute("src"); document.body.classList.remove("has-lightbox"); };
-  modal.querySelector("[data-lightbox-close]").addEventListener("click", close);
-  modal.addEventListener("click", (event) => { if (event.target === modal) close(); });
-  document.addEventListener("keydown", (event) => { if (event.key === "Escape" && !modal.hidden) close(); });
+  const rail = document.querySelector("[data-work-carousel]");
+  const cardStep = () => (rail.querySelector(".work-card")?.getBoundingClientRect().width || 380) + 18;
+  const move = (direction) => { const atEnd = rail.scrollLeft + rail.clientWidth >= rail.scrollWidth - 24; rail.scrollTo({ left: direction > 0 && atEnd ? 0 : rail.scrollLeft + cardStep() * direction, behavior: "smooth" }); };
+  document.querySelector("[data-carousel-prev]").addEventListener("click", () => move(-1));
+  document.querySelector("[data-carousel-next]").addEventListener("click", () => move(1));
+  if (!matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    let timer = setInterval(() => move(1), 5200);
+    rail.addEventListener("pointerenter", () => { clearInterval(timer); timer = null; });
+    rail.addEventListener("pointerleave", () => { if (!timer) timer = setInterval(() => move(1), 5200); });
+  }
+  const reveal = document.querySelector("[data-more-works]"); const extra = document.querySelector("[data-works-extra]");
+  reveal.addEventListener("click", () => { const open = reveal.getAttribute("aria-expanded") === "true"; reveal.setAttribute("aria-expanded", String(!open)); reveal.querySelector("span").textContent = open ? "Показать все работы" : "Скрыть работы"; extra.hidden = open; });
 }
 
-function bindHeader() {
-  const header = document.querySelector("[data-header]");
-  const update = () => header.classList.toggle("is-scrolled", window.scrollY > 12);
-  update(); window.addEventListener("scroll", update, { passive: true });
+function bindLightbox() {
+  const modal = document.querySelector("[data-lightbox-modal]"); const image = modal.querySelector("img"); const title = modal.querySelector("[data-lightbox-title]");
+  document.querySelectorAll("[data-lightbox]").forEach((card) => card.addEventListener("click", () => { image.src = card.dataset.lightbox; image.alt = card.dataset.title; title.textContent = card.dataset.title; modal.hidden = false; document.body.classList.add("has-lightbox"); }));
+  const close = () => { modal.hidden = true; image.src = ""; document.body.classList.remove("has-lightbox"); };
+  modal.querySelector("[data-lightbox-close]").addEventListener("click", close); modal.addEventListener("click", (event) => { if (event.target === modal) close(); });
+  document.addEventListener("keydown", (event) => { if (event.key === "Escape") close(); });
 }
 
-renderApp();
-bindHeader();
-bindMenu();
-bindWorkShowcase();
-bindGallery();
+render(); bindMenu(); bindGallery(); bindLightbox();
