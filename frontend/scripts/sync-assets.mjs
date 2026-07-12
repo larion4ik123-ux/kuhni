@@ -1,4 +1,4 @@
-import { cpSync, existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { chmodSync, cpSync, existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -39,6 +39,7 @@ for (const fileName of ["max_icon.png", "max_wordmark.png"]) {
   const source = resolve(rawBrandRoot, fileName);
   if (existsSync(source)) {
     cpSync(source, resolve(brandOutputRoot, fileName));
+    chmodSync(resolve(brandOutputRoot, fileName), 0o644);
   }
 }
 

@@ -56,7 +56,7 @@ const site = {
 };
 
 const icon = {
-  max: `<span class="max-logo-mark" aria-hidden="true"><img src="${asset("media/brand/max_icon.png")}" alt=""></span>`,
+  max: `<span class="max-logo-mark" aria-hidden="true"><img src="${asset("media/brand/max_icon_card.webp")}" alt=""></span>`,
   arrow: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h12m-4.5-4.5L17 12l-4.5 4.5"/></svg>',
   left: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14.5 6-6 6 6 6"/></svg>',
   right: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9.5 6 6 6-6 6"/></svg>',
