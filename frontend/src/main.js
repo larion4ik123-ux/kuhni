@@ -8,10 +8,12 @@ const site = {
   brand: "Мебельный салон Интерьер",
   owner: "Артём Ермаков",
   contacts: {
-    phone: "+7 (XXX) XXX-XX-XX",
-    address: "—",
+    phone: "+7 (910) 543-47-04",
+    phoneHref: "+79105434704",
+    address: "Людиново, ул. Московская, 32",
     region: "Людиново и ближайшие районы области",
-    hours: "Пн-Пт: 9:00-18:00",
+    hours: "Пн-Пт: 10:00-19:00; Сб-Вс: 10:00-18:00",
+    yandexUrl: "https://yandex.ru/maps/org/interyer/196977992081/",
   },
   works: [
     ["work_4486", "Угловая кухня", "Современная кухня с зелёными нижними фасадами"],
@@ -37,6 +39,14 @@ const site = {
     ["Изготавливаем", "Собираем кухню в цехе под согласованный проект."],
     ["Доставляем", "Бережно привозим кухню на объект."],
     ["Устанавливаем", "Монтируем и сдаём готовую кухню."],
+  ],
+  reviews: [
+    ["Viking2092", "Капитальный ремонт: отметили консультацию, сборку в срок и работу Артёма с Романом."],
+    ["Лидия", "Заказывала кухню: понравились внимательное отношение, быстрая доставка и результат."],
+    ["Каролина Махаммедова", "Выбрали кухню и обеденную группу в одной гамме; отдельно отметила качество и консультантов."],
+    ["Елена Б.", "Большой выбор мебели в наличии и на заказ, внимательный персонал и своевременная доставка."],
+    ["Татьяна Морарь", "Отметила быструю доставку, квалифицированных сотрудников и соотношение цены и качества."],
+    ["Ольга Б.", "Постоянный покупатель: широкий ассортимент и помощь с выбором под задачу."],
   ],
 };
 
@@ -125,11 +135,12 @@ function faq() {
 }
 
 function contacts() {
-  return `<section class="section contacts" id="contacts"><div><p class="eyebrow">Контакты</p><h2>Обсудим вашу будущую кухню</h2><p>Работаю в Людинове и ближайших районах области.</p></div><dl><div><dt>Телефон</dt><dd>${site.contacts.phone}</dd></div><div><dt>Адрес</dt><dd>${site.contacts.address}</dd></div><div><dt>Регион работы</dt><dd>${site.contacts.region}</dd></div><div><dt>Время работы</dt><dd>${site.contacts.hours}</dd></div></dl></section>`;
+  const reviews = site.reviews.map(([author, text]) => `<article class="review-card"><div class="review-meta"><strong>${author}</strong><span aria-label="Оценка 5 из 5">★★★★★</span></div><p>${text}</p><a href="${site.contacts.yandexUrl}" target="_blank" rel="noreferrer">Отзыв на Яндекс Картах ${icon.arrow}</a></article>`).join("");
+  return `<section class="section contacts" id="contacts"><div class="contacts-heading"><p class="eyebrow">Контакты</p><h2>Обсудим вашу будущую кухню</h2><p>Работаю в Людинове и ближайших районах области.</p><a class="map-link" href="${site.contacts.yandexUrl}" target="_blank" rel="noreferrer">Открыть на Яндекс Картах ${icon.arrow}</a></div><div class="contacts-info"><dl><div><dt>Телефон</dt><dd><a href="tel:${site.contacts.phoneHref}">${site.contacts.phone}</a></dd></div><div><dt>Адрес</dt><dd>${site.contacts.address}</dd></div><div><dt>Регион работы</dt><dd>${site.contacts.region}</dd></div><div><dt>Время работы</dt><dd>${site.contacts.hours}</dd></div></dl><div class="map-frame"><iframe title="Мебельный салон Интерьер на Яндекс Картах" src="https://yandex.ru/map-widget/v1/?ll=34.443348%2C53.857858&mode=search&oid=196977992081&ol=biz&z=16" loading="lazy"></iframe></div></div><div class="reviews-block"><div class="reviews-title"><div><p class="eyebrow">Отзывы</p><h3>Нас рекомендуют на Яндекс Картах</h3></div><a class="map-link" href="${site.contacts.yandexUrl}" target="_blank" rel="noreferrer">Все отзывы ${icon.arrow}</a></div><div class="review-rail" aria-label="Отзывы клиентов">${reviews}</div></div></section>`;
 }
 
 function render() {
-  document.querySelector("#app").innerHTML = `${header()}<main>${hero()}${proof()}${works()}${styles()}${botSection()}${about()}${process()}${faq()}${contacts()}</main><footer class="footer"><strong>${site.brand}</strong><span>Кухни и мебель на заказ в Людинове и ближайших районах.</span></footer><div class="mobile-max">${maxCta("Собрать кухню в MAX", "mobile_sticky")}</div><div class="lightbox" data-lightbox-modal hidden><button type="button" aria-label="Закрыть фото" data-lightbox-close>${icon.close}</button><img src="" alt=""><strong data-lightbox-title></strong></div>`;
+  document.querySelector("#app").innerHTML = `${header()}<main>${hero()}${proof()}${works()}${styles()}${botSection()}${about()}${process()}${faq()}${contacts()}</main><footer class="footer"><strong>${site.brand}</strong><span>Кухни и мебель на заказ в Людинове и ближайших районах.</span></footer><div class="lightbox" data-lightbox-modal hidden><button type="button" aria-label="Закрыть фото" data-lightbox-close>${icon.close}</button><img src="" alt=""><strong data-lightbox-title></strong></div>`;
 }
 
 function bindMenu() {
