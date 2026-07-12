@@ -56,7 +56,7 @@ const site = {
 };
 
 const icon = {
-  max: `<img class="max-logo-icon" src="${asset("media/brand/max_icon.png")}" alt="" aria-hidden="true">`,
+  max: `<span class="max-logo-mark" aria-hidden="true"><img src="${asset("media/brand/max_icon.png")}" alt=""></span>`,
   arrow: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h12m-4.5-4.5L17 12l-4.5 4.5"/></svg>',
   left: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14.5 6-6 6 6 6"/></svg>',
   right: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9.5 6 6 6-6 6"/></svg>',
@@ -112,9 +112,9 @@ function workCard(work, mode = "") {
 }
 
 function works() {
-  const featured = site.works.slice(0, 8);
-  const extra = site.works.slice(8);
-  return `<section class="section works" id="works"><div class="section-head"><div><p class="eyebrow">Реальные проекты</p><h2>Наши работы</h2></div><p>Кухни, которые уже собраны и установлены.</p></div><div class="work-stage"><div class="carousel-controls"><button type="button" data-carousel-prev aria-label="Предыдущая работа">${icon.left}</button><button type="button" data-carousel-next aria-label="Следующая работа">${icon.right}</button></div><div class="work-rail" data-work-carousel>${featured.map((work) => workCard(work, "rail-card")).join("")}</div></div><button class="reveal-works" type="button" data-more-works aria-expanded="false"><span>Показать все работы</span>${icon.down}</button><div class="works-extra" data-works-extra hidden>${extra.map((work) => workCard(work)).join("")}</div></section>`;
+  const featured = site.works.slice(0, 6);
+  const extra = site.works.slice(6);
+  return `<section class="section works" id="works"><div class="section-head"><div><p class="eyebrow">Реальные проекты</p><h2>Наши работы</h2></div><p>Кухни, которые уже собраны и установлены.</p></div><div class="work-grid">${featured.map((work) => workCard(work)).join("")}</div><button class="reveal-works" type="button" data-more-works aria-expanded="false"><span>Показать ещё работы</span>${icon.down}</button><div class="works-extra" data-works-extra hidden>${extra.map((work) => workCard(work)).join("")}</div></section>`;
 }
 
 function layouts() {
@@ -132,7 +132,7 @@ function styles() {
 }
 
 function botSection() {
-  return `<section class="bot-section" id="bot"><div class="bot-inner"><div><p class="eyebrow">MAX-бот</p><h2>Соберите кухню своей мечты</h2><p>Ответьте на короткие вопросы, выберите материалы и добавьте фото помещения. Бот соберёт будущую кухню в понятный проект.</p>${maxCta("Открыть MAX-бот", "bot")}</div><ol><li><span>01</span><strong>Планировка и размеры</strong><p>Форма кухни, ширина, высота и площадь помещения.</p></li><li><span>02</span><strong>Стиль и детали</strong><p>Фасады, цвет, ручки, техника и ваши пожелания.</p></li><li><span>03</span><strong>Фото помещения</strong><p>Чтобы проект учитывал вашу реальную кухню.</p></li></ol></div></section>`;
+  return `<section class="bot-section" id="bot"><div class="bot-inner"><div><p class="eyebrow">MAX-бот</p><h2>Соберите кухню своей мечты</h2><p>Ответьте на короткие вопросы, выберите форму, стиль и детали, добавьте размеры и фото помещения. Так будущую кухню проще обсудить по существу.</p>${maxCta("Открыть MAX-бот", "bot")}</div><ol><li><span>01</span><strong>Планировка и размеры</strong><p>Форма кухни, ширина, высота и площадь помещения.</p></li><li><span>02</span><strong>Стиль и детали</strong><p>Стиль, цвет фасадов и ручки.</p></li><li><span>03</span><strong>Фото помещения</strong><p>Чтобы учесть вашу реальную кухню и планировку.</p></li></ol></div></section>`;
 }
 
 function about() {
@@ -144,13 +144,13 @@ function process() {
 }
 
 function faq() {
-  const items = [["Можно ли заказать кухню по фотографии?", "Да. По фотографии можно обсудить идею и планировку, а точные размеры и технические нюансы уточняем на замере."], ["Что можно сделать в MAX-боте?", "Выбрать форму и стиль кухни, отметить материалы и детали, добавить размеры и фото помещения."], ["Можно ли посмотреть материалы до заказа?", "Да. На встрече подберём фасады, столешницу, фурнитуру и оттенки под вашу задачу."], ["Делаете ли доставку и монтаж?", "Да. Изготавливаем кухню, доставляем на объект и устанавливаем."]];
+  const items = [["С чего начинается заказ кухни?", "С разговора о помещении и ваших задачах. Затем определяем планировку, приезжаю на замер и готовим проект."], ["Нужно ли заранее знать точные размеры?", "Нет. Достаточно примерных размеров или фотографии помещения. Точные привязки, коммуникации и уровни проверяем на замере."], ["Как понять, какая планировка подойдёт?", "Прямая, угловая или П-образная кухня выбирается по геометрии помещения, расположению окон, дверей и привычному сценарию готовки."], ["Что можно сделать в MAX-боте?", "Выбрать форму и стиль кухни, отметить материалы и детали, добавить размеры и фото помещения."], ["Можно ли посмотреть материалы до заказа?", "Да. На встрече подберём фасады, столешницу, фурнитуру и оттенки под вашу задачу."], ["От чего зависит срок изготовления?", "От планировки, выбранных фасадов, фурнитуры и сложности проекта. Реальный срок фиксируем после согласования проекта."], ["Делаете ли доставку и монтаж?", "Да. Изготавливаем кухню, доставляем на объект и устанавливаем."], ["Можно ли заказать не только кухню?", "Да. Изготавливаем также другую мебель на заказ, если она нужна в одном стиле с кухней."]];
   return `<section class="section faq" id="faq"><div class="section-head compact"><div><p class="eyebrow">Ответы на вопросы</p><h2>Важное перед началом</h2></div></div><div class="faq-list">${items.map(([q, a]) => `<details><summary>${q}</summary><p>${a}</p></details>`).join("")}</div></section>`;
 }
 
 function contacts() {
-  const reviews = site.reviews.map(([author, text]) => `<article class="review-card"><div class="review-meta"><strong>${author}</strong><span aria-label="Оценка 5 из 5">★★★★★</span></div><p>${text}</p><a href="${site.contacts.yandexUrl}" target="_blank" rel="noreferrer">Отзыв на Яндекс Картах ${icon.arrow}</a></article>`).join("");
-  return `<section class="section contacts" id="contacts"><div class="contacts-heading"><p class="eyebrow">Контакты</p><h2>Обсудим вашу будущую кухню</h2><p>Работаю в Людинове и ближайших районах области.</p><a class="map-link" href="${site.contacts.yandexUrl}" target="_blank" rel="noreferrer">Открыть на Яндекс Картах ${icon.arrow}</a></div><div class="contacts-info"><dl><div><dt>Телефон</dt><dd><a href="tel:${site.contacts.phoneHref}">${site.contacts.phone}</a></dd></div><div><dt>Адрес</dt><dd>${site.contacts.address}</dd></div><div><dt>Регион работы</dt><dd>${site.contacts.region}</dd></div><div><dt>Время работы</dt><dd>${site.contacts.hours}</dd></div></dl><div class="map-frame"><iframe title="Мебельный салон Интерьер на Яндекс Картах" src="https://yandex.ru/map-widget/v1/?ll=34.443348%2C53.857858&mode=search&oid=196977992081&ol=biz&z=16" loading="lazy"></iframe></div></div><div class="reviews-block"><div class="reviews-title"><div><p class="eyebrow">Отзывы</p><h3>Нас рекомендуют на Яндекс Картах</h3></div><a class="map-link" href="${site.contacts.yandexUrl}" target="_blank" rel="noreferrer">Все отзывы ${icon.arrow}</a></div><div class="review-rail" aria-label="Отзывы клиентов">${reviews}</div></div></section>`;
+  const reviews = site.reviews.map(([author, text]) => `<article class="review-card"><span class="review-quote" aria-hidden="true">“</span><div class="review-meta"><strong>${author}</strong><span aria-label="Оценка 5 из 5">★★★★★</span></div><p>${text}</p><a href="${site.contacts.yandexUrl}" target="_blank" rel="noreferrer">Читать на Яндекс Картах ${icon.arrow}</a></article>`).join("");
+  return `<section class="section contacts" id="contacts"><div class="contacts-heading"><p class="eyebrow">Контакты</p><h2>Обсудим вашу будущую кухню</h2><p>Работаю в Людинове и ближайших районах области.</p><a class="map-link" href="${site.contacts.yandexUrl}" target="_blank" rel="noreferrer">Открыть на Яндекс Картах ${icon.arrow}</a></div><div class="contacts-info"><dl><div><dt>Телефон</dt><dd><a href="tel:${site.contacts.phoneHref}">${site.contacts.phone}</a></dd></div><div><dt>Адрес</dt><dd>${site.contacts.address}</dd></div><div><dt>Регион работы</dt><dd>${site.contacts.region}</dd></div><div><dt>Время работы</dt><dd>${site.contacts.hours}</dd></div></dl><div class="map-frame"><iframe title="Мебельный салон Интерьер на Яндекс Картах" src="https://yandex.ru/map-widget/v1/?ll=34.443348%2C53.857858&mode=search&oid=196977992081&ol=biz&z=16" loading="lazy"></iframe></div></div><div class="reviews-block"><div class="reviews-title"><div><p class="eyebrow">Отзывы клиентов</p><h3>Нас рекомендуют<br>на Яндекс Картах</h3></div><div class="reviews-rating"><strong>4.9</strong><span>★★★★★</span><small>30 оценок</small></div><div class="review-actions"><div class="review-controls"><button type="button" data-review-prev aria-label="Предыдущий отзыв">${icon.left}</button><button type="button" data-review-next aria-label="Следующий отзыв">${icon.right}</button></div><a class="map-link" href="${site.contacts.yandexUrl}" target="_blank" rel="noreferrer">Все отзывы ${icon.arrow}</a></div></div><div class="review-rail" data-review-carousel aria-label="Отзывы клиентов">${reviews}</div></div></section>`;
 }
 
 function render() {
@@ -166,18 +166,16 @@ function bindMenu() {
 }
 
 function bindGallery() {
-  const rail = document.querySelector("[data-work-carousel]");
-  const cardStep = () => (rail.querySelector(".work-card")?.getBoundingClientRect().width || 380) + 18;
-  const move = (direction) => { const atEnd = rail.scrollLeft + rail.clientWidth >= rail.scrollWidth - 24; rail.scrollTo({ left: direction > 0 && atEnd ? 0 : rail.scrollLeft + cardStep() * direction, behavior: "smooth" }); };
-  document.querySelector("[data-carousel-prev]").addEventListener("click", () => move(-1));
-  document.querySelector("[data-carousel-next]").addEventListener("click", () => move(1));
-  if (!matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    let timer = setInterval(() => move(1), 5200);
-    rail.addEventListener("pointerenter", () => { clearInterval(timer); timer = null; });
-    rail.addEventListener("pointerleave", () => { if (!timer) timer = setInterval(() => move(1), 5200); });
-  }
   const reveal = document.querySelector("[data-more-works]"); const extra = document.querySelector("[data-works-extra]");
-  reveal.addEventListener("click", () => { const open = reveal.getAttribute("aria-expanded") === "true"; reveal.setAttribute("aria-expanded", String(!open)); reveal.querySelector("span").textContent = open ? "Показать все работы" : "Скрыть работы"; extra.hidden = open; });
+  reveal.addEventListener("click", () => { const open = reveal.getAttribute("aria-expanded") === "true"; reveal.setAttribute("aria-expanded", String(!open)); reveal.querySelector("span").textContent = open ? "Показать ещё работы" : "Скрыть дополнительные работы"; extra.hidden = open; });
+}
+
+function bindReviews() {
+  const rail = document.querySelector("[data-review-carousel]");
+  const step = () => (rail.querySelector(".review-card")?.getBoundingClientRect().width || 380) + 18;
+  const move = (direction) => { const atEnd = rail.scrollLeft + rail.clientWidth >= rail.scrollWidth - 24; rail.scrollTo({ left: direction > 0 && atEnd ? 0 : Math.max(0, rail.scrollLeft + step() * direction), behavior: "smooth" }); };
+  document.querySelector("[data-review-prev]").addEventListener("click", () => move(-1));
+  document.querySelector("[data-review-next]").addEventListener("click", () => move(1));
 }
 
 function bindLightbox() {
@@ -188,4 +186,4 @@ function bindLightbox() {
   document.addEventListener("keydown", (event) => { if (event.key === "Escape") close(); });
 }
 
-render(); bindMenu(); bindGallery(); bindLightbox();
+render(); bindMenu(); bindGallery(); bindReviews(); bindLightbox();
