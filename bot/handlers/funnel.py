@@ -145,13 +145,7 @@ async def _send_question(
     state: FSMContext,
 ) -> None:
     if question is None:
-        sent = await adapter.send_text(
-            chat_id,
-            "Подбор собран. Я передам его Артёму, чтобы обсудить следующий шаг по вашему проекту.",
-        )
-        await state.set_state(FunnelStates.waiting_contact)
-        await state.update_data(session_id=session.id)
-        await _remember_cleanup_message(state, sent)
+        await _finalize_session(db, adapter, chat_id, session, state)
         return
 
     session.current_question_id = question.id
@@ -214,6 +208,57 @@ async def _send_question(
     await state.set_state(FunnelStates.waiting_text)
     await state.update_data(session_id=session.id, question_id=question.id)
     await _remember_cleanup_message(state, sent)
+
+
+async def _finalize_session(
+    db: AsyncSession,
+    adapter: TelegramAdapter,
+    chat_id: int,
+    session: FunnelSession,
+    state: FSMContext,
+) -> None:
+    """Create one completed lead only after the complete brief is confirmed."""
+    if session.status == "completed":
+        await adapter.send_text(chat_id, "Этот подбор уже передан Артёму.")
+        await state.clear()
+        return
+
+    settings = get_settings()
+    gen_service = GenerationService(db, GenerationJobRepository(db), JobRepository(db), settings)
+    selection = gen_service.build_selection_summary(await gen_service._get_session_answers(session.id))
+    lead_service = LeadService(db, LeadRepository(db), LeadStatusHistoryRepository(db))
+    lead = await lead_service.create_lead_from_session(
+        session_id=session.id,
+        user_id=session.user_id,
+        source=session.source,
+        selection_description=selection.text,
+    )
+
+    manager_notified = False
+    if isinstance(lead, Lead) and settings.MANAGER_CHAT_IDS:
+        try:
+            await NotifyService(adapter, settings.MANAGER_CHAT_IDS).notify_new_lead(lead)
+            manager_notified = True
+        except Exception:  # noqa: BLE001
+            logger.exception("Could not notify managers about lead %s", lead.id)
+
+    generation = await gen_service.create_job(
+        lead_id=lead.id if isinstance(lead, Lead) else None,
+        session_id=session.id,
+        user_id=session.user_id,
+    )
+    session.status = "completed"
+    db.add(session)
+    await db.flush()
+    await state.clear()
+
+    status = "Заявка передана Артёму." if manager_notified else "Заявка сохранена для Артёма."
+    visual = " Визуальный вариант поставлен в очередь." if generation else ""
+    await adapter.send_text(
+        chat_id,
+        f"Готово! {status} Он увидит размеры, подбор и фото помещения и свяжется с вами.{visual}",
+        reply_markup=ReplyKeyboardRemove(),
+    )
 
 
 def _source_from_start(message: Message) -> str:
@@ -383,44 +428,15 @@ async def contact_answer(message: Message, db: AsyncSession, state: FSMContext) 
             ),
         )
 
-    settings = get_settings()
-    gen_service = GenerationService(db, GenerationJobRepository(db), JobRepository(db), settings)
-    selection = gen_service.build_selection_summary(await gen_service._get_session_answers(session.id))
-    lead_service = LeadService(db, LeadRepository(db), LeadStatusHistoryRepository(db))
-    lead = await lead_service.create_lead_from_session(
-        session_id=session.id,
-        user_id=session.user_id,
-        source=session.source,
-        selection_description=selection.text,
-    )
-    manager_notified = False
-    if isinstance(lead, Lead) and settings.MANAGER_CHAT_IDS:
-        try:
-            await NotifyService(
-                TelegramAdapter(message.bot),
-                settings.MANAGER_CHAT_IDS,
-            ).notify_new_lead(lead)
-            manager_notified = True
-        except Exception:  # noqa: BLE001
-            logger.exception("Could not notify managers about lead %s", lead.id)
-
-    generation = await gen_service.create_job(
-        lead_id=lead.id if isinstance(lead, Lead) else None,
-        session_id=session.id,
-        user_id=session.user_id,
-    )
-    session.status = "completed"
-    db.add(session)
     await _cleanup_step_messages(message, state, delete_user_message=True)
     await state.clear()
-    lead_status_text = (
-        "Заявка передана администратору."
-        if manager_notified
-        else "Заявка сохранена для администратора."
-    )
-    await message.answer(
-        f"Спасибо! {lead_status_text} Визуализация поставлена в очередь; менеджер увидит подбор и свяжется с вами."
-        if generation
-        else f"Спасибо! {lead_status_text} Менеджер увидит подбор и свяжется с вами.",
-        reply_markup=ReplyKeyboardRemove(),
+    question = await db.get(FunnelQuestion, question_id) if question_id else None
+    service = await _funnel_service(db)
+    await _send_question(
+        db,
+        TelegramAdapter(message.bot),
+        message.chat.id,
+        session,
+        await service.get_next_question(session, question),
+        state,
     )

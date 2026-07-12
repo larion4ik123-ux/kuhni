@@ -11,7 +11,15 @@ from typing import TYPE_CHECKING
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from backend.app.models import FunnelAnswer, FunnelOption, FunnelQuestion, GenerationJob, Job, MediaFile, UserContact
+from backend.app.models import (
+    FunnelAnswer,
+    FunnelOption,
+    FunnelQuestion,
+    GenerationJob,
+    Job,
+    MediaFile,
+    UserContact,
+)
 from shared.constants import AI_DEFAULT_MASTER_PROMPT, AI_KITCHEN_REFERENCE_EXAMPLES
 from shared.schemas import SelectionSummary
 
@@ -26,9 +34,9 @@ class GenerationService:
     def __init__(
         self,
         db: AsyncSession,
-        gen_repo: "GenerationJobRepository",
-        job_repo: "JobRepository",
-        settings: "Settings",
+        gen_repo: GenerationJobRepository,
+        job_repo: JobRepository,
+        settings: Settings,
     ) -> None:
         self._db = db
         self._gen_repo = gen_repo
@@ -99,7 +107,19 @@ class GenerationService:
                 parts[key] = f"{title}: {text}"
 
         # Собираем в естественный порядок
-        order = ["form", "style", "color", "facade", "handle", "countertop", "hardware", "budget"]
+        order = [
+            "width",
+            "height",
+            "area",
+            "form",
+            "style",
+            "color",
+            "facade",
+            "handle",
+            "countertop",
+            "hardware",
+            "budget",
+        ]
         ordered_parts = []
         for key in order:
             if key in parts:
@@ -129,8 +149,8 @@ class GenerationService:
         # Параметры из ответов
         params: list[str] = []
         for ans in answers:
-            if ans.get("key") == "size" and ans.get("value_text"):
-                params.append(f"Размер помещения: {ans['value_text']}")
+            if ans.get("key") in {"size", "width", "height", "area"} and ans.get("value_text"):
+                params.append(f"{ans['question_title']}: {ans['value_text']}")
             if ans.get("key") == "room_type" and ans.get("option_codes"):
                 params.append(f"Тип помещения: {', '.join(ans['option_codes'])}")
             if ans.get("key") == "wishes" and ans.get("value_text"):
