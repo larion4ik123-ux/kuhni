@@ -21,6 +21,14 @@ const site = {
     ["Лидия", "Понравились внимательное отношение, быстрая доставка и результат."],
     ["Каролина Махаммедова", "Отдельно отметила качество мебели и внимательную работу консультантов."],
     ["Елена Б.", "Отметила большой выбор, внимательный подход и своевременную доставку."],
+    ["Оксана Садкевич", "Встроенный шкаф изготовили и установили быстро и качественно."],
+    ["Кира Д.", "Помогли с эскизом кухни, материалами и цветом. Проект выполнили качественно и в срок."],
+    ["Светлана Пономаренко", "Не первый раз приобретают здесь мебель. Доставку и сборку оценили на отлично."],
+    ["Татьяна Морарь", "Отметила быструю доставку, квалифицированных сотрудников и хорошее соотношение цены и качества."],
+    ["Ольга Б.", "Понравились широкий ассортимент и внимательные сотрудники, которые помогают с выбором."],
+    ["Екатерина", "Заказывает мебель в «Интерьере» не первый год и отмечает качество и скорость работы."],
+    ["Марина Д.", "Отметила качество мебели, большой ассортимент и компетентных сотрудников."],
+    ["Галина", "Понравились большой выбор мебели и расцветок, а также отзывчивые продавцы."],
   ],
 };
 
@@ -29,6 +37,8 @@ const icon = {
   arrow: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h12m-4.5-4.5L17 12l-4.5 4.5"/></svg>',
   menu: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>',
   close: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg>',
+  previous: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 5-7 7 7 7"/></svg>',
+  next: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg>',
 };
 
 function kitchenImage(id, variant = "card") {
@@ -80,7 +90,7 @@ function about() {
 }
 
 function reviews() {
-  return `<section class="reviews" id="reviews"><div class="section-title"><p class="eyebrow">Отзывы</p><h2>Нас рекомендуют</h2><a href="${site.yandexUrl}" target="_blank" rel="noreferrer">4.9 на Яндекс Картах · 30 оценок ${icon.arrow}</a></div><div class="review-grid">${site.reviews.map(([author, text]) => `<article><div><strong>${author}</strong><span>★★★★★</span></div><p>${text}</p></article>`).join("")}</div></section>`;
+  return `<section class="reviews" id="reviews"><div class="section-title"><p class="eyebrow">Отзывы</p><h2>Нас рекомендуют</h2><a href="${site.yandexUrl}" target="_blank" rel="noreferrer">Отзывы на Яндекс Картах ${icon.arrow}</a></div><div class="review-carousel"><div class="review-grid" data-review-track>${site.reviews.map(([author, text]) => `<article><div><strong>${author}</strong><span aria-label="5 из 5">★★★★★</span></div><p>${text}</p></article>`).join("")}</div><div class="review-controls" aria-label="Листать отзывы"><button type="button" aria-label="Предыдущие отзывы" data-review-previous>${icon.previous}</button><button type="button" aria-label="Следующие отзывы" data-review-next>${icon.next}</button></div></div></section>`;
 }
 
 function contacts() {
@@ -107,4 +117,15 @@ function bindLightbox() {
   document.addEventListener("keydown", (event) => { if (event.key === "Escape") close(); });
 }
 
-render(); bindMenu(); bindLightbox();
+function bindReviews() {
+  const track = document.querySelector("[data-review-track]");
+  const scrollReviews = (direction) => {
+    const card = track.querySelector("article");
+    const gap = parseFloat(getComputedStyle(track).columnGap) || 16;
+    track.scrollBy({ left: direction * ((card?.getBoundingClientRect().width || track.clientWidth) + gap), behavior: "smooth" });
+  };
+  document.querySelector("[data-review-previous]").addEventListener("click", () => scrollReviews(-1));
+  document.querySelector("[data-review-next]").addEventListener("click", () => scrollReviews(1));
+}
+
+render(); bindMenu(); bindLightbox(); bindReviews();
