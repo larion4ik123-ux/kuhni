@@ -35,7 +35,7 @@ for (const directory of directories) {
 
 const brandOutputRoot = resolve(outputRoot, "brand");
 mkdirSync(brandOutputRoot, { recursive: true });
-for (const fileName of ["max_icon.png", "max_wordmark.png"]) {
+for (const fileName of ["max_icon.png", "max_wordmark.png", "logo_interier_header.svg"]) {
   const source = resolve(rawBrandRoot, fileName);
   if (existsSync(source)) {
     cpSync(source, resolve(brandOutputRoot, fileName));

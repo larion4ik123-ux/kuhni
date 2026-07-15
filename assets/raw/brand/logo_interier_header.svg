@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 224 104" role="img" aria-labelledby="title desc">
+  <title id="title">Мебельный салон Интерьер</title>
+  <desc id="desc">Логотип мебельного салона Интерьер для тёмной шапки сайта</desc>
+  <g font-family="Arial, Helvetica, sans-serif">
+    <text x="2" y="19" fill="#e44a3d" font-size="17" font-weight="700">МЕБЕЛЬНЫЙ САЛОН</text>
+    <text x="0" y="60" fill="#ffffff" font-size="39" font-weight="800">ИНТЕРЬЕР</text>
+  </g>
+  <g transform="translate(2 71)" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4">
+    <g stroke="#e44a3d">
+      <rect x="0" y="0" width="29" height="27" rx="2"/>
+      <path d="M6 5v17M17 5v17M6 19h17"/>
+    </g>
+    <g transform="translate(45)" stroke="#ffffff">
+      <rect x="0" y="8" width="31" height="18" rx="3"/>
+      <path d="M5 8V4h21v4M7 17h17M5 26v2M26 26v2"/>
+    </g>
+    <g transform="translate(92)" stroke="#e44a3d">
+      <rect x="0" y="0" width="29" height="27" rx="2"/>
+      <path d="M6 7h17M6 14h17M6 21h17"/>
+    </g>
+    <g transform="translate(137)" stroke="#ffffff">
+      <rect x="0" y="0" width="31" height="27" rx="2"/>
+      <path d="M5 5h21v17H5zM15.5 5v17M9 9v4M22 9v4"/>
+    </g>
+    <g transform="translate(184)" stroke="#e44a3d">
+      <rect x="0" y="0" width="31" height="27" rx="2"/>
+      <path d="M5 18V9M26 18V9M5 14h21M8 9h15M8 18v5M23 18v5"/>
+    </g>
+  </g>
+</svg>

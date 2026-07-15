@@ -50,7 +50,7 @@ const navItems = [["#works", "Работы"], ["#about", "Обо мне"], ["#re
 const nav = () => navItems.map(([href, label]) => `<a href="${href}">${label}</a>`).join("");
 
 function header() {
-  return `<header class="site-header"><a class="brand" href="#top" aria-label="${site.brand}">${picture({ webp: "media/brand/logo_interier_cropped_card.webp", jpg: "media/brand/logo_interier_cropped_card.jpg", alt: "Логотип мебельного салона Интерьер", className: "brand-logo", loading: "eager" })}</a><nav class="desktop-nav" aria-label="Основная навигация">${nav()}</nav>${maxCta("Перейти в MAX", "header", "header-cta")}<button class="menu-button" type="button" aria-label="Открыть меню" data-menu-toggle>${icon.menu}</button><div class="mobile-panel" data-mobile-panel><button class="menu-close" type="button" aria-label="Закрыть меню" data-menu-close>${icon.close}</button><nav aria-label="Мобильная навигация">${nav()}</nav>${maxCta("Перейти в MAX", "mobile_menu")}</div></header>`;
+  return `<header class="site-header"><a class="brand" href="#top" aria-label="${site.brand}"><img class="brand-logo" src="${asset("media/brand/logo_interier_header.svg")}" alt="Мебельный салон Интерьер"></a><nav class="desktop-nav" aria-label="Основная навигация">${nav()}</nav>${maxCta("Перейти в MAX", "header", "header-cta")}<button class="menu-button" type="button" aria-label="Открыть меню" data-menu-toggle>${icon.menu}</button><div class="mobile-panel" data-mobile-panel><button class="menu-close" type="button" aria-label="Закрыть меню" data-menu-close>${icon.close}</button><nav aria-label="Мобильная навигация">${nav()}</nav>${maxCta("Перейти в MAX", "mobile_menu")}</div></header>`;
 }
 
 function hero() {
