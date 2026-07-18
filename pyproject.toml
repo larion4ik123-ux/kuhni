@@ -42,6 +42,9 @@ postgres = [
     "psycopg2-binary>=2.9",
 ]
 
+[tool.setuptools.packages.find]
+include = ["backend*", "bot*", "shared*", "worker*"]
+
 [tool.ruff]
 line-length = 100
 target-version = "py312"
