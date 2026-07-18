@@ -1,120 +1,105 @@
-# DEPLOYMENT
+# Deployment
 
-Два сценария. Подробности — ниже.
+Проект публикуется в двух местах:
 
-## Этап 1: GitHub Pages (сайт) + VPS (всё остальное)
+- основной сайт: `https://194-147-78-106.sslip.io/`;
+- резервная демонстрация: `https://larion4ik123-ux.github.io/kuhni/`.
 
-```
-GitHub Pages:  https://USERNAME.github.io/REPOSITORY/   ← frontend/dist
-VPS (Ubuntu 24.04, 1 CPU/1ГБ/20ГБ):
-  kitchen-api.service     Uvicorn  :8000   (API + админка)
-  kitchen-bot.service     aiogram polling
-  kitchen-worker.service  generation + broadcast workers
-  SQLite:  backend/data/kitchen.db (WAL)
-  Медиа:   backend/media/
-Nginx (этап 2) / прямой порт (этап 1 для API)
-```
+MAX-бот работает на основном VPS через HTTPS webhook. GitHub Pages содержит
+только статическую копию сайта и не принимает webhook.
 
-### Frontend → GitHub Pages
-
-1. В репозитории GitHub: **Settings → Pages → Source: GitHub Actions**.
-2. Запушь в `main` — сработает `.github/workflows/deploy-pages.yml`.
-3. Workflow собирает `frontend/` с `base` = `/<REPOSITORY>/` (учитывает имя репо)
-   и публикует `dist` через `actions/upload-pages-artifact` + `actions/deploy-pages`.
-4. `VITE_API_BASE_URL` и `VITE_TELEGRAM_BOT_URL` — в Secrets репозитория
-   (переменные сборки). Не хранить секреты во frontend.
-5. Сайт обращается к API на VPS; при недоступности API — fallback
-   (статичный контент + сообщение «оставьте заявку в боте»).
-
-### VPS — установка
+## Сборка frontend
 
 ```bash
-# 1. Система
-sudo apt update && sudo apt install -y python3.12 python3.12-venv nginx git
-git clone <repo> /opt/kitchen && cd /opt/kitchen
+npm ci --prefix frontend
+npm run build --prefix frontend
+```
 
-# 2. Окружение
-python3.12 -m venv .venv && source .venv/bin/activate
-pip install -e .
+Скрипт `prebuild` переносит оптимизированные изображения в
+`frontend/public/media`. Содержимое `frontend/dist` копируется:
 
-# 3. Конфиг
-cp .env.example .env
-# Заполнить: SECRET_KEY, TELEGRAM_BOT_TOKEN, MANAGER_CHAT_IDS,
-#            AI_API_KEY (polza.ai), VITE_* (если собираешь сайт здесь)
+- в `/var/www/interier/` на VPS;
+- в ветку `gh-pages` для резервной демонстрации.
 
-# 4. БД и медиа
-alembic upgrade head
+На VPS каталог `frontend/dist/media/` также копируется без удаления файлов в
+`/opt/kitchen-platform/backend/media/`. Nginx отдаёт из него и изображения
+сайта, и сохранённые результаты генерации.
+
+## Установка backend на VPS
+
+```bash
+sudo apt update
+sudo apt install -y python3.12 python3.12-venv nginx
+
+cd /opt/kitchen-platform
+python3.12 -m venv .venv
+.venv/bin/pip install -e .
+
 mkdir -p backend/data backend/media backups
+sudo chown -R www-data:www-data backend/data backend/media backups
 
-# 5. Подготовить изображения (на машине с Pillow, затем скопировать assets/processed)
-python scripts/process_images.py
+sudo -u www-data .venv/bin/alembic upgrade head
+sudo -u www-data .venv/bin/python -m backend.app.seed
 
-# 6. systemd
-sudo cp deploy/systemd/*.service /etc/systemd/system/
+sudo cp deploy/systemd/kitchen-api.service /etc/systemd/system/
+sudo cp deploy/systemd/kitchen-worker.service /etc/systemd/system/
 sudo systemctl daemon-reload
-sudo systemctl enable --now kitchen-api kitchen-bot kitchen-worker
+sudo systemctl enable --now kitchen-api kitchen-worker
 ```
 
-### Проверка этапа 1
+Файл `.env` хранится с правами `root:www-data 640`. До подключения бота поля
+`MAX_BOT_TOKEN`, `MAX_BOT_URL`, `MAX_MANAGER_CHAT_IDS` и `AI_API_KEY` остаются
+пустыми. Пустые значения не заменяются тестовыми ключами.
 
-- `curl http://localhost:8000/api/health` → `{"status":"ok"}`
-- Админка: `http://<vps-ip>:8000/admin/login` (или через Nginx при этапе 2).
-- Бот: написать `/start` → воронка.
-- Сайт: `https://USERNAME.github.io/REPOSITORY/` → кнопки ведут в бота.
+## Подключение MAX
 
-## Этап 2: всё на VPS + Nginx + домен + MAX
+После получения токена и прямой ссылки на бота заполнить:
 
-1. **Домен:** A-запись → IP VPS. HTTPS — certbot/Let's Encrypt.
-2. **Frontend** собирается на VPS (или CI) с `VITE_API_BASE_URL=https://<домен>`
-   и `VITE_TELEGRAM_BOT_URL` (или `MAX_BOT_URL`). `dist` кладётся в
-   `/var/www/kitchen`.
-3. **Nginx** (см. `deploy/nginx/kitchen.conf`):
-   - `/` → `/var/www/kitchen` (статика)
-   - `/api` → `proxy_pass http://127.0.0.1:8000`
-   - `/admin` → `proxy_pass http://127.0.0.1:8000`
-   - `/media` → `alias /opt/kitchen/backend/media`
-4. **Бот:** при этапе 2 можно переключиться на webhook (Nginx → `/api/bot/webhook`)
-   или оставить polling. Смена — настройкой.
-5. **MAX:** реализовать `MaxAdapter` (`bot/adapters/max_adapter.py`) по
-   интерфейсу `MessengerAdapter`. В `.env` выставить `MESSENGER=max`
-   (или оставить оба). Воронка/заявки/генерация не меняются.
-
-### Nginx-схема маршрутов
-
-```
-/                 → статика frontend/dist
-/api/*            → Uvicorn (FastAPI)
-/admin/*          → Uvicorn (FastAPI admin)
-/media/*          → файлы с диска (alias)
-/static/*         → статика админки (FastAPI StaticFiles)
+```dotenv
+MAX_BOT_TOKEN=...
+MAX_BOT_URL=https://max.ru/...
+MAX_WEBHOOK_URL=https://194-147-78-106.sslip.io/api/max/webhook
+MAX_WEBHOOK_SECRET=...
+MAX_MANAGER_CHAT_IDS=123456789
+AI_PROVIDER=openai_compatible
+AI_API_BASE_URL=https://polza.ai/api/v1
+AI_API_KEY=...
+AI_MODEL=bytedance/seedream-4.5
 ```
 
-## Перенос с GitHub Pages на VPS без переделки
-
-Достаточно:
-1. Собрать `frontend` с новыми `VITE_*` переменными.
-2. Разместить `dist` в `/var/www/kitchen`.
-3. Настроить Nginx.
-
-Компоненты frontend не переписываются — `base path` и API URL берутся из
-переменных сборки.
-
-## Оптимизация под 1 ГБ RAM
-
-- Один Uvicorn worker (`--workers 1`).
-- Worker — отдельный процесс, polling `jobs`.
-- SQLite WAL, `synchronous=NORMAL`.
-- Оригиналы изображений не хранятся в полном размере без лимита
-  (`MAX_UPLOAD_MB`, `fullscreen` ≤ 1920px).
-- Временные файлы генерации удаляются по `GENERATION_RETENTION_DAYS`.
-- Логи ротируются (`logrotate` / systemd журналирование).
-- ML-модели локально не загружаются — генерация в polza.ai.
-
-## Резервное копирование SQLite
+Затем зарегистрировать webhook и перезапустить сервисы:
 
 ```bash
-# cron, ежедневно
-sqlite3 backend/data/kitchen.db ".backup '$BACKUP_DIR/kitchen-$(date +%F).db'"
-find $BACKUP_DIR -mtime +$BACKUP_RETENTION_DAYS -delete
+sudo -u www-data .venv/bin/python -m bot.main --register-webhook
+sudo systemctl restart kitchen-api kitchen-worker
 ```
-WAL-режим позволяет бэкапить «на горячую».
+
+Frontend пересобирается с `VITE_MAX_BOT_URL`, после чего видимые MAX-кнопки
+становятся активными ссылками.
+
+## Nginx
+
+Конфигурация `deploy/nginx/interier-sslip.conf` обслуживает:
+
+```text
+/                 -> /var/www/interier
+/api/*            -> FastAPI на 127.0.0.1:8000
+/media/*          -> /opt/kitchen-platform/backend/media
+```
+
+Перед применением:
+
+```bash
+sudo nginx -t
+sudo systemctl reload nginx
+```
+
+## Проверка
+
+```bash
+curl https://194-147-78-106.sslip.io/api/health
+systemctl is-active kitchen-api kitchen-worker
+```
+
+До выдачи реальных секретов health должен вернуть `max_configured: false` и
+`ai_configured: false`. Это штатное безопасное состояние, а не ошибка.
