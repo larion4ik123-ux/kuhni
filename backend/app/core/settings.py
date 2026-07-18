@@ -3,9 +3,10 @@
 from __future__ import annotations
 
 from functools import lru_cache
+from typing import Annotated
 
 from pydantic import field_validator
-from pydantic_settings import BaseSettings, SettingsConfigDict
+from pydantic_settings import BaseSettings, NoDecode, SettingsConfigDict
 
 from shared.constants import AI_DEFAULT_MASTER_PROMPT
 
@@ -38,7 +39,7 @@ class Settings(BaseSettings):
     MAX_BOT_URL: str = ""
     MAX_WEBHOOK_URL: str = ""
     MAX_WEBHOOK_SECRET: str = ""
-    MAX_MANAGER_CHAT_IDS: list[int] = []
+    MAX_MANAGER_CHAT_IDS: Annotated[list[int], NoDecode] = []
 
     # --- AI-провайдер ---
     AI_PROVIDER: str = "mock"  # mock | openai_compatible
