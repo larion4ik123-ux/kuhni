@@ -1153,6 +1153,54 @@
       "is_real_work": false
     },
     {
+      "id": "owner_4993",
+      "source_path": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/raw/kitchens_real/owner_4993.jpg",
+      "category": "kitchens_real",
+      "orientation": "landscape",
+      "variants": {
+        "thumbnail": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/owner_4993_thumbnail.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/owner_4993_thumbnail.jpg",
+          "width": 400,
+          "height": 341
+        },
+        "card": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/owner_4993_card.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/owner_4993_card.jpg",
+          "width": 800,
+          "height": 683
+        },
+        "hero": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/owner_4993_hero.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/owner_4993_hero.jpg",
+          "width": 1123,
+          "height": 960
+        },
+        "fullscreen": {
+          "webp": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/owner_4993_fullscreen.webp",
+          "jpg": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/processed/kitchens_real/owner_4993_fullscreen.jpg",
+          "width": 1123,
+          "height": 960
+        }
+      },
+      "suggested_usage": "hero_owner",
+      "quality": "client_photo",
+      "suitable_for_hero": true,
+      "suitable_for_gallery": true,
+      "suitable_for_ai_reference": true,
+      "caption": "Артём Ермаков в салоне «Интерьер»",
+      "layout": "",
+      "style": "modern",
+      "primary_color": "gray",
+      "alt_text": "Артём Ермаков, основатель компании «Интерьер»",
+      "focus_point": {
+        "x": 0.5,
+        "y": 0.3
+      },
+      "display_order": 25,
+      "is_real_work": true
+    },
+    {
       "id": "owner_at_kitchen",
       "source_path": "/Users/luvlarion4ik/Desktop/Work/kuhni/assets/raw/kitchens_real/owner_at_kitchen.jpg",
       "category": "kitchens_real",
@@ -1197,7 +1245,7 @@
         "x": 0.45,
         "y": 0.45
       },
-      "display_order": 25,
+      "display_order": 26,
       "is_real_work": true
     },
     {
@@ -1245,7 +1293,7 @@
         "x": 0.5,
         "y": 0.5
       },
-      "display_order": 26,
+      "display_order": 27,
       "is_real_work": true
     },
     {
@@ -1293,7 +1341,7 @@
         "x": 0.5,
         "y": 0.5
       },
-      "display_order": 27,
+      "display_order": 28,
       "is_real_work": true
     },
     {
@@ -1341,7 +1389,7 @@
         "x": 0.5,
         "y": 0.48
       },
-      "display_order": 28,
+      "display_order": 29,
       "is_real_work": true
     },
     {
@@ -1389,7 +1437,7 @@
         "x": 0.5,
         "y": 0.46
       },
-      "display_order": 29,
+      "display_order": 30,
       "is_real_work": true
     },
     {
@@ -1437,7 +1485,7 @@
         "x": 0.5,
         "y": 0.45
       },
-      "display_order": 30,
+      "display_order": 31,
       "is_real_work": true
     },
     {
@@ -1485,7 +1533,7 @@
         "x": 0.5,
         "y": 0.42
       },
-      "display_order": 31,
+      "display_order": 32,
       "is_real_work": true
     },
     {
@@ -1533,7 +1581,7 @@
         "x": 0.52,
         "y": 0.45
       },
-      "display_order": 32,
+      "display_order": 33,
       "is_real_work": true
     },
     {
@@ -1581,7 +1629,7 @@
         "x": 0.52,
         "y": 0.45
       },
-      "display_order": 33,
+      "display_order": 34,
       "is_real_work": true
     },
     {
@@ -1629,7 +1677,7 @@
         "x": 0.52,
         "y": 0.45
       },
-      "display_order": 34,
+      "display_order": 35,
       "is_real_work": true
     },
     {
@@ -1677,7 +1725,7 @@
         "x": 0.52,
         "y": 0.46
       },
-      "display_order": 35,
+      "display_order": 36,
       "is_real_work": true
     },
     {
@@ -1725,7 +1773,7 @@
         "x": 0.48,
         "y": 0.45
       },
-      "display_order": 36,
+      "display_order": 37,
       "is_real_work": true
     },
     {
@@ -1773,7 +1821,7 @@
         "x": 0.5,
         "y": 0.45
       },
-      "display_order": 37,
+      "display_order": 38,
       "is_real_work": true
     },
     {
@@ -1821,7 +1869,7 @@
         "x": 0.5,
         "y": 0.46
       },
-      "display_order": 38,
+      "display_order": 39,
       "is_real_work": true
     },
     {
@@ -1869,7 +1917,7 @@
         "x": 0.5,
         "y": 0.42
       },
-      "display_order": 39,
+      "display_order": 40,
       "is_real_work": true
     },
     {
@@ -1917,7 +1965,7 @@
         "x": 0.5,
         "y": 0.45
       },
-      "display_order": 40,
+      "display_order": 41,
       "is_real_work": true
     },
     {
@@ -1965,7 +2013,7 @@
         "x": 0.5,
         "y": 0.45
       },
-      "display_order": 41,
+      "display_order": 42,
       "is_real_work": true
     },
     {
@@ -2013,7 +2061,7 @@
         "x": 0.5,
         "y": 0.46
       },
-      "display_order": 42,
+      "display_order": 43,
       "is_real_work": true
     },
     {
@@ -2061,7 +2109,7 @@
         "x": 0.5,
         "y": 0.45
       },
-      "display_order": 43,
+      "display_order": 44,
       "is_real_work": true
     },
     {
@@ -2109,7 +2157,7 @@
         "x": 0.5,
         "y": 0.45
       },
-      "display_order": 44,
+      "display_order": 45,
       "is_real_work": true
     },
     {
@@ -2157,7 +2205,7 @@
         "x": 0.5,
         "y": 0.48
       },
-      "display_order": 45,
+      "display_order": 46,
       "is_real_work": true
     },
     {
@@ -2205,7 +2253,7 @@
         "x": 0.5,
         "y": 0.46
       },
-      "display_order": 46,
+      "display_order": 47,
       "is_real_work": true
     },
     {
@@ -2253,7 +2301,7 @@
         "x": 0.5,
         "y": 0.46
       },
-      "display_order": 47,
+      "display_order": 48,
       "is_real_work": true
     },
     {
@@ -2301,7 +2349,7 @@
         "x": 0.5,
         "y": 0.5
       },
-      "display_order": 48,
+      "display_order": 49,
       "is_real_work": false
     },
     {
@@ -2349,7 +2397,7 @@
         "x": 0.5,
         "y": 0.5
       },
-      "display_order": 49,
+      "display_order": 50,
       "is_real_work": false
     }
   ]
