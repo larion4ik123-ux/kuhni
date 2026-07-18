@@ -2,10 +2,11 @@
 
 from __future__ import annotations
 
+import hmac
 from contextlib import asynccontextmanager
 from pathlib import Path
 
-from fastapi import Depends, FastAPI
+from fastapi import Depends, FastAPI, Header, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -13,6 +14,8 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from backend.app.core.database import async_engine, get_db, init_db
 from backend.app.core.settings import get_settings
 from backend.app.services.content import ContentService
+from bot.adapters.max import MaxAdapter
+from bot.handlers.max_funnel import MaxFunnelHandler
 
 
 @asynccontextmanager
@@ -48,7 +51,29 @@ app.add_middleware(
 @app.get("/api/health")
 async def health() -> dict:
     """Проверка работоспособности API."""
-    return {"status": "ok"}
+    return {
+        "status": "ok",
+        "max_configured": bool(settings.MAX_BOT_TOKEN and settings.MAX_WEBHOOK_SECRET),
+        "ai_configured": settings.AI_PROVIDER == "mock" or bool(settings.AI_API_KEY),
+    }
+
+
+@app.post("/api/max/webhook")
+async def max_webhook(
+    request: Request,
+    x_max_bot_api_secret: str | None = Header(default=None),
+    db: AsyncSession = db_dependency,
+) -> dict[str, bool]:
+    """Receive MAX updates, validate their shared secret and persist the funnel."""
+    expected = settings.MAX_WEBHOOK_SECRET
+    if not expected or not x_max_bot_api_secret or not hmac.compare_digest(
+        expected, x_max_bot_api_secret
+    ):
+        raise HTTPException(status_code=401, detail="Invalid MAX webhook secret")
+    update = await request.json()
+    await MaxFunnelHandler(db, MaxAdapter(settings), settings).handle_update(update)
+    await db.commit()
+    return {"ok": True}
 
 
 @app.get("/api/site-content")

@@ -3,16 +3,29 @@
 from __future__ import annotations
 
 import asyncio
+import hashlib
 import logging
+import mimetypes
 from datetime import UTC, datetime
+from pathlib import Path
 
 from sqlalchemy import select
 
 from backend.app.core.database import async_session_factory
 from backend.app.core.settings import get_settings
-from backend.app.models import GeneratedImage, GenerationJob, Job
+from backend.app.models import (
+    FunnelSession,
+    GeneratedImage,
+    GenerationJob,
+    Job,
+    Lead,
+    MediaFile,
+    MessengerAccount,
+)
 from backend.app.providers.factory import get_provider
-from shared.constants import WORKER_POLL_INTERVAL_SEC
+from backend.app.services.notify import NotifyService
+from bot.adapters.max import MaxAdapter
+from shared.constants import AI_RESULT_DISCLAIMER, WORKER_POLL_INTERVAL_SEC
 from shared.schemas import GenerationRequest
 
 logger = logging.getLogger(__name__)
@@ -67,11 +80,30 @@ async def _process_job(job: Job) -> None:
             generation.cost = result.cost
             generation.error = result.error
             generation.finished_at = datetime.now(UTC)
+            saved_paths: list[str] = []
             for index, image_path in enumerate(result.image_paths):
-                db.add(GeneratedImage(job_id=generation.id, media_file_id=None, variant_index=index))
+                path = Path(image_path)
+                content = path.read_bytes()
+                media = MediaFile(
+                    category="generated",
+                    original_filename=path.name,
+                    stored_path=str(path),
+                    mime=mimetypes.guess_type(path.name)[0] or "image/jpeg",
+                    size_bytes=len(content),
+                    sha256=hashlib.sha256(content).hexdigest(),
+                    is_real_work=False,
+                )
+                db.add(media)
+                await db.flush()
+                db.add(GeneratedImage(job_id=generation.id, media_file_id=media.id, variant_index=index))
+                generation.result_media_file_id = generation.result_media_file_id or media.id
+                saved_paths.append(str(path))
                 logger.info("Generated image for job %s: %s", generation.id, image_path)
-            current_job.status = "done"
-            current_job.error = None
+            current_job.status = "done" if result.status == "done" else "failed"
+            current_job.error = result.error
+            await db.flush()
+            if result.status == "done" and saved_paths:
+                await _deliver_result(db, generation, saved_paths[0], settings)
         except Exception as exc:  # noqa: BLE001
             logger.exception("Generation job failed")
             generation.status = "failed"
@@ -81,6 +113,27 @@ async def _process_job(job: Job) -> None:
             current_job.error = str(exc)
         db.add_all([generation, current_job])
         await db.commit()
+
+
+async def _deliver_result(db, generation: GenerationJob, image_path: str, settings) -> None:
+    """Send the locally persisted result to the MAX user and the project manager."""
+    if not settings.MAX_BOT_TOKEN:
+        logger.warning("MAX_BOT_TOKEN is empty; generated image was persisted but not sent")
+        return
+    session = await db.get(FunnelSession, generation.session_id) if generation.session_id else None
+    account = (
+        await db.get(MessengerAccount, session.messenger_account_id)
+        if session and session.messenger_account_id
+        else None
+    )
+    adapter = MaxAdapter(settings)
+    if account and account.messenger == "max":
+        await adapter.send_image(f"user:{account.account_id}", image_path, AI_RESULT_DISCLAIMER)
+    lead = await db.get(Lead, generation.lead_id) if generation.lead_id else None
+    if lead:
+        await NotifyService(adapter, settings.MAX_MANAGER_CHAT_IDS).notify_generation_ready(
+            lead, image_path
+        )
 
 
 async def run() -> None:

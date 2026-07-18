@@ -85,7 +85,6 @@ class MaterialOptionOut(BaseModel):
 
 class ContactsOut(BaseModel):
     phone: str | None = None
-    telegram_url: str | None = None
     max_url: str | None = None
     address: str | None = None
     region: str | None = None
@@ -105,7 +104,6 @@ class SiteContentOut(BaseModel):
     process_steps: list[ProcessStepOut] = Field(default_factory=list)
     materials: list[MaterialOptionOut] = Field(default_factory=list)
     contacts: ContactsOut = Field(default_factory=ContactsOut)
-    telegram_bot_url: str | None = None
     max_bot_url: str | None = None
     # флаг: показывать ли блок отзывов (только если есть реальные со ссылкой)
     show_reviews: bool = False

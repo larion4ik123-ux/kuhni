@@ -32,18 +32,13 @@ class Settings(BaseSettings):
     ADMIN_DEFAULT_PASSWORD: str = "admin"
     ADMIN_SESSION_MAX_AGE_HOURS: int = 12
 
-    # --- Telegram ---
-    TELEGRAM_BOT_TOKEN: str = ""
-    TELEGRAM_BOT_URL: str = ""
-    MANAGER_CHAT_IDS: list[int] = []
-    TELEGRAM_WEBHOOK_URL: str = ""
-
     # --- MAX (мессенджер) ---
-    MAX_API_URL: str = ""
+    MAX_API_URL: str = "https://platform-api2.max.ru"
     MAX_BOT_TOKEN: str = ""
     MAX_BOT_URL: str = ""
     MAX_WEBHOOK_URL: str = ""
     MAX_WEBHOOK_SECRET: str = ""
+    MAX_MANAGER_CHAT_IDS: list[int] = []
 
     # --- AI-провайдер ---
     AI_PROVIDER: str = "mock"  # mock | openai_compatible
@@ -75,10 +70,10 @@ class Settings(BaseSettings):
         extra="ignore",
     )
 
-    @field_validator("MANAGER_CHAT_IDS", mode="before")
+    @field_validator("MAX_MANAGER_CHAT_IDS", mode="before")
     @classmethod
     def _parse_manager_chat_ids(cls, value):
-        """MANAGER_CHAT_IDS may come as '123,456' from .env."""
+        """MAX_MANAGER_CHAT_IDS may come as '123,456' from .env."""
         if isinstance(value, str):
             return [
                 int(x.strip()) for x in value.split(",") if x.strip().lstrip("-").isdigit()

@@ -7,7 +7,7 @@ from typing import TYPE_CHECKING
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from backend.app.models import FunnelAnswer, FunnelQuestion, FunnelSession
+from backend.app.models import FunnelAnswer, FunnelOption, FunnelQuestion, FunnelSession
 from shared.schemas import AnswerPayload
 
 if TYPE_CHECKING:
@@ -20,8 +20,8 @@ class FunnelService:
     def __init__(
         self,
         db: AsyncSession,
-        question_repo: "FunnelQuestionRepository",
-        answer_repo: "FunnelAnswerRepository",
+        question_repo: FunnelQuestionRepository,
+        answer_repo: FunnelAnswerRepository,
     ) -> None:
         self._db = db
         self._question_repo = question_repo

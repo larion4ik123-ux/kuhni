@@ -6,8 +6,8 @@
 
 ```
 frontend/   Публичный статический сайт (Vite → dist)
-backend/    FastAPI: API, админпанель (Jinja2+HTMX), сервисы, провайдеры, модели
-bot/        Telegram-прототип и адаптер MAX Bot API
+backend/    FastAPI: API, MAX webhook, сервисы, провайдеры, модели
+bot/        MAX Bot API: транспорт, сценарий и регистрация webhook
 worker/     Фоновые задачи: AI-генерация и рассылки (polling таблицы jobs)
 shared/     Общие константы, enum, схемы
 assets/     Материалы клиента (raw — оригиналы, processed — варианты)
@@ -20,9 +20,8 @@ tests/      Тесты
 ## Архитектурный принцип
 
 Бизнес-логика живёт в `backend/app/services` и **мессенджер-независима**.
-Telegram — это адаптер, реализующий интерфейс `MessengerAdapter`
-(`bot/adapters/`). Это позволяет на этапе 2 заменить/дополнить Telegram на MAX
-через `MaxAdapter` без переписывания воронки, заявок и генерации.
+MAX работает через официальный HTTPS webhook. Сценарий сохраняется в SQLite,
+поэтому перезапуск сервера не сбрасывает ответы пользователя.
 
 AI-генерация подключается через интерфейс `ImageGenerationProvider`
 (`backend/app/providers/`): `MockGenerationProvider` (для разработки) и
@@ -52,7 +51,8 @@ alembic upgrade head
 
 # 5. Запуск
 uvicorn backend.app.main:app --reload          # API + админка
-python -m bot.main                              # Telegram-бот (polling)
+python -m bot.main                              # проверка токена MAX
+python -m bot.main --register-webhook           # регистрация webhook MAX
 python worker/generation_worker.py              # worker генерации
 python worker/broadcast_worker.py               # worker рассылок
 

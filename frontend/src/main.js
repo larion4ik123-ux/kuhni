@@ -64,7 +64,7 @@ function header() {
 }
 
 function hero() {
-  return `<section class="hero" id="top"><div class="hero-media">${picture({ ...kitchenImage("owner_4993", "hero"), alt: "Артём Ермаков в салоне Интерьер", className: "hero-picture", loading: "eager" })}</div><div class="hero-shade"></div><div class="hero-copy"><p class="eyebrow">Кухни и мебель на заказ</p><h1>Кухни на заказ<br>в Людинове</h1><p>Меня зовут Артём Ермаков. Лично отвечаю за каждый заказ: от замера до установки готовой кухни.</p><div class="hero-actions">${maxCta("Рассчитать кухню в MAX", "hero")}<a class="hero-phone" href="tel:${site.phoneHref}">${site.phone}</a></div></div></section>`;
+  return `<section class="hero" id="top"><div class="hero-media">${picture({ ...kitchenImage("owner_at_kitchen", "hero"), alt: "Артём Ермаков на фоне изготовленной кухни", className: "hero-picture", loading: "eager" })}</div><div class="hero-shade"></div><div class="hero-copy"><p class="eyebrow">Кухни и мебель на заказ</p><h1>Кухни на заказ<br>в Людинове</h1><p>Меня зовут Артём Ермаков. Лично отвечаю за каждый заказ: от замера до установки готовой кухни.</p><div class="hero-actions">${maxCta("Собрать кухню в MAX", "hero")}<a class="hero-phone" href="tel:${site.phoneHref}">${site.phone}</a></div></div></section>`;
 }
 
 function benefits() {
@@ -86,7 +86,7 @@ function works() {
 }
 
 function about() {
-  return `<section class="about" id="about"><div class="about-photo">${picture({ ...kitchenImage("owner_4993", "hero"), alt: "Артём Ермаков, основатель компании Интерьер", className: "about-picture" })}</div><div class="about-copy"><p class="eyebrow">Личный подход</p><h2>Я отвечаю за результат сам</h2><p>Я основатель компании «Интерьер». Беру проект в работу лично: приезжаю на замер, контролирую изготовление и участвую в установке.</p><blockquote>«Я ручаюсь за качество каждого изделия, которое выходит из нашего цеха. Если что-то не понравится, я решу вопрос лично».</blockquote><a class="phone-link" href="tel:${site.phoneHref}">${site.phone}</a></div></section>`;
+  return `<section class="about" id="about"><div class="about-photo">${picture({ ...kitchenImage("owner_in_workshop_v2", "hero"), alt: "Артём Ермаков в мебельном цехе", className: "about-picture" })}</div><div class="about-copy"><p class="eyebrow">Обо мне</p><h2>Я отвечаю за результат сам</h2><p>Меня зовут Артём Ермаков, я основатель компании «Интерьер» в Людинове. Больше 10 лет мы изготавливаем кухни и мебель на заказ, а я лично веду каждый проект от первого замера до установки.</p><blockquote>«Я ручаюсь за качество каждого изделия, которое выходит из нашего цеха. Если что-то не понравится, я решу вопрос лично».</blockquote><a class="phone-link" href="tel:${site.phoneHref}">${site.phone}</a></div></section>`;
 }
 
 function reviews() {

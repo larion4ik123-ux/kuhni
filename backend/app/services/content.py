@@ -7,8 +7,17 @@ from typing import TYPE_CHECKING
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from backend.app.models import FAQItem, GalleryItem, ProcessStep, Review, SiteBlock, UserContact
-from shared.schemas import ContactsOut, FAQItemOut, GalleryItemOut, MaterialOptionOut, ProcessStepOut, ReviewOut, SiteBlockOut, SiteContentOut
+from backend.app.models import FAQItem, GalleryItem, ProcessStep, Review, SiteBlock
+from shared.schemas import (
+    ContactsOut,
+    FAQItemOut,
+    GalleryItemOut,
+    MaterialOptionOut,
+    ProcessStepOut,
+    ReviewOut,
+    SiteBlockOut,
+    SiteContentOut,
+)
 
 if TYPE_CHECKING:
     from backend.app.core.settings import Settings
@@ -17,7 +26,7 @@ if TYPE_CHECKING:
 class ContentService:
     """Агрегирует публичный контент сайта."""
 
-    def __init__(self, db: AsyncSession, settings: "Settings") -> None:
+    def __init__(self, db: AsyncSession, settings: Settings) -> None:
         self._db = db
         self._settings = settings
 
@@ -30,21 +39,21 @@ class ContentService:
         - faq: видимые вопросы
         - process_steps: этапы работы
         - materials: опции материалов (из funnel_options с generation_key)
-        - contacts: телефон, Telegram/MAX, адрес
-        - telegram_bot_url/max_bot_url: из настроек
+        - contacts: телефон, MAX, адрес
+        - max_bot_url: из настроек
         - show_reviews: есть ли отзывы со ссылкой
         - show_yandex_button: есть ли yandex_maps_url
         """
         # Блоки сайта
         blocks_result = await self._db.execute(
-            select(SiteBlock).where(SiteBlock.visible == True).order_by(SiteBlock.order)
+            select(SiteBlock).where(SiteBlock.visible.is_(True)).order_by(SiteBlock.order)
         )
         blocks = {b.key: self._to_block_out(b) for b in blocks_result.scalars().all()}
 
         # Галерея (только реальные работы)
         gallery_result = await self._db.execute(
             select(GalleryItem)
-            .where(GalleryItem.visible == True, GalleryItem.is_real_work == True)
+            .where(GalleryItem.visible.is_(True), GalleryItem.is_real_work.is_(True))
             .order_by(GalleryItem.display_order)
         )
         gallery = [self._to_gallery_out(g) for g in gallery_result.scalars().all()]
@@ -52,7 +61,7 @@ class ContentService:
         # Отзывы (только со ссылкой)
         reviews_result = await self._db.execute(
             select(Review)
-            .where(Review.visible == True, Review.source_url.is_not(None))
+            .where(Review.visible.is_(True), Review.source_url.is_not(None))
             .order_by(Review.display_order)
         )
         reviews_raw = reviews_result.scalars().all()
@@ -61,7 +70,7 @@ class ContentService:
 
         # FAQ
         faq_result = await self._db.execute(
-            select(FAQItem).where(FAQItem.visible == True).order_by(FAQItem.display_order)
+            select(FAQItem).where(FAQItem.visible.is_(True)).order_by(FAQItem.display_order)
         )
         faq = [self._to_faq_out(f) for f in faq_result.scalars().all()]
 
@@ -77,7 +86,6 @@ class ContentService:
         # Контакты
         contacts = ContactsOut(
             phone=blocks.get("contacts_phone", SiteBlockOut(key="contacts_phone")).content,
-            telegram_url=blocks.get("contacts_telegram", SiteBlockOut(key="contacts_telegram")).content,
             max_url=blocks.get("contacts_max", SiteBlockOut(key="contacts_max")).content,
             address=blocks.get("contacts_address", SiteBlockOut(key="contacts_address")).content,
             region=blocks.get("contacts_region", SiteBlockOut(key="contacts_region")).content,
@@ -96,7 +104,6 @@ class ContentService:
             process_steps=steps,
             materials=materials,
             contacts=contacts,
-            telegram_bot_url=self._settings.TELEGRAM_BOT_URL or None,
             max_bot_url=self._settings.MAX_BOT_URL or None,
             show_reviews=show_reviews,
             show_yandex_button=show_yandex_button,

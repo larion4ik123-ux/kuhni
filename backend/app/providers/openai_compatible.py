@@ -8,8 +8,8 @@ from __future__ import annotations
 
 import asyncio
 import base64
-import json
 import pathlib
+import uuid
 from typing import TYPE_CHECKING
 
 import httpx
@@ -29,7 +29,7 @@ class OpenAICompatibleGenerationProvider(ImageGenerationProvider):
     - img2img: POST /v1/media (async), затем polling GET /v1/media/{id}
     """
 
-    def __init__(self, settings: "Settings") -> None:
+    def __init__(self, settings: Settings) -> None:
         self._settings = settings
         self._client = httpx.AsyncClient(
             timeout=httpx.Timeout(settings.AI_TIMEOUT),
@@ -59,7 +59,7 @@ class OpenAICompatibleGenerationProvider(ImageGenerationProvider):
 
     async def _text2img(self, base: str, request: GenerationRequest) -> GenerationResult:
         """Text-to-image через /v2/images/generations."""
-        url = f"{base}/v2/images/generations"
+        url = self._images_url(base)
         payload = {
             "model": self._settings.AI_MODEL,
             "prompt": request.prompt,
@@ -117,11 +117,11 @@ class OpenAICompatibleGenerationProvider(ImageGenerationProvider):
             return self._error(f"Референсное фото не найдено: {ref_path}")
 
         b64 = base64.b64encode(ref_path.read_bytes()).decode()
-        url = f"{base}/v1/media"
+        url = self._media_url(base)
         payload = {
             "model": self._settings.AI_MODEL or "bytedance/seedream-4.5",
             "input": {
-                "prompt": request.prompt,
+                "prompt": request.prompt[:3000],
                 "aspect_ratio": str(request.aspect_ratio),
                 "quality": request.quality or self._settings.AI_QUALITY,
                 "images": [{"type": "base64", "data": b64}],
@@ -160,7 +160,7 @@ class OpenAICompatibleGenerationProvider(ImageGenerationProvider):
 
     async def _poll_media(self, base: str, remote_id: str, request: GenerationRequest) -> GenerationResult:
         """Polling GET /v1/media/{id} каждые 4 секунд до 600 секунд."""
-        url = f"{base}/v1/media/{remote_id}"
+        url = f"{self._media_url(base)}/{remote_id}"
         elapsed = 0.0
         while elapsed < self._max_poll:
             await asyncio.sleep(self._poll_interval)
@@ -178,8 +178,12 @@ class OpenAICompatibleGenerationProvider(ImageGenerationProvider):
             data = resp.json()
             status = data.get("status", "unknown")
 
-            if status == "done":
-                images = data.get("output", {}).get("images", []) or data.get("data", [])
+            if status in {"done", "completed"}:
+                images = (
+                    data.get("output", {}).get("images", [])
+                    or data.get("data", [])
+                    or data.get("result", {}).get("images", [])
+                )
                 if images:
                     paths = await self._save_images(images, request)
                     return GenerationResult(
@@ -189,16 +193,16 @@ class OpenAICompatibleGenerationProvider(ImageGenerationProvider):
                         status="done",
                         error=None,
                     )
-                return self._error("Статус done, но изображений нет")
+                return self._error("Генерация завершена, но провайдер не вернул изображение")
 
-            if status in ("failed", "error"):
+            if status in ("failed", "error", "cancelled"):
                 return self._error(data.get("error", "Ошибка генерации"))
 
         return self._error("Таймаут polling (600с)")
 
     async def _save_images(self, images: list, request: GenerationRequest) -> list[str]:
         """Скачивает и сохраняет изображения в MEDIA_DIR/generated/<job_id>/."""
-        media_dir = pathlib.Path(self._settings.MEDIA_DIR) / "generated"
+        media_dir = pathlib.Path(self._settings.MEDIA_DIR) / "generated" / uuid.uuid4().hex
         media_dir.mkdir(parents=True, exist_ok=True)
         paths: list[str] = []
 
@@ -241,6 +245,24 @@ class OpenAICompatibleGenerationProvider(ImageGenerationProvider):
         }
         return mapping.get(str(aspect_ratio), "1024x768")
 
+    @staticmethod
+    def _media_url(base: str) -> str:
+        normalized = base.rstrip("/")
+        if normalized.endswith("/api/v1"):
+            return f"{normalized}/media"
+        if normalized.endswith("/api"):
+            return f"{normalized}/v1/media"
+        return f"{normalized}/api/v1/media"
+
+    @staticmethod
+    def _images_url(base: str) -> str:
+        normalized = base.rstrip("/")
+        if normalized.endswith("/api/v1"):
+            normalized = normalized.removesuffix("/v1")
+        elif not normalized.endswith("/api"):
+            normalized = f"{normalized}/api"
+        return f"{normalized}/v2/images/generations"
+
     def _error(self, message: str) -> GenerationResult:
         """Вспомогательный конструктор ошибки."""
         return GenerationResult(
@@ -254,7 +276,7 @@ class OpenAICompatibleGenerationProvider(ImageGenerationProvider):
     async def get_status(self, job_remote_id: str) -> str:
         """Возвращает статус удалённой задачи."""
         base = self._settings.AI_API_BASE_URL.rstrip("/")
-        url = f"{base}/v1/media/{job_remote_id}"
+        url = f"{self._media_url(base)}/{job_remote_id}"
         try:
             resp = await self._client.get(url)
             resp.raise_for_status()
@@ -265,7 +287,7 @@ class OpenAICompatibleGenerationProvider(ImageGenerationProvider):
     async def cancel(self, job_remote_id: str) -> bool:
         """Пытается отменить задачу."""
         base = self._settings.AI_API_BASE_URL.rstrip("/")
-        url = f"{base}/v1/media/{job_remote_id}/cancel"
+        url = f"{self._media_url(base)}/{job_remote_id}/cancel"
         try:
             resp = await self._client.post(url)
             return resp.status_code == 200

@@ -1,7 +1,7 @@
 [project]
 name = "kitchen-platform"
 version = "0.1.0"
-description = "Платформа «Мебельный салон Интерьер» — кухни на заказ: сайт, Telegram-бот, AI-визуализация, админпанель"
+description = "Платформа «Мебельный салон Интерьер»: сайт, MAX-бот, AI-визуализация и заявки"
 requires-python = ">=3.12"
 readme = "README.md"
 
@@ -21,8 +21,6 @@ dependencies = [
     "pydantic-settings>=2.3",
     # HTTP client для AI-провайдера
     "httpx>=0.27",
-    # Telegram
-    "aiogram>=3.13",
     # Изображения
     "Pillow>=10.4",
     # Утилиты
@@ -54,9 +52,8 @@ select = ["E", "F", "W", "I", "UP", "B", "SIM"]
 ignore = ["E501"]  # длина строки контролируется форматтером
 
 [tool.pytest.ini_options]
-asyncio_mode = "auto"
 testpaths = ["tests"]
-pythonpath = ["backend", "shared", "bot", "worker"]
+pythonpath = ["."]
 
 [tool.mypy]
 python_version = "3.12"

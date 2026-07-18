@@ -1,14 +1,13 @@
 [Unit]
-Description=Kitchen platform Telegram bot
+Description=Register Kitchen MAX bot webhook
 After=network.target kitchen-api.service
 
 [Service]
-Type=simple
+Type=oneshot
 WorkingDirectory=/opt/kitchen-platform
 EnvironmentFile=/opt/kitchen-platform/.env
-ExecStart=/opt/kitchen-platform/.venv/bin/python -m bot.main
-Restart=always
-RestartSec=5
+ExecStart=/opt/kitchen-platform/.venv/bin/python -m bot.main --register-webhook
+RemainAfterExit=yes
 User=www-data
 Group=www-data
 

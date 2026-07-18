@@ -24,9 +24,10 @@ class MaxAdapter(MessengerAdapter):
 
     messenger = "max"
 
-    def __init__(self, settings: Settings) -> None:
+    def __init__(self, settings: Settings, transport: httpx.AsyncBaseTransport | None = None) -> None:
         self._base_url = (settings.MAX_API_URL or "https://platform-api2.max.ru").rstrip("/")
         self._token = settings.MAX_BOT_TOKEN
+        self._transport = transport
 
     @property
     def _headers(self) -> dict[str, str]:
@@ -35,7 +36,9 @@ class MaxAdapter(MessengerAdapter):
         return {"Authorization": self._token}
 
     async def _request(self, method: str, path: str, **kwargs: Any) -> dict[str, Any]:
-        async with httpx.AsyncClient(base_url=self._base_url, timeout=30) as client:
+        async with httpx.AsyncClient(
+            base_url=self._base_url, timeout=30, transport=self._transport
+        ) as client:
             response = await client.request(method, path, headers=self._headers, **kwargs)
             response.raise_for_status()
             return response.json() if response.content else {}
@@ -49,8 +52,15 @@ class MaxAdapter(MessengerAdapter):
             },
         }
 
+    @staticmethod
+    def _target(chat_id: str | int) -> dict[str, str | int]:
+        value = str(chat_id)
+        if value.startswith("user:"):
+            return {"user_id": value.removeprefix("user:")}
+        return {"chat_id": chat_id}
+
     async def send_text(self, chat_id: str | int, text: str, **kwargs: Any) -> Any:
-        return await self._request("POST", "/messages", params={"chat_id": chat_id}, json={"text": text})
+        return await self._request("POST", "/messages", params=self._target(chat_id), json={"text": text})
 
     async def send_image(
         self, chat_id: str | int, image_path: str, caption: str | None = None, **kwargs: Any
@@ -70,7 +80,7 @@ class MaxAdapter(MessengerAdapter):
         return await self._request(
             "POST",
             "/messages",
-            params={"chat_id": chat_id},
+            params=self._target(chat_id),
             json={"text": caption, "attachments": [{"type": "image", "payload": {"token": token}}]},
         )
 
@@ -80,7 +90,7 @@ class MaxAdapter(MessengerAdapter):
         return await self._request(
             "POST",
             "/messages",
-            params={"chat_id": chat_id},
+            params=self._target(chat_id),
             json={"text": text, "attachments": [self._keyboard(buttons)]},
         )
 
@@ -90,7 +100,7 @@ class MaxAdapter(MessengerAdapter):
             "payload": {"buttons": [[{"type": "request_contact", "text": "Отправить контакт"}]]},
         }
         return await self._request(
-            "POST", "/messages", params={"chat_id": chat_id}, json={"text": text, "attachments": [attachment]}
+            "POST", "/messages", params=self._target(chat_id), json={"text": text, "attachments": [attachment]}
         )
 
     async def edit_message(
@@ -112,8 +122,28 @@ class MaxAdapter(MessengerAdapter):
             body["notification"] = text
         await self._request("POST", "/answers", params={"callback_id": callback_id}, json=body)
 
+    async def register_webhook(self, webhook_url: str, secret: str) -> dict[str, Any]:
+        """Register the production webhook and the update types used by the funnel."""
+        return await self._request(
+            "POST",
+            "/subscriptions",
+            json={
+                "url": webhook_url,
+                "update_types": ["bot_started", "message_created", "message_callback"],
+                "secret": secret,
+            },
+        )
+
+    async def get_me(self) -> dict[str, Any]:
+        """Validate the token without mutating bot state."""
+        return await self._request("GET", "/me")
+
     def get_user_identity(self, raw_update: Any) -> MessengerUserIdentity:
-        user = raw_update.get("user", {}) if isinstance(raw_update, dict) else {}
+        if not isinstance(raw_update, dict):
+            raise ValueError("MAX update must be a JSON object")
+        message = raw_update.get("message") or {}
+        callback = raw_update.get("callback") or {}
+        user = raw_update.get("user") or callback.get("user") or message.get("sender") or {}
         user_id = user.get("user_id") or user.get("id")
         if user_id is None:
             raise ValueError("MAX update has no user identifier")

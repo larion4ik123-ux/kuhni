@@ -24,17 +24,18 @@ from backend.app.models import (
 # ───────────────────────── Данные воронки ─────────────────────────
 
 FUNNEL_QUESTIONS = [
-    {"key": "contact", "title": "Оставьте контакт для связи по проекту", "type": "contact", "order": 1, "required": True, "active": True},
-    {"key": "form", "title": "Какую планировку рассматриваете?", "type": "single_choice", "order": 2, "required": True, "active": True, "generation_key": "form"},
-    {"key": "width", "title": "Какая примерная ширина рабочей зоны? Напишите в сантиметрах", "type": "text", "order": 3, "required": True, "active": True, "generation_key": "width"},
-    {"key": "height", "title": "Какая высота помещения? Напишите в сантиметрах", "type": "text", "order": 4, "required": True, "active": True, "generation_key": "height"},
-    {"key": "area", "title": "Какая примерная площадь кухни? Напишите в м²", "type": "text", "order": 5, "required": True, "active": True, "generation_key": "area"},
-    {"key": "style", "title": "Какой стиль вам ближе?", "type": "single_choice", "order": 6, "required": True, "active": True, "generation_key": "style"},
-    {"key": "color", "title": "Какой цвет фасадов нравится?", "type": "single_choice", "order": 7, "required": True, "active": True, "generation_key": "color"},
-    {"key": "facade", "title": "Какие фасады рассматриваете?", "type": "single_choice", "order": 8, "required": True, "active": True, "generation_key": "facade"},
-    {"key": "handle", "title": "Какие ручки или систему открывания выбрать?", "type": "single_choice", "order": 9, "required": True, "active": True, "generation_key": "handle"},
-    {"key": "photo", "title": "Пришлите одно фото помещения", "type": "photo", "order": 10, "required": True, "active": True},
-    {"key": "confirmation", "title": "Проверьте подбор", "type": "confirmation", "order": 11, "required": True, "active": True},
+    {"key": "form", "title": "Какая планировка нужна?", "description": "Выберите ближайший вариант. Точные размеры уточним на замере.", "type": "single_choice", "order": 1, "required": True, "active": True, "generation_key": "form"},
+    {"key": "width", "title": "Примерная ширина рабочей зоны", "description": "Напишите в сантиметрах, например: 320 см.", "type": "text", "order": 2, "required": True, "active": True, "generation_key": "width"},
+    {"key": "height", "title": "Высота помещения", "description": "Напишите в сантиметрах, например: 265 см.", "type": "text", "order": 3, "required": True, "active": True, "generation_key": "height"},
+    {"key": "area", "title": "Примерная площадь кухни", "description": "Напишите в квадратных метрах, например: 12 м².", "type": "text", "order": 4, "required": True, "active": True, "generation_key": "area"},
+    {"key": "style", "title": "Какой характер кухни вам ближе?", "type": "single_choice", "order": 5, "required": True, "active": True, "generation_key": "style"},
+    {"key": "color", "title": "Какая цветовая гамма нравится?", "type": "single_choice", "order": 6, "required": True, "active": True, "generation_key": "color"},
+    {"key": "handle", "title": "Как открывать фасады?", "type": "single_choice", "order": 7, "required": True, "active": True, "generation_key": "handle"},
+    {"key": "appliances", "title": "Какая техника должна быть встроена?", "description": "Например: холодильник, духовка, посудомоечная машина, вытяжка.", "type": "text", "order": 8, "required": True, "active": True, "generation_key": "appliances"},
+    {"key": "wishes", "title": "Что ещё важно учесть?", "description": "Например: больше хранения, место для микроволновки или рабочая зона у окна.", "type": "text", "order": 9, "required": False, "active": True, "generation_key": "wishes"},
+    {"key": "photo", "title": "Теперь пришлите фото помещения", "description": "Снимите комнату целиком: пусть в кадре будут видны стены, пол, потолок, окна и двери.", "type": "photo", "order": 10, "required": True, "active": True},
+    {"key": "contact", "title": "Куда Артёму написать по вашему проекту?", "description": "Отправьте номер кнопкой MAX. Бот не рассчитывает цену — заявку посмотрит Артём лично.", "type": "contact", "order": 11, "required": True, "active": True},
+    {"key": "confirmation", "title": "Проверьте, всё ли верно", "type": "confirmation", "order": 12, "required": True, "active": True},
 ]
 
 FUNNEL_OPTIONS = {
@@ -50,22 +51,15 @@ FUNNEL_OPTIONS = {
         {"title": "Классика", "internal_code": "classic", "generation_hint": "Классическая кухня с филенчатыми фасадами, декоративными элементами, тёплыми тонами", "order": 3},
     ],
     "color": [
-        {"title": "Серый", "internal_code": "gray", "generation_hint": "Серые фасады", "order": 1},
-        {"title": "Бежевый", "internal_code": "beige", "generation_hint": "Бежевые фасады", "order": 2},
-        {"title": "Зелёный", "internal_code": "green", "generation_hint": "Зелёные фасады", "order": 3},
-        {"title": "Белый", "internal_code": "white", "generation_hint": "Белые фасады", "order": 4},
-    ],
-    "facade": [
-        {"title": "Interno", "internal_code": "interno", "generation_hint": "Фасады Interno", "order": 1},
-        {"title": "AGT", "internal_code": "agt", "generation_hint": "Фасады AGT", "order": 2},
-        {"title": "Egger", "internal_code": "egger", "generation_hint": "Фасады Egger", "order": 3},
-        {"title": "Kronospan", "internal_code": "kronospan", "generation_hint": "Фасады Kronospan", "order": 4},
+        {"title": "Светлая", "internal_code": "light", "generation_hint": "Светлая спокойная гамма фасадов", "order": 1},
+        {"title": "Графитовая", "internal_code": "graphite", "generation_hint": "Графитовые фасады без синего оттенка", "order": 2},
+        {"title": "Под дерево", "internal_code": "wood", "generation_hint": "Натуральная древесная фактура", "order": 3},
+        {"title": "Цветной акцент", "internal_code": "accent", "generation_hint": "Один сдержанный цветной акцент в фасадах", "order": 4},
     ],
     "handle": [
-        {"title": "Скоба", "internal_code": "handle", "generation_hint": "Скобчатые ручки", "order": 1},
-        {"title": "Чёрная квадратная", "internal_code": "black_square", "generation_hint": "Чёрные квадратные ручки", "order": 2},
-        {"title": "Кнопка", "internal_code": "knob", "generation_hint": "Кнопочные ручки", "order": 3},
-        {"title": "Профиль Gola", "internal_code": "gola", "generation_hint": "Система открывания профиль Gola (без ручек)", "order": 4},
+        {"title": "Без ручек / Gola", "internal_code": "gola", "generation_hint": "Фасады без накладных ручек, профиль Gola", "order": 1},
+        {"title": "Лаконичные ручки", "internal_code": "slim", "generation_hint": "Тонкие лаконичные накладные ручки", "order": 2},
+        {"title": "Классические ручки", "internal_code": "classic_handle", "generation_hint": "Аккуратные классические ручки", "order": 3},
     ],
     "countertop": [
         {"title": "Кварцевый агломерат", "internal_code": "quartz", "generation_hint": "Кварцевая столешница", "order": 1},
@@ -94,13 +88,12 @@ SITE_BLOCKS = [
     {"key": "advantage_3", "title": "Подбор в MAX", "content": "Бот собирает стиль, форму, материалы и фото для визуализации.", "order": 6},
     {"key": "about", "title": "Личная работа Артёма", "content": "Не безликий салон: Артём лично ведёт проект, смотрит размеры, технику, материалы и бюджет, а команда помогает с производством и монтажом.", "order": 7},
     {"key": "contacts_phone", "title": "Телефон", "content": "+7 (XXX) XXX-XX-XX", "order": 8},
-    {"key": "contacts_telegram", "title": "Telegram", "content": "https://t.me/your_bot", "order": 9},
-    {"key": "contacts_max", "title": "MAX", "content": "", "order": 10},
-    {"key": "contacts_address", "title": "Адрес", "content": "—", "order": 11},
-    {"key": "contacts_region", "title": "Регион", "content": "—", "order": 12},
-    {"key": "contacts_hours", "title": "Режим работы", "content": "Пн-Пт: 9:00-18:00", "order": 13},
-    {"key": "yandex_maps_url", "title": "Яндекс.Карты", "content": "", "order": 14},
-    {"key": "yandex_widget_html", "title": "Виджет Яндекс", "content": "", "order": 15},
+    {"key": "contacts_max", "title": "MAX", "content": "", "order": 9},
+    {"key": "contacts_address", "title": "Адрес", "content": "—", "order": 10},
+    {"key": "contacts_region", "title": "Регион", "content": "—", "order": 11},
+    {"key": "contacts_hours", "title": "Режим работы", "content": "Пн-Пт: 9:00-18:00", "order": 12},
+    {"key": "yandex_maps_url", "title": "Яндекс.Карты", "content": "", "order": 13},
+    {"key": "yandex_widget_html", "title": "Виджет Яндекс", "content": "", "order": 14},
 ]
 
 # ───────────────────────── Этапы работы ─────────────────────────
@@ -129,25 +122,35 @@ async def _upsert_question(db: AsyncSession, data: dict) -> None:
     result = await db.execute(select(FunnelQuestion).where(FunnelQuestion.key == data["key"]))
     existing = result.scalar_one_or_none()
     if existing is None:
-        obj = FunnelQuestion(**data)
-        db.add(obj)
+        existing = FunnelQuestion(**data)
+        db.add(existing)
         await db.flush()
-        await db.refresh(obj)
-        # Добавляем опции
-        for opt in FUNNEL_OPTIONS.get(data["key"], []):
-            option = FunnelOption(
-                question_id=obj.id,
-                title=opt["title"],
-                internal_code=opt["internal_code"],
-                generation_hint=opt.get("generation_hint"),
-                order=opt["order"],
-            )
-            db.add(option)
     else:
-        # Обновляем только если нужно
         for k, v in data.items():
             setattr(existing, k, v)
         db.add(existing)
+    active_codes: set[str] = set()
+    for opt in FUNNEL_OPTIONS.get(data["key"], []):
+        active_codes.add(opt["internal_code"])
+        result = await db.execute(
+            select(FunnelOption).where(
+                FunnelOption.question_id == existing.id,
+                FunnelOption.internal_code == opt["internal_code"],
+            )
+        )
+        option = result.scalar_one_or_none()
+        if option is None:
+            option = FunnelOption(question_id=existing.id, **opt)
+        else:
+            for key, value in opt.items():
+                setattr(option, key, value)
+        option.active = True
+        db.add(option)
+    stale = await db.execute(select(FunnelOption).where(FunnelOption.question_id == existing.id))
+    for option in stale.scalars():
+        if option.internal_code not in active_codes:
+            option.active = False
+            db.add(option)
 
 
 async def _upsert_site_block(db: AsyncSession, data: dict) -> None:

@@ -2,7 +2,7 @@
 
 Lead создаётся ПОСЛЕ получения контакта. generation_job_id — одна заявка →
 одна генерация (другой вариант = новый lead/job). Идемпотентность: проверка
-по (session_id) / окну дедупликации — защита от повторных Telegram updates.
+по (session_id) / окну дедупликации — защита от повторных MAX updates.
 """
 
 from __future__ import annotations

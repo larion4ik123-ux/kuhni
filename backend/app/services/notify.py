@@ -1,14 +1,12 @@
 """Сервис уведомлений: отправка менеджеру через мессенджер-адаптер.
 
 Использует TYPE_CHECKING для MessengerAdapter, чтобы избежать циклической
-зависимости. Адаптер передаётся извне (Telegram-бот / MAX-бот).
+зависимости. Адаптер MAX передаётся извне.
 """
 
 from __future__ import annotations
 
 from typing import TYPE_CHECKING
-
-from shared.schemas import LeadOut
 
 if TYPE_CHECKING:
     from backend.app.models import Lead
@@ -24,13 +22,13 @@ class NotifyService:
 
     def __init__(
         self,
-        adapter: "MessengerAdapter",
+        adapter: MessengerAdapter,
         manager_chat_ids: list[int],
     ) -> None:
         self._adapter = adapter
         self._manager_chat_ids = manager_chat_ids
 
-    async def notify_new_lead(self, lead: "Lead") -> None:
+    async def notify_new_lead(self, lead: Lead) -> None:
         """Отправляет карточку заявки менеджеру.
 
         Содержит: телефон, описание выбора, источник, ссылка на сессию.
@@ -39,7 +37,7 @@ class NotifyService:
         for chat_id in self._manager_chat_ids:
             await self._adapter.send_text(chat_id, text)
 
-    async def notify_generation_ready(self, lead: "Lead", image_path: str | None) -> None:
+    async def notify_generation_ready(self, lead: Lead, image_path: str | None) -> None:
         """Уведомляет менеджера, что генерация готова."""
         text = (
             f"Генерация готова для заявки #{lead.id}\n"
@@ -55,7 +53,7 @@ class NotifyService:
     # ───────────────────────── Внутренние ─────────────────────────
 
     @staticmethod
-    def _build_lead_card(lead: "Lead") -> str:
+    def _build_lead_card(lead: Lead) -> str:
         """Формирует текст карточки заявки для менеджера."""
         lines = [
             "Новая заявка",

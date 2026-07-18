@@ -1,1 +1,1 @@
-"""Telegram/MAX messenger adapters for the kitchen platform."""
+"""MAX messenger integration for the kitchen platform."""
