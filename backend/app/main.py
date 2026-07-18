@@ -6,13 +6,14 @@ import hmac
 from contextlib import asynccontextmanager
 from pathlib import Path
 
-from fastapi import Depends, FastAPI, Header, HTTPException, Request
+from fastapi import Depends, FastAPI, Header, HTTPException, Request, Response
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from backend.app.core.database import async_engine, get_db, init_db
 from backend.app.core.settings import get_settings
+from backend.app.routes.admin import router as admin_router
 from backend.app.services.content import ContentService
 from bot.adapters.max import MaxAdapter
 from bot.handlers.max_funnel import MaxFunnelHandler
@@ -40,11 +41,18 @@ app = FastAPI(
 # --- CORS ---
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173", "http://localhost:3000", settings.APP_URL],
+    allow_origins=[
+        "http://localhost:5173",
+        "http://localhost:3000",
+        "http://127.0.0.1:5173",
+        "https://larion4ik123-ux.github.io",
+        settings.APP_URL,
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+app.include_router(admin_router)
 
 
 # --- Health check ---
@@ -66,8 +74,10 @@ async def max_webhook(
 ) -> dict[str, bool]:
     """Receive MAX updates, validate their shared secret and persist the funnel."""
     expected = settings.MAX_WEBHOOK_SECRET
-    if not expected or not x_max_bot_api_secret or not hmac.compare_digest(
-        expected, x_max_bot_api_secret
+    if (
+        not expected
+        or not x_max_bot_api_secret
+        or not hmac.compare_digest(expected, x_max_bot_api_secret)
     ):
         raise HTTPException(status_code=401, detail="Invalid MAX webhook secret")
     update = await request.json()
@@ -77,12 +87,13 @@ async def max_webhook(
 
 
 @app.get("/api/site-content")
-async def site_content(db: AsyncSession = db_dependency) -> dict:
+async def site_content(response: Response, db: AsyncSession = db_dependency) -> dict:
     """Публичный контент для статического frontend.
 
     GitHub Pages uses local fallback content until this endpoint is available on
     the VPS. Secrets and admin-only fields are never exposed here.
     """
+    response.headers["Cache-Control"] = "no-store"
     service = ContentService(db, get_settings())
     content = await service.get_site_content()
     return content.model_dump(mode="json")
@@ -92,3 +103,7 @@ async def site_content(db: AsyncSession = db_dependency) -> dict:
 static_dir = Path(__file__).resolve().parent / "static"
 if static_dir.exists():
     app.mount("/static", StaticFiles(directory=str(static_dir)), name="static")
+
+media_dir = Path(settings.MEDIA_DIR)
+media_dir.mkdir(parents=True, exist_ok=True)
+app.mount("/media", StaticFiles(directory=str(media_dir)), name="media")

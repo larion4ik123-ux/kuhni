@@ -16,6 +16,7 @@ class SiteBlockOut(BaseModel):
     title: str | None = None
     content: str | None = None
     image_url: str | None = None
+    webp_url: str | None = None
     order: int = 0
     visible: bool = True
 
@@ -33,6 +34,7 @@ class GalleryItemOut(BaseModel):
     alt_text: str | None = None
     display_order: int = 0
     is_real_work: bool = True
+    visible: bool = True
     focus_x: float = 0.5
     focus_y: float = 0.5
 

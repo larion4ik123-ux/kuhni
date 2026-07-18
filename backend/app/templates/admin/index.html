@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token }}">
+    <title>Управление сайтом — Интерьер</title>
+    <link rel="stylesheet" href="/static/admin.css">
+  </head>
+  <body>
+    <header class="admin-header">
+      <div><span>Интерьер</span><strong>Управление сайтом</strong></div>
+      <nav>
+        <a href="/" target="_blank" rel="noreferrer">Открыть сайт</a>
+        <form method="post" action="/admin/logout"><button type="submit">Выйти</button></form>
+      </nav>
+    </header>
+    <main class="admin-shell">
+      <section class="admin-intro">
+        <div><p class="admin-eyebrow">Контент сайта</p><h1>Редактирование без кода</h1></div>
+        <p>Выберите блок, измените текст или фотографию и нажмите «Сохранить». На основном сайте изменения появятся после обновления страницы.</p>
+      </section>
+      <div class="admin-tabs" role="tablist">
+        <button class="is-active" data-tab="blocks">Блоки сайта</button>
+        <button data-tab="gallery">Наши работы</button>
+        <button data-tab="reviews">Отзывы</button>
+      </div>
+      <section data-panel="blocks"><div class="content-grid" data-block-list></div></section>
+      <section data-panel="gallery" hidden>
+        <div class="panel-toolbar"><div><h2>Наши работы</h2><p>Добавляйте реальные кухни и меняйте подписи.</p></div><button class="primary-button" data-add-gallery>Добавить работу</button></div>
+        <div class="content-grid media-grid" data-gallery-list></div>
+      </section>
+      <section data-panel="reviews" hidden>
+        <div class="panel-toolbar"><div><h2>Отзывы</h2><p>Публикуйте только отзывы, которые можно подтвердить ссылкой.</p></div><button class="primary-button" data-add-review>Добавить отзыв</button></div>
+        <div class="content-grid" data-review-list></div>
+      </section>
+    </main>
+
+    <dialog class="editor-dialog" data-editor>
+      <form method="dialog" class="dialog-card" data-editor-form>
+        <header><div><p class="admin-eyebrow" data-dialog-kind></p><h2 data-dialog-title></h2></div><button class="icon-button" value="cancel" aria-label="Закрыть">×</button></header>
+        <div data-dialog-fields></div>
+        <div class="dialog-actions"><button class="secondary-button" value="cancel">Отмена</button><button class="primary-button" value="default" data-save>Сохранить</button></div>
+      </form>
+    </dialog>
+    <div class="toast" data-toast hidden></div>
+    <script type="module" src="/static/admin.js"></script>
+  </body>
+</html>

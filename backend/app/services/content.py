@@ -7,7 +7,7 @@ from typing import TYPE_CHECKING
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from backend.app.models import FAQItem, GalleryItem, ProcessStep, Review, SiteBlock
+from backend.app.models import FAQItem, GalleryItem, MediaFile, ProcessStep, Review, SiteBlock
 from shared.schemas import (
     ContactsOut,
     FAQItemOut,
@@ -48,7 +48,7 @@ class ContentService:
         blocks_result = await self._db.execute(
             select(SiteBlock).where(SiteBlock.visible.is_(True)).order_by(SiteBlock.order)
         )
-        blocks = {b.key: self._to_block_out(b) for b in blocks_result.scalars().all()}
+        block_rows = blocks_result.scalars().all()
 
         # Галерея (только реальные работы)
         gallery_result = await self._db.execute(
@@ -56,7 +56,26 @@ class ContentService:
             .where(GalleryItem.visible.is_(True), GalleryItem.is_real_work.is_(True))
             .order_by(GalleryItem.display_order)
         )
-        gallery = [self._to_gallery_out(g) for g in gallery_result.scalars().all()]
+        gallery_rows = gallery_result.scalars().all()
+
+        media_ids = {
+            item.media_file_id
+            for item in [*block_rows, *gallery_rows]
+            if item.media_file_id is not None
+        }
+        media_by_id: dict[int, MediaFile] = {}
+        if media_ids:
+            media_result = await self._db.execute(
+                select(MediaFile).where(MediaFile.id.in_(media_ids))
+            )
+            media_by_id = {item.id: item for item in media_result.scalars().all()}
+        blocks = {
+            item.key: self._to_block_out(item, media_by_id.get(item.media_file_id))
+            for item in block_rows
+        }
+        gallery = [
+            self._to_gallery_out(item, media_by_id.get(item.media_file_id)) for item in gallery_rows
+        ]
 
         # Отзывы (только со ссылкой)
         reviews_result = await self._db.execute(
@@ -90,14 +109,18 @@ class ContentService:
             address=blocks.get("contacts_address", SiteBlockOut(key="contacts_address")).content,
             region=blocks.get("contacts_region", SiteBlockOut(key="contacts_region")).content,
             hours=blocks.get("contacts_hours", SiteBlockOut(key="contacts_hours")).content,
-            yandex_maps_url=blocks.get("yandex_maps_url", SiteBlockOut(key="yandex_maps_url")).content,
-            yandex_widget_html=blocks.get("yandex_widget_html", SiteBlockOut(key="yandex_widget_html")).content,
+            yandex_maps_url=blocks.get(
+                "yandex_maps_url", SiteBlockOut(key="yandex_maps_url")
+            ).content,
+            yandex_widget_html=blocks.get(
+                "yandex_widget_html", SiteBlockOut(key="yandex_widget_html")
+            ).content,
         )
         show_yandex_button = bool(contacts.yandex_maps_url)
 
         return SiteContentOut(
             blocks=blocks,
-            advantages=[],  # заполняется из blocks с префиксом advantage_
+            advantages=[block for key, block in blocks.items() if key.startswith("benefit_")],
             gallery=gallery,
             reviews=reviews,
             faq=faq,
@@ -111,9 +134,7 @@ class ContentService:
 
     async def update_block(self, key: str, content: str | None) -> SiteBlock | None:
         """Обновляет содержимое блока сайта."""
-        result = await self._db.execute(
-            select(SiteBlock).where(SiteBlock.key == key)
-        )
+        result = await self._db.execute(select(SiteBlock).where(SiteBlock.key == key))
         block = result.scalar_one_or_none()
         if block is None:
             return None
@@ -157,23 +178,31 @@ class ContentService:
 
     # ───────────────────────── Внутренние конвертеры ─────────────────────────
 
-    @staticmethod
-    def _to_block_out(block: SiteBlock) -> SiteBlockOut:
+    def _public_media_url(self, path: str | None) -> str | None:
+        if not path:
+            return None
+        return f"{self._settings.APP_URL.rstrip('/')}/media/{path.lstrip('/')}"
+
+    def _to_block_out(self, block: SiteBlock, media: MediaFile | None) -> SiteBlockOut:
         return SiteBlockOut(
             key=block.key,
             title=block.title,
             content=block.content,
-            image_url=None,  # media_file_id не используется в блоках
+            image_url=self._public_media_url(
+                (media.jpg_path or media.stored_path) if media else None
+            ),
+            webp_url=self._public_media_url(media.webp_path if media else None),
             order=block.order,
             visible=block.visible,
         )
 
-    @staticmethod
-    def _to_gallery_out(item: GalleryItem) -> GalleryItemOut:
+    def _to_gallery_out(self, item: GalleryItem, media: MediaFile | None) -> GalleryItemOut:
         return GalleryItemOut(
             id=item.id,
-            image_url=None,  # media_file_id
-            webp_url=None,
+            image_url=self._public_media_url(
+                (media.jpg_path or media.stored_path) if media else None
+            ),
+            webp_url=self._public_media_url(media.webp_path if media else None),
             caption=item.caption,
             layout=item.layout,
             style=item.style,
@@ -181,8 +210,9 @@ class ContentService:
             alt_text=item.alt_text,
             display_order=item.display_order,
             is_real_work=item.is_real_work,
-            focus_x=0.5,
-            focus_y=0.5,
+            visible=item.visible,
+            focus_x=item.focus_x,
+            focus_y=item.focus_y,
         )
 
     @staticmethod
