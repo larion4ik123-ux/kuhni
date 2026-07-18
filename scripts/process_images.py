@@ -63,6 +63,15 @@ CATEGORY_SUGGESTED_USAGE: dict[str, str] = {
 }
 
 CLIENT_PHOTO_METADATA: dict[str, dict[str, Any]] = {
+    "owner_4993": {
+        "caption": "Артём Ермаков в салоне «Интерьер»",
+        "layout": "",
+        "style": "modern",
+        "primary_color": "gray",
+        "alt_text": "Артём Ермаков, основатель компании «Интерьер»",
+        "focus_point": {"x": 0.5, "y": 0.3},
+        "suggested_usage": "hero_owner",
+    },
     "owner_at_kitchen": {
         "caption": "Артём Ермаков у одной из выполненных кухонь",
         "layout": "corner",

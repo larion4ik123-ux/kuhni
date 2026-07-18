@@ -60,11 +60,11 @@ const navItems = [["#works", "Работы"], ["#about", "Обо мне"], ["#re
 const nav = () => navItems.map(([href, label]) => `<a href="${href}">${label}</a>`).join("");
 
 function header() {
-  return `<header class="site-header"><a class="brand" href="#top" aria-label="${site.brand}"><img class="brand-logo" src="${asset("media/brand/logo_interier_header.svg")}" alt="Мебельный салон Интерьер"></a><nav class="desktop-nav" aria-label="Основная навигация">${nav()}</nav>${maxCta("Перейти в MAX", "header", "header-cta")}<button class="menu-button" type="button" aria-label="Открыть меню" data-menu-toggle>${icon.menu}</button><div class="mobile-panel" data-mobile-panel><button class="menu-close" type="button" aria-label="Закрыть меню" data-menu-close>${icon.close}</button><nav aria-label="Мобильная навигация">${nav()}</nav>${maxCta("Перейти в MAX", "mobile_menu")}</div></header>`;
+  return `<header class="site-header"><a class="brand" href="#top" aria-label="${site.brand}"><picture class="brand-picture"><source srcset="${asset("media/brand/logo_interier_cropped_card.webp")}" type="image/webp"><img class="brand-logo" src="${asset("media/brand/logo_interier_cropped_card.jpg")}" alt="Мебельный салон Интерьер"></picture></a><nav class="desktop-nav" aria-label="Основная навигация">${nav()}</nav>${maxCta("Перейти в MAX", "header", "header-cta")}<button class="menu-button" type="button" aria-label="Открыть меню" data-menu-toggle>${icon.menu}</button><div class="mobile-panel" data-mobile-panel><button class="menu-close" type="button" aria-label="Закрыть меню" data-menu-close>${icon.close}</button><nav aria-label="Мобильная навигация">${nav()}</nav>${maxCta("Перейти в MAX", "mobile_menu")}</div></header>`;
 }
 
 function hero() {
-  return `<section class="hero" id="top"><div class="hero-media">${picture({ ...kitchenImage("owner_at_kitchen", "hero"), alt: "Артём Ермаков в готовой кухне", className: "hero-picture", loading: "eager" })}</div><div class="hero-shade"></div><div class="hero-copy"><p class="eyebrow">Кухни и мебель на заказ</p><h1>Кухни на заказ<br>в Людинове</h1><p>Меня зовут Артём Ермаков. Лично отвечаю за каждый заказ: от замера до установки готовой кухни.</p><div class="hero-actions">${maxCta("Рассчитать кухню в MAX", "hero")}<a class="hero-phone" href="tel:${site.phoneHref}">${site.phone}</a></div></div></section>`;
+  return `<section class="hero" id="top"><div class="hero-media">${picture({ ...kitchenImage("owner_4993", "hero"), alt: "Артём Ермаков в салоне Интерьер", className: "hero-picture", loading: "eager" })}</div><div class="hero-shade"></div><div class="hero-copy"><p class="eyebrow">Кухни и мебель на заказ</p><h1>Кухни на заказ<br>в Людинове</h1><p>Меня зовут Артём Ермаков. Лично отвечаю за каждый заказ: от замера до установки готовой кухни.</p><div class="hero-actions">${maxCta("Рассчитать кухню в MAX", "hero")}<a class="hero-phone" href="tel:${site.phoneHref}">${site.phone}</a></div></div></section>`;
 }
 
 function benefits() {
@@ -86,7 +86,7 @@ function works() {
 }
 
 function about() {
-  return `<section class="about" id="about"><div class="about-photo">${picture({ ...kitchenImage("owner_in_workshop", "hero"), alt: "Артём Ермаков в мебельном цехе", className: "about-picture" })}</div><div class="about-copy"><p class="eyebrow">Личный подход</p><h2>Я отвечаю за результат сам</h2><p>Я основатель компании «Интерьер». Беру проект в работу лично: приезжаю на замер, контролирую изготовление и участвую в установке.</p><blockquote>«Я ручаюсь за качество каждого изделия, которое выходит из нашего цеха. Если что-то не понравится, я решу вопрос лично».</blockquote><a class="phone-link" href="tel:${site.phoneHref}">${site.phone}</a></div></section>`;
+  return `<section class="about" id="about"><div class="about-photo">${picture({ ...kitchenImage("owner_4993", "hero"), alt: "Артём Ермаков, основатель компании Интерьер", className: "about-picture" })}</div><div class="about-copy"><p class="eyebrow">Личный подход</p><h2>Я отвечаю за результат сам</h2><p>Я основатель компании «Интерьер». Беру проект в работу лично: приезжаю на замер, контролирую изготовление и участвую в установке.</p><blockquote>«Я ручаюсь за качество каждого изделия, которое выходит из нашего цеха. Если что-то не понравится, я решу вопрос лично».</blockquote><a class="phone-link" href="tel:${site.phoneHref}">${site.phone}</a></div></section>`;
 }
 
 function reviews() {
