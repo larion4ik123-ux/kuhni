@@ -22,21 +22,21 @@ const site = {
   phone: "+7 (910) 543-47-04",
   yandexUrl: "https://yandex.ru/maps/org/interyer/196977992081/",
   blocks: {
-    hero_eyebrow: { content: "Кухни и мебель на заказ" },
-    hero_title: { content: "Кухни на заказ в Людинове" },
-    hero_subtitle: { content: "Меня зовут Артём Ермаков. Лично отвечаю за каждый заказ: от замера до установки готовой кухни." },
-    benefit_1: { title: "Кухни от 150 000 ₽", content: "Без лишних салонных наценок" },
-    benefit_2: { title: "Более 10 лет опыта", content: "Сотни проектов в Людинове и области" },
-    benefit_3: { title: "Гарантия качества", content: "За материалы, изготовление и установку отвечаю лично" },
-    max_title: { content: "Соберите будущую кухню до замера" },
-    max_text: { content: "Ответьте на короткие вопросы, добавьте размеры и фото помещения. Артём увидит задачу целиком и предложит подходящее решение." },
-    works_title: { content: "Примеры работ" },
-    works_text: { content: "Несколько кухонь, которые уже установлены у клиентов." },
-    about_title: { content: "Я отвечаю за результат сам" },
+    hero_eyebrow: { content: "Своё производство в Людинове" },
+    hero_title: { content: "Кухни на заказ без салонных переплат" },
+    hero_subtitle: { content: "Проектируем, изготавливаем и устанавливаем кухни точно под ваше помещение. Артём Ермаков лично ведёт каждый заказ от замера до монтажа." },
+    benefit_1: { title: "От 150 000 ₽", content: "Платите за материалы и работу, а не за дорогой шоурум" },
+    benefit_2: { title: "Более 10 лет", content: "Изготавливаем мебель в Людинове и ближайших районах" },
+    benefit_3: { title: "Личная гарантия", content: "Артём отвечает за сроки, качество и установку" },
+    max_title: { content: "Посмотрите будущую кухню в своём интерьере" },
+    max_text: { content: "Ответьте на несколько вопросов и пришлите фото помещения. MAX-бот соберёт пожелания и подготовит визуальный вариант кухни." },
+    works_title: { content: "Кухни, которые уже установлены" },
+    works_text: { content: "Реальные проекты компании «Интерьер» в Людинове и области." },
+    about_title: { content: "Артём Ермаков, основатель «Интерьера»" },
     about_text: { content: "Меня зовут Артём Ермаков, я основатель компании «Интерьер» в Людинове. Больше 10 лет мы изготавливаем кухни и мебель на заказ, а я лично веду каждый проект от первого замера до установки." },
     about_quote: { content: "Я ручаюсь за качество каждого изделия, которое выходит из нашего цеха. Если что-то не понравится, я решу вопрос лично." },
-    reviews_title: { content: "Нас рекомендуют" },
-    contacts_title: { content: "Обсудим вашу кухню" },
+    reviews_title: { content: "Нас рекомендуют на Яндекс Картах" },
+    contacts_title: { content: "Начнём с вашей кухни" },
     contacts_text: { content: "Людиново и ближайшие районы области." },
   },
   works: [
@@ -44,6 +44,8 @@ const site = {
     ["work_4494", "П-образная кухня", "Компактная П-образная кухня в зелёном цвете"],
     ["work_4492", "Линейная кухня", "Линейная кухня в спокойных серых оттенках"],
     ["work_4495", "Светлая классическая кухня", "Светлая кухня с классическими фасадами"],
+    ["work_4481", "Кухня в графитовом цвете", "Графитовая кухня с древесной фактурой"],
+    ["work_4490", "Светлая угловая кухня", "Светлая угловая кухня с высокими шкафами"],
   ].map(([image, title, alt]) => ({ image, title, alt })),
   reviews: [
     ["Viking2092", "Отметили консультацию, сборку в срок и работу Артёма с Романом."],
@@ -59,7 +61,7 @@ const site = {
 
 const block = (key) => site.blocks[key] || {};
 const icon = {
-  max: `<span class="max-logo-mark" aria-hidden="true"><img src="${asset("media/brand/max_icon_card.webp")}" alt=""></span>`,
+  max: `<span class="max-logo-mark" aria-hidden="true"><img src="${asset("media/brand/max_icon.png")}" alt=""></span>`,
   arrow: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h12m-4.5-4.5L17 12l-4.5 4.5"/></svg>',
   menu: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>',
   close: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg>',
@@ -88,52 +90,52 @@ function maxCta(label, source, className = "") {
     : `<button class="max-cta ${className}" type="button" aria-disabled="true" data-cta="${source}">${content}</button>`;
 }
 
-const navItems = [["#works", "Работы"], ["#about", "Обо мне"], ["#reviews", "Отзывы"], ["#contacts", "Контакты"]];
+const navItems = [["#benefits", "Преимущества"], ["#works", "Работы"], ["#about", "Обо мне"], ["#reviews", "Отзывы"], ["#contacts", "Контакты"]];
 const nav = () => navItems.map(([href, label]) => `<a href="${href}">${label}</a>`).join("");
 
 function header() {
-  return `<header class="site-header"><a class="brand" href="#top" aria-label="${site.brand}"><picture class="brand-picture"><source srcset="${asset("media/brand/logo_interier_cropped_card.webp")}" type="image/webp"><img class="brand-logo" src="${asset("media/brand/logo_interier_cropped_card.jpg")}" alt="Мебельный салон Интерьер"></picture></a><nav class="desktop-nav" aria-label="Основная навигация">${nav()}</nav>${maxCta("Перейти в MAX", "header", "header-cta")}<button class="menu-button" type="button" aria-label="Открыть меню" data-menu-toggle>${icon.menu}</button><div class="mobile-panel" data-mobile-panel><button class="menu-close" type="button" aria-label="Закрыть меню" data-menu-close>${icon.close}</button><nav aria-label="Мобильная навигация">${nav()}</nav>${maxCta("Перейти в MAX", "mobile_menu")}</div></header>`;
+  return `<header class="site-header"><a class="brand" href="#top" aria-label="${site.brand}"><picture class="brand-picture"><source srcset="${asset("media/brand/logo_interier_cropped_card.webp")}" type="image/webp"><img class="brand-logo" src="${asset("media/brand/logo_interier_cropped_card.jpg")}" alt="Мебельный салон Интерьер"></picture></a><nav class="desktop-nav" aria-label="Основная навигация">${nav()}</nav>${maxCta("Подобрать кухню", "header", "header-cta")}<button class="menu-button" type="button" aria-label="Открыть меню" data-menu-toggle>${icon.menu}</button><div class="mobile-panel" data-mobile-panel><button class="menu-close" type="button" aria-label="Закрыть меню" data-menu-close>${icon.close}</button><nav aria-label="Мобильная навигация">${nav()}</nav>${maxCta("Подобрать кухню", "mobile_menu")}</div></header>`;
 }
 
 function hero() {
   const image = editableImage("hero_image", kitchenImage("owner_4993", "hero"));
-  return `<section class="hero" id="top"><div class="hero-media">${picture({ ...image, alt: "Артём Ермаков", className: "hero-picture", loading: "eager" })}</div><div class="hero-shade"></div><div class="hero-copy"><p class="eyebrow">${escapeHtml(block("hero_eyebrow").content)}</p><h1>${escapeHtml(block("hero_title").content)}</h1><p>${escapeHtml(block("hero_subtitle").content)}</p><div class="hero-actions">${maxCta("Собрать кухню в MAX", "hero")}<a class="hero-phone" href="tel:${phoneHref(site.phone)}">${escapeHtml(site.phone)}</a></div></div></section>`;
+  return `<section class="hero" id="top"><div class="hero-media">${picture({ ...image, alt: "Артём Ермаков, основатель компании Интерьер", className: "hero-picture", loading: "eager" })}</div><div class="hero-copy"><p class="eyebrow">${escapeHtml(block("hero_eyebrow").content)}</p><h1>${escapeHtml(block("hero_title").content)}</h1><p>${escapeHtml(block("hero_subtitle").content)}</p><div class="hero-actions">${maxCta("Собрать проект в MAX", "hero")}<a class="hero-phone" href="tel:${phoneHref(site.phone)}">${escapeHtml(site.phone)}</a></div><p class="hero-signature"><strong>Артём Ермаков</strong><span>Основатель компании «Интерьер»</span></p></div></section>`;
 }
 
 function benefits() {
-  return `<section class="benefits" aria-label="Преимущества">${[1, 2, 3].map((number) => { const item = block(`benefit_${number}`); return `<article><strong>${escapeHtml(item.title)}</strong><span>${escapeHtml(item.content)}</span></article>`; }).join("")}</section>`;
+  return `<section class="benefits" id="benefits" aria-label="Преимущества">${[1, 2, 3].map((number) => { const item = block(`benefit_${number}`); return `<article><span class="benefit-number">0${number}</span><strong>${escapeHtml(item.title)}</strong><span>${escapeHtml(item.content)}</span></article>`; }).join("")}</section>`;
 }
 
 function maxStrip() {
-  return `<section class="max-strip"><div><p class="eyebrow">MAX-бот</p><h2>${escapeHtml(block("max_title").content)}</h2><p>${escapeHtml(block("max_text").content)}</p></div>${maxCta("Перейти в MAX", "strip")}</section>`;
+  return `<section class="max-strip"><div class="max-strip-mark">${icon.max}</div><div><p class="eyebrow">MAX-бот</p><h2>${escapeHtml(block("max_title").content)}</h2><p>${escapeHtml(block("max_text").content)}</p></div>${maxCta("Открыть MAX-бот", "strip")}</section>`;
 }
 
 function workCard(work) {
   const image = work.image_url ? { webp: work.webp_url, jpg: work.image_url } : kitchenImage(work.image, "card");
   const full = work.image_url || asset(kitchenImage(work.image, "fullscreen").jpg);
-  return `<article class="work-card" data-lightbox="${escapeHtml(full)}" data-title="${escapeHtml(work.title)}"><button type="button" aria-label="Открыть: ${escapeHtml(work.title)}">${picture({ ...image, alt: work.alt, className: "work-picture" })}<span>${escapeHtml(work.title)}</span></button></article>`;
+  return `<article class="work-card" data-lightbox="${escapeHtml(full)}" data-title="${escapeHtml(work.title)}"><button type="button" aria-label="Открыть: ${escapeHtml(work.title)}">${picture({ ...image, alt: work.alt, className: "work-picture", loading: "lazy" })}<span>${escapeHtml(work.title)}</span></button></article>`;
 }
 
 function works() {
-  return `<section class="section works" id="works"><div class="section-title"><p class="eyebrow">Реальные проекты</p><h2>${escapeHtml(block("works_title").content)}</h2><p>${escapeHtml(block("works_text").content)}</p></div><div class="work-grid">${site.works.map(workCard).join("")}</div></section>`;
+  return `<section class="section works" id="works"><div class="section-title"><p class="eyebrow">Реальные проекты</p><h2>${escapeHtml(block("works_title").content)}</h2><p>${escapeHtml(block("works_text").content)}</p></div><div class="work-grid">${site.works.slice(0, 6).map(workCard).join("")}</div></section>`;
 }
 
 function about() {
   const image = editableImage("about_image", kitchenImage("owner_in_workshop_v2", "hero"));
-  return `<section class="about" id="about"><div class="about-photo">${picture({ ...image, alt: "Артём Ермаков в мебельном цехе", className: "about-picture" })}</div><div class="about-copy"><p class="eyebrow">Обо мне</p><h2>${escapeHtml(block("about_title").content)}</h2><p>${escapeHtml(block("about_text").content)}</p><blockquote>«${escapeHtml(block("about_quote").content)}»</blockquote><a class="phone-link" href="tel:${phoneHref(site.phone)}">${escapeHtml(site.phone)}</a></div></section>`;
+  return `<section class="about" id="about"><div class="about-photo">${picture({ ...image, alt: "Артём Ермаков в мебельном цехе", className: "about-picture", loading: "eager" })}<span>Собственное производство в Людинове</span></div><div class="about-copy"><p class="eyebrow">Личная ответственность</p><h2>${escapeHtml(block("about_title").content)}</h2><p>${escapeHtml(block("about_text").content)}</p><blockquote>«${escapeHtml(block("about_quote").content)}»</blockquote><a class="phone-link" href="tel:${phoneHref(site.phone)}">Позвонить Артёму · ${escapeHtml(site.phone)}</a></div></section>`;
 }
 
 function reviews() {
   if (!site.reviews.length) return "";
-  return `<section class="reviews" id="reviews"><div class="section-title"><p class="eyebrow">Отзывы</p><h2>${escapeHtml(block("reviews_title").content)}</h2><a href="${escapeHtml(site.yandexUrl)}" target="_blank" rel="noreferrer">Отзывы на Яндекс Картах ${icon.arrow}</a></div><div class="review-carousel"><div class="review-grid" data-review-track>${site.reviews.map((review) => `<article><div><strong>${escapeHtml(review.author)}</strong><span aria-label="${review.rating} из 5">${"★".repeat(review.rating)}</span></div><p>${escapeHtml(review.text)}</p></article>`).join("")}</div><div class="review-controls" aria-label="Листать отзывы"><button type="button" aria-label="Предыдущие отзывы" data-review-previous>${icon.previous}</button><button type="button" aria-label="Следующие отзывы" data-review-next>${icon.next}</button></div></div></section>`;
+  return `<section class="reviews" id="reviews"><div class="section-title"><p class="eyebrow">Отзывы клиентов</p><h2>${escapeHtml(block("reviews_title").content)}</h2><a href="${escapeHtml(site.yandexUrl)}" target="_blank" rel="noreferrer">Все отзывы ${icon.arrow}</a></div><div class="review-carousel"><div class="review-grid" data-review-track>${site.reviews.map((review) => `<article><div class="review-head"><span class="review-avatar">${escapeHtml(review.author).slice(0, 1)}</span><div><strong>${escapeHtml(review.author)}</strong><small>Яндекс Карты</small></div><span class="review-stars" aria-label="${review.rating} из 5">${"★".repeat(review.rating)}</span></div><p>${escapeHtml(review.text)}</p></article>`).join("")}</div><div class="review-controls" aria-label="Листать отзывы"><button type="button" aria-label="Предыдущие отзывы" data-review-previous>${icon.previous}</button><button type="button" aria-label="Следующие отзывы" data-review-next>${icon.next}</button></div></div></section>`;
 }
 
 function contacts() {
-  return `<section class="contacts" id="contacts"><div><p class="eyebrow">Контакты</p><h2>${escapeHtml(block("contacts_title").content)}</h2><p>${escapeHtml(block("contacts_text").content)}</p></div><div class="contact-actions"><a href="tel:${phoneHref(site.phone)}">${escapeHtml(site.phone)}</a><a href="${escapeHtml(site.yandexUrl)}" target="_blank" rel="noreferrer">Адрес и отзывы на Яндекс Картах ${icon.arrow}</a></div>${maxCta("Перейти в MAX", "contacts")}</section>`;
+  return `<section class="contacts" id="contacts"><div><p class="eyebrow">Ваша кухня начинается здесь</p><h2>${escapeHtml(block("contacts_title").content)}</h2><p>${escapeHtml(block("contacts_text").content)}</p></div><div class="contact-actions"><a href="tel:${phoneHref(site.phone)}">${escapeHtml(site.phone)}</a><a href="${escapeHtml(site.yandexUrl)}" target="_blank" rel="noreferrer">Компания на Яндекс Картах ${icon.arrow}</a></div>${maxCta("Собрать проект в MAX", "contacts")}</section>`;
 }
 
 function render() {
-  document.querySelector("#app").innerHTML = `${header()}<main>${hero()}${benefits()}${maxStrip()}${works()}${about()}${reviews()}${contacts()}</main><footer><strong>${site.brand}</strong><span>Кухни и мебель на заказ в Людинове</span></footer><div class="lightbox" data-lightbox-modal hidden><button type="button" aria-label="Закрыть фото" data-lightbox-close>${icon.close}</button><img src="" alt=""><strong data-lightbox-title></strong></div>`;
+  document.querySelector("#app").innerHTML = `${header()}<main>${hero()}${benefits()}${works()}${maxStrip()}${about()}${reviews()}${contacts()}</main><footer><strong>${site.brand}</strong><span>Кухни и мебель на заказ в Людинове</span></footer><div class="lightbox" data-lightbox-modal hidden><button type="button" aria-label="Закрыть фото" data-lightbox-close>${icon.close}</button><img src="" alt=""><strong data-lightbox-title></strong></div>`;
 }
 
 function bindInteractions() {

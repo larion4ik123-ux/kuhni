@@ -34,6 +34,7 @@ class OpenAICompatibleGenerationProvider(ImageGenerationProvider):
         self._client = httpx.AsyncClient(
             timeout=httpx.Timeout(settings.AI_TIMEOUT),
             headers={"Authorization": f"Bearer {settings.AI_API_KEY}"},
+            verify=settings.AI_VERIFY_SSL,
         )
         self._poll_interval = 4.0
         self._max_poll = 600.0

@@ -23,7 +23,7 @@ class NotifyService:
     def __init__(
         self,
         adapter: MessengerAdapter,
-        manager_chat_ids: list[int],
+        manager_chat_ids: list[str | int],
     ) -> None:
         self._adapter = adapter
         self._manager_chat_ids = manager_chat_ids

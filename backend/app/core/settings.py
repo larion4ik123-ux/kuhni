@@ -35,15 +35,18 @@ class Settings(BaseSettings):
 
     # --- MAX (мессенджер) ---
     MAX_API_URL: str = "https://platform-api2.max.ru"
+    MAX_VERIFY_SSL: bool = True
     MAX_BOT_TOKEN: str = ""
     MAX_BOT_URL: str = ""
     MAX_WEBHOOK_URL: str = ""
     MAX_WEBHOOK_SECRET: str = ""
+    MAX_MANAGER_SETUP_CODE: str = ""
     MAX_MANAGER_CHAT_IDS: Annotated[list[int], NoDecode] = []
 
     # --- AI-провайдер ---
     AI_PROVIDER: str = "mock"  # mock | openai_compatible
     AI_API_BASE_URL: str = ""
+    AI_VERIFY_SSL: bool = True
     AI_API_KEY: str = ""
     AI_MODEL: str = "bytedance/seedream-4.5"
     AI_QUALITY: str = "basic"

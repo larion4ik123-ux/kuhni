@@ -112,6 +112,7 @@ class GenerationService:
             "height",
             "area",
             "form",
+            "room_type",
             "style",
             "color",
             "facade",
@@ -119,6 +120,7 @@ class GenerationService:
             "countertop",
             "hardware",
             "appliances",
+            "deadline",
         ]
         ordered_parts = []
         for key in order:

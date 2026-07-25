@@ -25,6 +25,19 @@ npm run build --prefix frontend
 `/opt/kitchen-platform/backend/media/`. Nginx отдаёт из него и изображения
 сайта, и сохранённые результаты генерации.
 
+При обновлении backend каталоги `backend/data/` и `backend/media/` считаются
+постоянными и не должны удаляться через `rsync --delete`:
+
+```bash
+rsync -az --delete \
+  --exclude data/ \
+  --exclude media/ \
+  backend/ root@SERVER:/opt/kitchen-platform/backend/
+
+rsync -az frontend/dist/media/ \
+  root@SERVER:/opt/kitchen-platform/backend/media/
+```
+
 ## Установка backend на VPS
 
 ```bash
@@ -58,11 +71,14 @@ sudo systemctl enable --now kitchen-api kitchen-worker
 ```dotenv
 MAX_BOT_TOKEN=...
 MAX_BOT_URL=https://max.ru/...
+MAX_VERIFY_SSL=true
 MAX_WEBHOOK_URL=https://194-147-78-106.sslip.io/api/max/webhook
 MAX_WEBHOOK_SECRET=...
-MAX_MANAGER_CHAT_IDS=123456789
+MAX_MANAGER_SETUP_CODE=...
+MAX_MANAGER_CHAT_IDS=
 AI_PROVIDER=openai_compatible
 AI_API_BASE_URL=https://polza.ai/api/v1
+AI_VERIFY_SSL=true
 AI_API_KEY=...
 AI_MODEL=bytedance/seedream-4.5
 ```
@@ -76,6 +92,14 @@ sudo systemctl restart kitchen-api kitchen-worker
 
 Frontend пересобирается с `VITE_MAX_BOT_URL`, после чего видимые MAX-кнопки
 становятся активными ссылками.
+
+Чтобы назначить получателя заявок без ручного поиска `chat_id`, ответственный
+один раз отправляет боту `/manager КОД_ИЗ_MAX_MANAGER_SETUP_CODE`.
+
+`MAX_VERIFY_SSL=false` и `AI_VERIFY_SSL=false` допустимы только как временная
+серверная настройка при нестандартной цепочке сертификатов. Предпочтительное
+решение — установить доверенный корневой сертификат и вернуть оба значения в
+`true`.
 
 ## Nginx
 

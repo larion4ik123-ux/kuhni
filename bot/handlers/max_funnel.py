@@ -34,6 +34,7 @@ from backend.app.repositories.repos import (
 )
 from backend.app.services.generation import GenerationService
 from backend.app.services.lead import LeadService
+from backend.app.services.manager import manager_targets, register_manager_target
 from backend.app.services.notify import NotifyService
 from bot.adapters.base import MessengerButton
 from bot.adapters.max import MaxAdapter
@@ -61,8 +62,8 @@ class MaxFunnelHandler:
             session = await self._new_or_active_session(account, source)
             await self.adapter.send_text(
                 chat_id,
-                "Здравствуйте! Я Артём Ермаков. Помогу собрать идею кухни под ваше помещение. "
-                "Это займёт несколько минут: без калькулятора и случайной цены.",
+                "Здравствуйте! Я помощник компании «Интерьер». За несколько минут соберу параметры "
+                "вашей будущей кухни и подготовлю их для Артёма Ермакова.",
             )
             await self._show_current_or_first(chat_id, session)
             return
@@ -133,6 +134,22 @@ class MaxFunnelHandler:
         body = message.get("body") or {}
         text = str(body.get("text") or "").strip()
         attachments = body.get("attachments") or message.get("attachments") or []
+
+        if text.startswith("/manager"):
+            supplied = text.removeprefix("/manager").strip()
+            if (
+                not self.settings.MAX_MANAGER_SETUP_CODE
+                or supplied != self.settings.MAX_MANAGER_SETUP_CODE
+            ):
+                await self.adapter.send_text(chat_id, "Код подключения неверный.")
+                return
+            await register_manager_target(self.db, chat_id)
+            await self.db.flush()
+            await self.adapter.send_text(
+                chat_id,
+                "Готово. Новые заявки и визуализации будут приходить в этот чат.",
+            )
+            return
 
         if question.type == "contact":
             phone = self._extract_phone(text, attachments)
@@ -254,16 +271,15 @@ class MaxFunnelHandler:
         if generation_job:
             lead.generation_job_id = generation_job.id
         try:
-            await NotifyService(
-                self.adapter, self.settings.MAX_MANAGER_CHAT_IDS
-            ).notify_new_lead(lead)
+            targets = await manager_targets(self.db, self.settings.MAX_MANAGER_CHAT_IDS)
+            await NotifyService(self.adapter, targets).notify_new_lead(lead)
         except httpx.HTTPError:
             logger.exception("MAX manager notification failed; lead remains persisted")
         await self.db.flush()
         await self.adapter.send_text(
             chat_id,
-            "Готово. Я сохранил параметры и фото помещения. Визуальный вариант будет подготовлен "
-            "по вашему запросу, а Артём увидит заявку и свяжется с вами, чтобы уточнить детали.",
+            "Готово. Параметры и фото сохранены, визуальный вариант уже готовится. "
+            "Артём получил заявку и свяжется с вами, чтобы уточнить детали.",
         )
 
     async def _account(self, identity) -> MessengerAccount:
@@ -403,7 +419,11 @@ class MaxFunnelHandler:
         return "\n".join(lines) or "Параметры кухни сохранены"
 
     async def _download_image(self, url: str, session_id: int) -> MediaFile:
-        async with httpx.AsyncClient(timeout=30, follow_redirects=True) as client:
+        async with httpx.AsyncClient(
+            timeout=30,
+            follow_redirects=True,
+            verify=self.settings.MAX_VERIFY_SSL,
+        ) as client:
             response = await client.get(url)
             response.raise_for_status()
         if len(response.content) > self.settings.MAX_UPLOAD_MB * 1024 * 1024:

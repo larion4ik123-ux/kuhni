@@ -27,6 +27,7 @@ class MaxAdapter(MessengerAdapter):
     def __init__(self, settings: Settings, transport: httpx.AsyncBaseTransport | None = None) -> None:
         self._base_url = (settings.MAX_API_URL or "https://platform-api2.max.ru").rstrip("/")
         self._token = settings.MAX_BOT_TOKEN
+        self._verify_ssl = settings.MAX_VERIFY_SSL
         self._transport = transport
 
     @property
@@ -37,7 +38,10 @@ class MaxAdapter(MessengerAdapter):
 
     async def _request(self, method: str, path: str, **kwargs: Any) -> dict[str, Any]:
         async with httpx.AsyncClient(
-            base_url=self._base_url, timeout=30, transport=self._transport
+            base_url=self._base_url,
+            timeout=30,
+            transport=self._transport,
+            verify=self._verify_ssl,
         ) as client:
             response = await client.request(method, path, headers=self._headers, **kwargs)
             response.raise_for_status()
@@ -70,7 +74,7 @@ class MaxAdapter(MessengerAdapter):
             raise FileNotFoundError(path)
         upload = await self._request("POST", "/uploads", params={"type": "image"})
         upload_url = upload["url"]
-        async with httpx.AsyncClient(timeout=60) as client:
+        async with httpx.AsyncClient(timeout=60, verify=self._verify_ssl) as client:
             response = await client.post(upload_url, files={"data": (path.name, path.read_bytes())})
             response.raise_for_status()
             uploaded = response.json() if response.content else {}

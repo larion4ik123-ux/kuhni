@@ -23,6 +23,7 @@ from backend.app.models import (
     MessengerAccount,
 )
 from backend.app.providers.factory import get_provider
+from backend.app.services.manager import manager_targets
 from backend.app.services.notify import NotifyService
 from bot.adapters.max import MaxAdapter
 from shared.constants import AI_RESULT_DISCLAIMER, WORKER_POLL_INTERVAL_SEC
@@ -131,7 +132,8 @@ async def _deliver_result(db, generation: GenerationJob, image_path: str, settin
         await adapter.send_image(f"user:{account.account_id}", image_path, AI_RESULT_DISCLAIMER)
     lead = await db.get(Lead, generation.lead_id) if generation.lead_id else None
     if lead:
-        await NotifyService(adapter, settings.MAX_MANAGER_CHAT_IDS).notify_generation_ready(
+        targets = await manager_targets(db, settings.MAX_MANAGER_CHAT_IDS)
+        await NotifyService(adapter, targets).notify_generation_ready(
             lead, image_path
         )
 
