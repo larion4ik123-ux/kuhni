@@ -22,9 +22,9 @@ const site = {
   phone: "+7 (910) 543-47-04",
   yandexUrl: "https://yandex.ru/maps/org/interyer/196977992081/",
   blocks: {
-    hero_eyebrow: { content: "Своё производство в Людинове" },
-    hero_title: { content: "Кухни на заказ без салонных переплат" },
-    hero_subtitle: { content: "Проектируем, изготавливаем и устанавливаем кухни точно под ваше помещение. Артём Ермаков лично ведёт каждый заказ от замера до монтажа." },
+    hero_eyebrow: { content: "Мебельный салон «Интерьер»" },
+    hero_title: { content: "Кухни на заказ в Людинове" },
+    hero_subtitle: { content: "Изготавливаем кухни по индивидуальным размерам. Лично сопровождаю каждый проект — от замера до установки." },
     benefit_1: { title: "От 150 000 ₽", content: "Платите за материалы и работу, а не за дорогой шоурум" },
     benefit_2: { title: "Более 10 лет", content: "Изготавливаем мебель в Людинове и ближайших районах" },
     benefit_3: { title: "Личная гарантия", content: "Артём отвечает за сроки, качество и установку" },
@@ -69,6 +69,21 @@ const icon = {
   next: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg>',
 };
 
+const featureIcon = (name) => {
+  const paths = {
+    price: '<path d="M4 7.5h13l3 4.5-8 8-8-8z"/><path d="M8 7.5v-3h5"/><circle cx="9.2" cy="12" r=".8" fill="currentColor" stroke="none"/>',
+    workshop: '<path d="M4 20V9l8-5 8 5v11"/><path d="M8 20v-6h8v6M3 20h18M9 9h6"/>',
+    direct: '<path d="M4 12h16M14 6l6 6-6 6M10 6l-6 6 6 6"/>',
+    years: '<circle cx="12" cy="12" r="8"/><path d="M12 7v5l3 2"/>',
+    guarantee: '<path d="M12 3 5 6v5c0 4.5 2.8 8.2 7 10 4.2-1.8 7-5.5 7-10V6z"/><path d="m9 12 2 2 4-4"/>',
+    measure: '<path d="M4 7h16v10H4z"/><path d="M7 7v3m3-3v2m3-2v3m3-3v2"/>',
+    project: '<path d="M5 4h14v16H5z"/><path d="M8 8h8M8 12h8M8 16h5"/>',
+    delivery: '<path d="M3 7h11v9H3zM14 10h3l3 3v3h-6z"/><circle cx="7" cy="18" r="1.5"/><circle cx="17" cy="18" r="1.5"/>',
+    payment: '<rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10h18M7 15h3"/>',
+  };
+  return `<svg viewBox="0 0 24 24" aria-hidden="true">${paths[name] || paths.project}</svg>`;
+};
+
 function kitchenImage(id, variant = "card") {
   return { webp: `media/kitchens_real/${id}_${variant}.webp`, jpg: `media/kitchens_real/${id}_${variant}.jpg` };
 }
@@ -90,24 +105,32 @@ function maxCta(label, source, className = "") {
     : `<button class="max-cta ${className}" type="button" aria-disabled="true" data-cta="${source}">${content}</button>`;
 }
 
-const navItems = [["#benefits", "Преимущества"], ["#works", "Работы"], ["#about", "Обо мне"], ["#reviews", "Отзывы"], ["#contacts", "Контакты"]];
+const navItems = [["#works", "Работы"], ["#how-order", "Как заказать"], ["#about", "Обо мне"], ["#reviews", "Отзывы"], ["#contacts", "Контакты"]];
 const nav = () => navItems.map(([href, label]) => `<a href="${href}">${label}</a>`).join("");
 
 function header() {
-  return `<header class="site-header"><a class="brand" href="#top" aria-label="${site.brand}"><picture class="brand-picture"><source srcset="${asset("media/brand/logo_interier_cropped_card.webp")}" type="image/webp"><img class="brand-logo" src="${asset("media/brand/logo_interier_cropped_card.jpg")}" alt="Мебельный салон Интерьер"></picture></a><nav class="desktop-nav" aria-label="Основная навигация">${nav()}</nav>${maxCta("Подобрать кухню", "header", "header-cta")}<button class="menu-button" type="button" aria-label="Открыть меню" data-menu-toggle>${icon.menu}</button><div class="mobile-panel" data-mobile-panel><button class="menu-close" type="button" aria-label="Закрыть меню" data-menu-close>${icon.close}</button><nav aria-label="Мобильная навигация">${nav()}</nav>${maxCta("Подобрать кухню", "mobile_menu")}</div></header>`;
+  return `<header class="site-header"><a class="brand" href="#top" aria-label="${site.brand}"><img class="brand-logo" src="${asset("media/brand/logo_interier_header.svg")}" alt="Мебельный салон Интерьер"></a><nav class="desktop-nav" aria-label="Основная навигация">${nav()}</nav>${maxCta("Рассчитать кухню", "header", "header-cta")}<button class="menu-button" type="button" aria-label="Открыть меню" data-menu-toggle>${icon.menu}</button><div class="mobile-panel" data-mobile-panel><button class="menu-close" type="button" aria-label="Закрыть меню" data-menu-close>${icon.close}</button><nav aria-label="Мобильная навигация">${nav()}</nav>${maxCta("Рассчитать кухню", "mobile_menu")}</div></header>`;
 }
 
 function hero() {
   const image = editableImage("hero_image", kitchenImage("owner_4993", "hero"));
-  return `<section class="hero" id="top"><div class="hero-media">${picture({ ...image, alt: "Артём Ермаков, основатель компании Интерьер", className: "hero-picture", loading: "eager" })}</div><div class="hero-copy"><p class="eyebrow">${escapeHtml(block("hero_eyebrow").content)}</p><h1>${escapeHtml(block("hero_title").content)}</h1><p>${escapeHtml(block("hero_subtitle").content)}</p><div class="hero-actions">${maxCta("Собрать проект в MAX", "hero")}<a class="hero-phone" href="tel:${phoneHref(site.phone)}">${escapeHtml(site.phone)}</a></div><p class="hero-signature"><strong>Артём Ермаков</strong><span>Основатель компании «Интерьер»</span></p></div></section>`;
+  const facts = [
+    ["price", "Кухни от 150 000 ₽"],
+    ["workshop", "Собственное производство"],
+    ["direct", "Без переплат посредникам"],
+    ["years", "Более 10 лет опыта"],
+    ["guarantee", "Личная гарантия качества"],
+  ];
+  return `<section class="hero" id="top"><div class="hero-glow" aria-hidden="true"></div><div class="hero-media">${picture({ ...image, alt: "Артём Ермаков, основатель компании Интерьер", className: "hero-picture", loading: "eager" })}</div><div class="hero-copy"><p class="eyebrow">${escapeHtml(block("hero_eyebrow").content)}</p><h1>${escapeHtml(block("hero_title").content)}</h1><p>${escapeHtml(block("hero_subtitle").content)}</p><ul class="hero-facts">${facts.map(([name, label]) => `<li>${featureIcon(name)}<span>${label}</span></li>`).join("")}</ul><div class="hero-actions">${maxCta("Рассчитать кухню в MAX", "hero")}<a class="hero-phone" href="tel:${phoneHref(site.phone)}">${escapeHtml(site.phone)}</a></div><p class="hero-signature"><strong>Артём Ермаков</strong><span>Основатель компании «Интерьер»</span></p></div></section>`;
 }
 
 function benefits() {
-  return `<section class="benefits" id="benefits" aria-label="Преимущества">${[1, 2, 3].map((number) => { const item = block(`benefit_${number}`); return `<article><span class="benefit-number">0${number}</span><strong>${escapeHtml(item.title)}</strong><span>${escapeHtml(item.content)}</span></article>`; }).join("")}</section>`;
+  const items = [["measure", "Бесплатный замер"], ["project", "Индивидуальный проект"], ["delivery", "Доставка и установка"], ["payment", "Удобная оплата"]];
+  return `<section class="benefits" aria-label="Преимущества">${items.map(([name, label]) => `<article>${featureIcon(name)}<span>${label}</span></article>`).join("")}</section>`;
 }
 
 function maxStrip() {
-  return `<section class="max-strip"><div class="max-strip-mark">${icon.max}</div><div><p class="eyebrow">MAX-бот</p><h2>${escapeHtml(block("max_title").content)}</h2><p>${escapeHtml(block("max_text").content)}</p></div>${maxCta("Открыть MAX-бот", "strip")}</section>`;
+  return `<section class="max-strip" id="how-order"><div class="max-strip-mark">${icon.max}</div><div><p class="eyebrow">MAX-бот</p><h2>${escapeHtml(block("max_title").content)}</h2><p>${escapeHtml(block("max_text").content)}</p></div>${maxCta("Открыть MAX-бот", "strip")}</section>`;
 }
 
 function workCard(work) {
