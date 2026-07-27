@@ -21,11 +21,16 @@ const site = {
   brand: "Мебельный салон Интерьер",
   phone: "+7 (910) 543-47-04",
   yandexUrl: "https://yandex.ru/maps/org/interyer/196977992081/",
+  contactInfo: {
+    address: "Людиново",
+    region: "Людиново и ближайшие районы области",
+    hours: "Пн-Пт: 9:00-18:00",
+  },
   blocks: {
     hero_eyebrow: { content: "Мебельный салон «Интерьер»" },
     hero_title: { content: "Кухни на заказ в Людинове" },
     hero_subtitle: { content: "Изготавливаем кухни по индивидуальным размерам. Лично сопровождаю каждый проект — от замера до установки." },
-    benefit_1: { title: "От 150 000 ₽", content: "Платите за материалы и работу, а не за дорогой шоурум" },
+    benefit_1: { title: "Собственное производство", content: "Контролируем изготовление и качество на каждом этапе" },
     benefit_2: { title: "Более 10 лет", content: "Изготавливаем мебель в Людинове и ближайших районах" },
     benefit_3: { title: "Личная гарантия", content: "Артём отвечает за сроки, качество и установку" },
     max_title: { content: "Посмотрите будущую кухню в своём интерьере" },
@@ -113,9 +118,8 @@ function header() {
 }
 
 function hero() {
-  const image = editableImage("hero_image", kitchenImage("owner_4993", "hero"));
+  const image = editableImage("hero_image", kitchenImage("owner_at_kitchen", "hero"));
   const facts = [
-    ["price", "Кухни от 150 000 ₽"],
     ["workshop", "Собственное производство"],
     ["direct", "Без переплат посредникам"],
     ["years", "Более 10 лет опыта"],
@@ -154,7 +158,8 @@ function reviews() {
 }
 
 function contacts() {
-  return `<section class="contacts" id="contacts"><div><p class="eyebrow">Ваша кухня начинается здесь</p><h2>${escapeHtml(block("contacts_title").content)}</h2><p>${escapeHtml(block("contacts_text").content)}</p></div><div class="contact-actions"><a href="tel:${phoneHref(site.phone)}">${escapeHtml(site.phone)}</a><a href="${escapeHtml(site.yandexUrl)}" target="_blank" rel="noreferrer">Компания на Яндекс Картах ${icon.arrow}</a></div>${maxCta("Собрать проект в MAX", "contacts")}</section>`;
+  const mapUrl = "https://yandex.ru/map-widget/v1/?ll=34.440342%2C53.863421&z=15&pt=34.440342%2C53.863421%2Cpm2rdm";
+  return `<section class="contacts" id="contacts"><div class="contact-copy"><p class="eyebrow">Ваша кухня начинается здесь</p><h2>${escapeHtml(block("contacts_title").content)}</h2><p>${escapeHtml(block("contacts_text").content)}</p></div><div class="contact-actions"><a href="tel:${phoneHref(site.phone)}">${escapeHtml(site.phone)}</a><a href="${escapeHtml(site.yandexUrl)}" target="_blank" rel="noreferrer">Компания на Яндекс Картах ${icon.arrow}</a></div>${maxCta("Собрать проект в MAX", "contacts")}<div class="contact-map"><iframe src="${mapUrl}" title="Мебельный салон Интерьер на Яндекс Картах" loading="lazy"></iframe><div class="map-details"><span>Адрес</span><strong>${escapeHtml(site.contactInfo.address)}</strong><span>Режим работы</span><strong>${escapeHtml(site.contactInfo.hours)}</strong></div></div></section>`;
 }
 
 function render() {
@@ -194,6 +199,11 @@ async function loadEditableContent() {
     site.blocks = { ...site.blocks, ...data.blocks };
     site.phone = data.contacts?.phone || site.phone;
     site.yandexUrl = data.contacts?.yandex_maps_url || site.yandexUrl;
+    site.contactInfo = {
+      address: data.contacts?.address || site.contactInfo.address,
+      region: data.contacts?.region || site.contactInfo.region,
+      hours: data.contacts?.hours || site.contactInfo.hours,
+    };
     maxBotUrl = data.max_bot_url || data.contacts?.max_url || maxBotUrl;
     if (data.gallery?.length) site.works = data.gallery.filter((item) => item.image_url).map((item) => ({ image_url: item.image_url, webp_url: item.webp_url, title: item.caption || "Кухня на заказ", alt: item.alt_text || item.caption || "Кухня на заказ" }));
     if (data.reviews?.length) site.reviews = data.reviews.map((item) => ({ author: item.author_name, text: item.text, rating: item.rating }));

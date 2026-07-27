@@ -357,12 +357,12 @@ SITE_BLOCKS = [
         "title": "Фотография главного экрана",
         "content": "",
         "order": 4,
-        "media": "owner_4993_hero",
+        "media": "owner_at_kitchen_hero",
     },
     {
         "key": "benefit_1",
-        "title": "От 150 000 ₽",
-        "content": "Платите за материалы и работу, а не за дорогой шоурум",
+        "title": "Собственное производство",
+        "content": "Контролируем изготовление и качество на каждом этапе",
         "order": 10,
     },
     {
@@ -460,6 +460,11 @@ INITIAL_MEDIA = {
     "owner_4993_hero": (
         "kitchens_real/owner_4993_hero.jpg",
         "kitchens_real/owner_4993_hero.webp",
+        "site",
+    ),
+    "owner_at_kitchen_hero": (
+        "kitchens_real/owner_at_kitchen_hero.jpg",
+        "kitchens_real/owner_at_kitchen_hero.webp",
         "site",
     ),
     "owner_in_workshop_v2_hero": (
