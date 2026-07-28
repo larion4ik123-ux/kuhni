@@ -42,6 +42,7 @@ class Settings(BaseSettings):
     MAX_WEBHOOK_SECRET: str = ""
     MAX_MANAGER_SETUP_CODE: str = ""
     MAX_MANAGER_CHAT_IDS: Annotated[list[int], NoDecode] = []
+    MAX_INTRO_IMAGE_PATH: str = "assets/processed/kitchens_real/owner_4993_hero.jpg"
 
     # --- AI-провайдер ---
     AI_PROVIDER: str = "mock"  # mock | openai_compatible

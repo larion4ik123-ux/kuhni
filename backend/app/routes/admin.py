@@ -19,8 +19,18 @@ from backend.app.core.security import (
     verify_password,
 )
 from backend.app.core.settings import get_settings
-from backend.app.models import Admin, GalleryItem, MediaFile, Review, SiteBlock
+from backend.app.models import (
+    Admin,
+    GalleryItem,
+    GenerationJob,
+    Lead,
+    LeadStatusHistory,
+    MediaFile,
+    Review,
+    SiteBlock,
+)
 from backend.app.services.media import store_uploaded_image
+from shared.enums import LeadStatus
 
 router = APIRouter()
 db_dep = Annotated[AsyncSession, Depends(get_db)]
@@ -48,6 +58,11 @@ class ReviewUpdate(BaseModel):
     source_url: str | None = Field(default=None, max_length=512)
     display_order: int = 0
     visible: bool = True
+
+
+class LeadUpdate(BaseModel):
+    status: LeadStatus
+    manager_comment: str | None = Field(default=None, max_length=3000)
 
 
 def _require_csrf(token: str | None) -> None:
@@ -171,6 +186,68 @@ async def admin_content(db: db_dep, _admin: admin_dep) -> dict:
             for item in reviews
         ],
     }
+
+
+@router.get("/api/admin/leads")
+async def admin_leads(db: db_dep, _admin: admin_dep) -> dict:
+    """Return MAX leads for the owner dashboard without exposing customer photos publicly."""
+    leads = (await db.execute(select(Lead).order_by(Lead.created_at.desc()).limit(100))).scalars().all()
+    generation_ids = {lead.generation_job_id for lead in leads if lead.generation_job_id}
+    generations: dict[int, GenerationJob] = {}
+    if generation_ids:
+        rows = (
+            await db.execute(select(GenerationJob).where(GenerationJob.id.in_(generation_ids)))
+        ).scalars()
+        generations = {item.id: item for item in rows}
+
+    return {
+        "leads": [
+            {
+                "id": lead.id,
+                "phone": lead.phone,
+                "status": lead.status,
+                "source": lead.source,
+                "selection_description": lead.selection_description,
+                "manager_comment": lead.manager_comment,
+                "created_at": lead.created_at.isoformat(),
+                "generation_status": (
+                    generations[lead.generation_job_id].status
+                    if lead.generation_job_id in generations
+                    else None
+                ),
+            }
+            for lead in leads
+        ]
+    }
+
+
+@router.put("/api/admin/leads/{lead_id}")
+async def update_lead(
+    lead_id: int,
+    payload: LeadUpdate,
+    db: db_dep,
+    admin: admin_dep,
+    x_csrf_token: Annotated[str | None, Header()] = None,
+) -> dict:
+    _require_csrf(x_csrf_token)
+    lead = await db.get(Lead, lead_id)
+    if not lead:
+        raise HTTPException(status_code=404, detail="Заявка не найдена")
+    old_status = lead.status
+    lead.status = payload.status.value
+    lead.manager_comment = payload.manager_comment.strip() if payload.manager_comment else None
+    if old_status != lead.status:
+        db.add(
+            LeadStatusHistory(
+                lead_id=lead.id,
+                old_status=old_status,
+                new_status=lead.status,
+                changed_by=admin.id,
+                comment=lead.manager_comment,
+            )
+        )
+    await db.commit()
+    return {"ok": True}
 
 
 @router.put("/api/admin/blocks/{key}")

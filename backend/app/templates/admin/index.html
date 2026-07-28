@@ -22,10 +22,15 @@
       </section>
       <div class="admin-tabs" role="tablist">
         <button class="is-active" data-tab="blocks">Блоки сайта</button>
+        <button data-tab="leads">Заявки из MAX</button>
         <button data-tab="gallery">Наши работы</button>
         <button data-tab="reviews">Отзывы</button>
       </div>
       <section data-panel="blocks"><div class="content-grid" data-block-list></div></section>
+      <section data-panel="leads" hidden>
+        <div class="panel-toolbar"><div><h2>Заявки из MAX</h2><p>Новые обращения появляются после того, как клиент оставил номер телефона.</p></div></div>
+        <div class="content-grid lead-grid" data-lead-list></div>
+      </section>
       <section data-panel="gallery" hidden>
         <div class="panel-toolbar"><div><h2>Наши работы</h2><p>Добавляйте реальные кухни, выбирайте подписи и порядок показа. Никакого кода не нужно.</p></div><button class="primary-button" data-add-gallery>Добавить работу</button></div>
         <div class="content-grid media-grid" data-gallery-list></div>

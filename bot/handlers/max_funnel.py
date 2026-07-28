@@ -60,10 +60,24 @@ class MaxFunnelHandler:
         if update_type == "bot_started":
             source = self._start_payload(update)
             session = await self._new_or_active_session(account, source)
+            intro = (
+                "Здравствуйте! Это бот Артёма Ермакова, основателя компании «Интерьер» "
+                "в Людинове. Артём лично ведёт каждый проект: от замера до установки."
+            )
+            image_path = Path(self.settings.MAX_INTRO_IMAGE_PATH)
+            if image_path.is_file():
+                try:
+                    await self.adapter.send_image(chat_id, str(image_path), intro)
+                except (httpx.HTTPError, OSError):
+                    logger.exception("MAX intro image failed; sending text only")
+                    await self.adapter.send_text(chat_id, intro)
+            else:
+                logger.warning("MAX intro image does not exist: %s", image_path)
+                await self.adapter.send_text(chat_id, intro)
             await self.adapter.send_text(
                 chat_id,
-                "Здравствуйте! Я помощник компании «Интерьер». За несколько минут соберу параметры "
-                "вашей будущей кухни и подготовлю их для Артёма Ермакова.",
+                "Сейчас соберём кухню вашей мечты. Отвечайте в удобном темпе, "
+                "а после фото помещения подготовлю визуальный вариант.",
             )
             await self._show_current_or_first(chat_id, session)
             return
@@ -212,7 +226,8 @@ class MaxFunnelHandler:
             ]
             await self.adapter.send_buttons(chat_id, question.title, buttons)
         elif question.type == "contact":
-            await self.adapter.request_contact(chat_id, question.title)
+            description = f"\n{question.description}" if question.description else ""
+            await self.adapter.request_contact(chat_id, f"{question.title}{description}")
         elif question.type == "confirmation":
             await self.adapter.send_buttons(
                 chat_id,
@@ -278,8 +293,8 @@ class MaxFunnelHandler:
         await self.db.flush()
         await self.adapter.send_text(
             chat_id,
-            "Готово. Параметры и фото сохранены, визуальный вариант уже готовится. "
-            "Артём получил заявку и свяжется с вами, чтобы уточнить детали.",
+            "Спасибо! Контакт сохранён. Я передал заявку Артёму и запускаю визуализацию. "
+            "Как только результат будет готов, отправлю его сюда.",
         )
 
     async def _account(self, identity) -> MessengerAccount:
