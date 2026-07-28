@@ -440,7 +440,7 @@ SITE_BLOCKS = [
         "order": 61,
     },
     {"key": "contacts_phone", "title": "Телефон", "content": "+7 (910) 543-47-04", "order": 62},
-    {"key": "contacts_address", "title": "Адрес", "content": "Людиново", "order": 63},
+    {"key": "contacts_address", "title": "Адрес", "content": "Московская ул., 32, Людиново", "order": 63},
     {
         "key": "contacts_region",
         "title": "Регион",

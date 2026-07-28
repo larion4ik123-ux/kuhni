@@ -22,7 +22,7 @@ const site = {
   phone: "+7 (910) 543-47-04",
   yandexUrl: "https://yandex.ru/maps/org/interyer/196977992081/",
   contactInfo: {
-    address: "Людиново",
+    address: "Московская ул., 32, Людиново",
     region: "Людиново и ближайшие районы области",
     hours: "Пн-Пт: 9:00-18:00",
   },
@@ -78,7 +78,7 @@ const featureIcon = (name) => {
   const paths = {
     price: '<path d="M4 7.5h13l3 4.5-8 8-8-8z"/><path d="M8 7.5v-3h5"/><circle cx="9.2" cy="12" r=".8" fill="currentColor" stroke="none"/>',
     workshop: '<path d="M4 20V9l8-5 8 5v11"/><path d="M8 20v-6h8v6M3 20h18M9 9h6"/>',
-    direct: '<path d="M4 12h16M14 6l6 6-6 6M10 6l-6 6 6 6"/>',
+    direct: '<path d="M4 20V10l4-3 4 3v10"/><path d="M8 7V4h3v3"/><path d="M14 15h6"/><path d="m17 12 3 3-3 3"/>',
     years: '<circle cx="12" cy="12" r="8"/><path d="M12 7v5l3 2"/>',
     guarantee: '<path d="M12 3 5 6v5c0 4.5 2.8 8.2 7 10 4.2-1.8 7-5.5 7-10V6z"/><path d="m9 12 2 2 4-4"/>',
     measure: '<path d="M4 7h16v10H4z"/><path d="M7 7v3m3-3v2m3-2v3m3-3v2"/>',
