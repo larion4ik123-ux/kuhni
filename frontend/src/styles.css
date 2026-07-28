@@ -127,17 +127,18 @@ h2 { font-size: clamp(36px, 4vw, 58px); }
 .hero::before {
   content: "";
   position: absolute;
-  inset: 0 52% 0 0;
+  inset: 0 43% 0 0;
   z-index: 1;
-  background: var(--graphite-deep);
+  background: linear-gradient(90deg,
+    var(--graphite-deep) 0%,
+    var(--graphite-deep) 70%,
+    rgba(17, 19, 21, .96) 82%,
+    rgba(17, 19, 21, .68) 91%,
+    rgba(17, 19, 21, 0) 100%);
 }
 .hero-media { position: absolute; inset: 0 0 0 42%; z-index: 0; background: #d8d4d0; }
 .hero-media::after {
-  content: "";
-  position: absolute;
-  inset: 0 auto 0 0;
-  width: 18%;
-  background: rgba(48, 47, 49, .7);
+  display: none;
 }
 .hero-picture { display: block; width: 100%; height: 100%; }
 .hero-picture img { object-position: center 34%; }
