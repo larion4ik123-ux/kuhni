@@ -94,7 +94,7 @@ function maxCta(label, source, className = "") {
     : `<button class="max-cta ${className}" type="button" aria-disabled="true" data-cta="${source}">${content}</button>`;
 }
 
-const navItems = [["#benefits", "Преимущества"], ["#works", "Работы"], ["#about", "Обо мне"], ["#reviews", "Отзывы"], ["#contacts", "Контакты"]];
+const navItems = [["#works", "Работы"], ["#about", "Обо мне"], ["#reviews", "Отзывы"], ["#contacts", "Контакты"]];
 const nav = () => navItems.map(([href, label]) => `<a href="${href}">${label}</a>`).join("");
 
 function header() {
@@ -102,7 +102,7 @@ function header() {
 }
 
 function hero() {
-  const image = editableImage("hero_image", kitchenImage("owner_4993", "hero"));
+  const image = editableImage("hero_image", kitchenImage("owner_at_kitchen", "hero"));
   return `<section class="hero" id="top"><div class="hero-media">${picture({ ...image, alt: "Артём Ермаков, основатель компании Интерьер", className: "hero-picture", loading: "eager" })}</div><div class="hero-copy"><p class="eyebrow">${escapeHtml(block("hero_eyebrow").content)}</p><h1>${escapeHtml(block("hero_title").content)}</h1><p>${escapeHtml(block("hero_subtitle").content)}</p><div class="hero-actions">${maxCta("Собрать проект в MAX", "hero")}<a class="hero-phone" href="tel:${phoneHref(site.phone)}">${escapeHtml(site.phone)}</a></div><p class="hero-signature"><strong>Артём Ермаков</strong><span>Основатель компании «Интерьер»</span></p></div></section>`;
 }
 
