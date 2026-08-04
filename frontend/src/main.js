@@ -26,10 +26,10 @@ const site = {
     hours: "Пн-Пт: 9:00-18:00",
   },
   blocks: {
-    hero_eyebrow: { content: "Своё производство в Людинове" },
-    hero_title: { content: "Кухни на заказ без салонных переплат" },
-    hero_subtitle: { content: "Проектируем, изготавливаем и устанавливаем кухни точно под ваше помещение. Артём Ермаков лично ведёт каждый заказ от замера до монтажа." },
-    benefit_1: { title: "От 150 000 ₽", content: "Платите за материалы и работу, а не за дорогой шоурум" },
+    hero_eyebrow: { content: "Мебельный салон «Интерьер»" },
+    hero_title: { content: "Кухни на заказ в Людинове" },
+    hero_subtitle: { content: "Изготавливаем кухни по индивидуальным размерам. Артём Ермаков лично сопровождает каждый проект от замера до установки." },
+    benefit_1: { title: "Собственное производство", content: "Контролируем изготовление и качество на каждом этапе" },
     benefit_2: { title: "Более 10 лет", content: "Изготавливаем мебель в Людинове и ближайших районах" },
     benefit_3: { title: "Личная гарантия", content: "Артём отвечает за сроки, качество и установку" },
     max_title: { content: "Посмотрите будущую кухню в своём интерьере" },
@@ -98,7 +98,7 @@ const navItems = [["#works", "Работы"], ["#about", "Обо мне"], ["#re
 const nav = () => navItems.map(([href, label]) => `<a href="${href}">${label}</a>`).join("");
 
 function header() {
-  return `<header class="site-header"><a class="brand" href="#top" aria-label="${site.brand}"><picture class="brand-picture"><source srcset="${asset("media/brand/logo_interier_cropped_card.webp")}" type="image/webp"><img class="brand-logo" src="${asset("media/brand/logo_interier_cropped_card.jpg")}" alt="Мебельный салон Интерьер"></picture></a><nav class="desktop-nav" aria-label="Основная навигация">${nav()}</nav>${maxCta("Подобрать кухню", "header", "header-cta")}<button class="menu-button" type="button" aria-label="Открыть меню" data-menu-toggle>${icon.menu}</button><div class="mobile-panel" data-mobile-panel><button class="menu-close" type="button" aria-label="Закрыть меню" data-menu-close>${icon.close}</button><nav aria-label="Мобильная навигация">${nav()}</nav>${maxCta("Подобрать кухню", "mobile_menu")}</div></header>`;
+  return `<header class="site-header"><a class="brand" href="#top" aria-label="${site.brand}"><img class="brand-logo" src="${asset("media/brand/interier-original.svg")}" alt="Мебельный салон Интерьер"></a><nav class="desktop-nav" aria-label="Основная навигация">${nav()}</nav>${maxCta("Подобрать кухню", "header", "header-cta")}<button class="menu-button" type="button" aria-label="Открыть меню" data-menu-toggle>${icon.menu}</button><div class="mobile-panel" data-mobile-panel><button class="menu-close" type="button" aria-label="Закрыть меню" data-menu-close>${icon.close}</button><nav aria-label="Мобильная навигация">${nav()}</nav>${maxCta("Подобрать кухню", "mobile_menu")}</div></header>`;
 }
 
 function hero() {
